@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import statistics
 import sys
 from pathlib import Path
+from typing import Any
 
 
 def _repo_root() -> Path:
@@ -39,6 +41,10 @@ def _percentile(values: list[float], p: float) -> float | None:
     return xs[f] + (xs[c] - xs[f]) * (k - f)
 
 
+def sha256_hex(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 def count_ucsf_groups(manifest_examples: list[dict]) -> int:
     groups: set[str] = set()
     for ex in manifest_examples:
@@ -47,36 +53,134 @@ def count_ucsf_groups(manifest_examples: list[dict]) -> int:
     return len(groups)
 
 
-def mean_requested_anls(preds: dict[int, dict], req: list[int]) -> float:
-    """Requested-set mean primary ANLS; non-ok / missing contribute 0."""
+def rescore_primary(
+    rec: dict | None,
+    refs: list[str],
+    *,
+    score_example_fn,
+    primary: str,
+) -> dict[str, Any]:
+    """Always rescore from prediction/refs/status; never trust cached metrics."""
+    if rec is None:
+        return score_example_fn(None, refs, status="missing", primary=primary)
+    return score_example_fn(
+        rec.get("prediction"),
+        refs,
+        status=str(rec.get("status", "error")),
+        primary=primary,
+    )
+
+
+def mean_requested_anls(
+    preds: dict[int, dict],
+    req: list[int],
+    answers: dict[int, list[str]],
+    *,
+    score_example_fn,
+    primary: str,
+) -> float:
+    """Requested-set mean primary ANLS via canonical rescoring; non-ok/missing → 0."""
     total = 0.0
     for q in req:
-        rec = preds.get(q)
-        if not rec or rec.get("status") != "ok":
-            continue
-        m = rec.get("metrics") or {}
-        total += float(m.get("anls_normalized_strict_v2", m.get("anls", 0.0)))
+        m = rescore_primary(
+            preds.get(q),
+            answers[q],
+            score_example_fn=score_example_fn,
+            primary=primary,
+        )
+        total += float(m["anls_normalized_strict_v2"])
     return total / max(len(req), 1)
+
+
+def paired_primary_scores_provenance(
+    *,
+    manifest_examples: list[dict],
+    base_preds: dict[int, dict],
+    adapted_preds: dict[int, dict],
+    answers: dict[int, list[str]],
+    score_example_fn,
+    primary: str,
+) -> dict[str, Any]:
+    """Complete input binding for bootstrap CI: per-qid rescored paired ANLS + groups."""
+    rows: list[dict[str, Any]] = []
+    for ex in manifest_examples:
+        qid = int(ex["question_id"])
+        refs = answers[qid]
+        bm = rescore_primary(
+            base_preds.get(qid), refs, score_example_fn=score_example_fn, primary=primary
+        )
+        am = rescore_primary(
+            adapted_preds.get(qid),
+            refs,
+            score_example_fn=score_example_fn,
+            primary=primary,
+        )
+        rows.append(
+            {
+                "question_id": qid,
+                "ucsf_document_id": str(
+                    ex.get("ucsf_document_id") or f"MISSING::{qid}"
+                ),
+                "base_anls": float(bm["anls_normalized_strict_v2"]),
+                "adapted_anls": float(am["anls_normalized_strict_v2"]),
+            }
+        )
+    payload = json.dumps(rows, separators=(",", ":"), sort_keys=True)
+    manifest_payload = json.dumps(
+        [
+            {
+                "question_id": int(ex["question_id"]),
+                "ucsf_document_id": str(
+                    ex.get("ucsf_document_id") or f"MISSING::{int(ex['question_id'])}"
+                ),
+            }
+            for ex in manifest_examples
+        ],
+        separators=(",", ":"),
+        sort_keys=True,
+    )
+    return {
+        "schema": "holdout_bootstrap_inputs_v1",
+        "primary_metric": primary,
+        "n_questions": len(rows),
+        "n_groups": count_ucsf_groups(manifest_examples),
+        "paired_primary_scores_sha256": sha256_hex(payload),
+        "manifest_question_groups_sha256": sha256_hex(manifest_payload),
+    }
+
+
+def extract_bootstrap_input_provenance(bootstrap_obj: dict) -> dict | None:
+    """Return a trustworthy input-provenance block if present; else None."""
+    raw = bootstrap_obj.get("input_provenance")
+    if isinstance(raw, dict):
+        return raw
+    # Flat aliases accepted only when both required hashes exist.
+    if (
+        bootstrap_obj.get("paired_primary_scores_sha256")
+        and bootstrap_obj.get("manifest_question_groups_sha256")
+    ):
+        return {
+            "schema": bootstrap_obj.get("schema") or "holdout_bootstrap_inputs_v1",
+            "paired_primary_scores_sha256": bootstrap_obj["paired_primary_scores_sha256"],
+            "manifest_question_groups_sha256": bootstrap_obj[
+                "manifest_question_groups_sha256"
+            ],
+            "primary_metric": bootstrap_obj.get("primary_metric"),
+        }
+    return None
 
 
 def attach_bootstrap_ci(
     *,
     bootstrap_path: str | None,
     bootstrap_obj: dict | None,
-    manifest_examples: list[dict],
-    base_preds: dict[int, dict],
-    adapted_preds: dict[int, dict],
-    recomputed_base_mean: float,
-    recomputed_adapted_mean: float,
+    current_provenance: dict[str, Any],
 ) -> dict:
-    """Attach CI only when an explicit bootstrap artifact corresponds to this analysis.
+    """Attach CI only when bootstrap inputs are hash-bound to this analysis.
 
-    Correspondence uses available sealed provenance fields: task/metric labels,
-    exact n_questions / n_groups vs the analyzed manifest, and exact (unrounded)
-    point means / difference vs means recomputed from the analyzed prediction
-    records. Matching rounded scores alone is rejected. Prediction-file content
-    hashes are not present in the sealed bootstrap artifact, so exact point
-    statistics + manifest structure are the binding checks available here.
+    Aggregate means / n_questions / n_groups alone are insufficient: distinct paired
+    score vectors can share the same means but yield different CIs. Historical sealed
+    bootstrap JSON lacks input hashes, so it is omitted when selected.
     """
     if not bootstrap_path:
         return {
@@ -95,58 +199,46 @@ def attach_bootstrap_ci(
             "bootstrap_omit_reason": f"Bootstrap path not readable: {bootstrap_path}",
         }
 
-    req = [int(e["question_id"]) for e in manifest_examples]
-    n_groups = count_ucsf_groups(manifest_examples)
-    point_diff = recomputed_adapted_mean - recomputed_base_mean
-    reasons: list[str] = []
+    prov = extract_bootstrap_input_provenance(bootstrap_obj)
+    if prov is None:
+        return {
+            "bootstrap": {},
+            "bootstrap_attached": False,
+            "bootstrap_path": bootstrap_path,
+            "bootstrap_omit_reason": (
+                "Bootstrap artifact lacks trustworthy input provenance "
+                "(need input_provenance.paired_primary_scores_sha256 and "
+                "input_provenance.manifest_question_groups_sha256, or equivalent). "
+                "Matching task/metric/counts/aggregate means is not sufficient because "
+                "different paired score distributions can share means but not CIs. "
+                "Historical results/holdout_internvl_anls_bootstrap.json is preserved "
+                "for the report but cannot be auto-attached to a recompute."
+            ),
+        }
 
+    reasons: list[str] = []
     if bootstrap_obj.get("task") != "holdout_ucsf_cluster_bootstrap_anls_diff":
         reasons.append(
             f"unexpected task={bootstrap_obj.get('task')!r} "
             "(expected holdout_ucsf_cluster_bootstrap_anls_diff)"
         )
-    if bootstrap_obj.get("primary_metric") not in (
-        None,
-        "anls_normalized_strict_v2",
+    boot_metric = prov.get("primary_metric", bootstrap_obj.get("primary_metric"))
+    if boot_metric != current_provenance["primary_metric"]:
+        reasons.append(
+            f"primary_metric={boot_metric!r} != {current_provenance['primary_metric']!r}"
+        )
+    for key in (
+        "paired_primary_scores_sha256",
+        "manifest_question_groups_sha256",
     ):
-        # Accept missing primary_metric only if other checks pass? Prefer require match when present.
-        if bootstrap_obj.get("primary_metric") != "anls_normalized_strict_v2":
+        got = prov.get(key)
+        exp = current_provenance.get(key)
+        if not got:
+            reasons.append(f"bootstrap provenance missing {key}")
+        elif got != exp:
             reasons.append(
-                f"primary_metric={bootstrap_obj.get('primary_metric')!r} "
-                "does not match anls_normalized_strict_v2"
+                f"{key} mismatch: bootstrap={got!r} vs current_analysis={exp!r}"
             )
-    if int(bootstrap_obj.get("n_questions") or -1) != len(req):
-        reasons.append(
-            f"n_questions={bootstrap_obj.get('n_questions')} != manifest n={len(req)}"
-        )
-    if int(bootstrap_obj.get("n_groups") or -1) != n_groups:
-        reasons.append(
-            f"n_groups={bootstrap_obj.get('n_groups')} != manifest UCSF groups={n_groups}"
-        )
-
-    # Exact float equality (not rounded display values).
-    for key, got in (
-        ("point_mean_anls_base", recomputed_base_mean),
-        ("point_mean_anls_adapted", recomputed_adapted_mean),
-        ("point_diff_adapted_minus_base", point_diff),
-    ):
-        if key not in bootstrap_obj:
-            reasons.append(f"bootstrap missing provenance field {key}")
-            continue
-        stored = float(bootstrap_obj[key])
-        if stored != got:
-            reasons.append(
-                f"{key} mismatch: bootstrap={stored!r} vs recomputed_from_analyzed_preds={got!r}"
-            )
-
-    # Coverage: every manifest QID must exist in both prediction maps used for the means.
-    missing_base = [q for q in req if q not in base_preds]
-    missing_adapted = [q for q in req if q not in adapted_preds]
-    if missing_base or missing_adapted:
-        reasons.append(
-            "analyzed prediction maps incomplete vs manifest "
-            f"(missing_base={len(missing_base)}, missing_adapted={len(missing_adapted)})"
-        )
 
     if reasons:
         return {
@@ -154,9 +246,10 @@ def attach_bootstrap_ci(
             "bootstrap_attached": False,
             "bootstrap_path": bootstrap_path,
             "bootstrap_omit_reason": (
-                "Explicit bootstrap JSON failed correspondence checks against "
+                "Explicit bootstrap JSON failed input-hash provenance checks against "
                 "the analyzed predictions/manifest; CI omitted. " + "; ".join(reasons)
             ),
+            "current_input_provenance": current_provenance,
         }
     return {
         "bootstrap": bootstrap_obj,
@@ -167,18 +260,10 @@ def attach_bootstrap_ci(
             "checked": [
                 "task",
                 "primary_metric",
-                "n_questions",
-                "n_groups",
-                "point_mean_anls_base",
-                "point_mean_anls_adapted",
-                "point_diff_adapted_minus_base",
-                "prediction_coverage_vs_manifest",
+                "paired_primary_scores_sha256",
+                "manifest_question_groups_sha256",
             ],
-            "note": (
-                "Sealed bootstrap artifact does not store prediction JSONL content "
-                "hashes; correspondence uses exact point statistics and manifest "
-                "structure available in the artifact."
-            ),
+            "input_provenance": current_provenance,
         },
     }
 
@@ -268,7 +353,6 @@ def main() -> int:
 
     from vlm_doc.metrics import (
         SCORER_VERSION_PRIMARY,
-        exact_match_single,
         normalize_text,
         score_example,
     )
@@ -329,19 +413,27 @@ def main() -> int:
         for q in req:
             rec = pred.get(q)
             refs = answers[q]
-            if rec is None:
-                continue
-            st = rec.get("status", "error")
-            m = rec.get("metrics") or score_example(
-                rec.get("prediction"), refs, status=st, primary=SCORER_VERSION_PRIMARY
+            st = "missing" if rec is None else str(rec.get("status", "error"))
+            # Always rescore; never prefer cached record metrics.
+            m = score_example(
+                None if rec is None else rec.get("prediction"),
+                refs,
+                status=st,
+                primary=SCORER_VERSION_PRIMARY,
             )
-            anls_sum += float(m.get("anls_normalized_strict_v2", m.get("anls", 0.0)))
-            em_sum += float(m.get("exact_match", 0.0))
-            vlk_sum += float(m.get("anls_vlmevalkit", 0.0))
-            diag_sum += diagnostic_em(rec.get("prediction"), refs, st)
-            if rec.get("generation_cap_reached"):
+            anls_sum += float(m["anls_normalized_strict_v2"])
+            em_sum += float(m["exact_match"])
+            vlk_sum += float(m["anls_vlmevalkit"])
+            diag_sum += diagnostic_em(
+                None if rec is None else rec.get("prediction"), refs, st
+            )
+            if rec is not None and rec.get("generation_cap_reached"):
                 n_cap += 1
-            if st == "ok" and rec.get("generation_seconds") is not None:
+            if (
+                rec is not None
+                and st == "ok"
+                and rec.get("generation_seconds") is not None
+            ):
                 latencies.append(float(rec["generation_seconds"]))
         n_req = len(req)
         scores = summary.get("scores") or {}
@@ -410,18 +502,28 @@ def main() -> int:
     deltas = []
     for q in req:
         refs = answers[q]
-        bp = base[q].get("prediction")
-        ap = adapted[q].get("prediction")
-        bm = score_example(bp, refs, status=base[q].get("status", "error"))
-        am = score_example(ap, refs, status=adapted[q].get("status", "error"))
+        b_rec = base.get(q)
+        a_rec = adapted.get(q)
+        bm = rescore_primary(
+            b_rec,
+            refs,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        am = rescore_primary(
+            a_rec,
+            refs,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
         d = float(am["anls"]) - float(bm["anls"])
         deltas.append(d)
         row = {
             "question_id": q,
             "question": q_by_id[q].get("question"),
             "references": refs,
-            "baseline_pred": bp,
-            "adapted_pred": ap,
+            "baseline_pred": None if b_rec is None else b_rec.get("prediction"),
+            "adapted_pred": None if a_rec is None else a_rec.get("prediction"),
             "baseline_anls": bm["anls"],
             "adapted_anls": am["anls"],
             "delta_anls": d,
@@ -435,8 +537,14 @@ def main() -> int:
         else:
             regressed.append(row)
 
-    recomputed_base = mean_requested_anls(base, req)
-    recomputed_adapted = mean_requested_anls(adapted, req)
+    current_prov = paired_primary_scores_provenance(
+        manifest_examples=manifest["examples"],
+        base_preds=base,
+        adapted_preds=adapted,
+        answers=answers,
+        score_example_fn=score_example,
+        primary=SCORER_VERSION_PRIMARY,
+    )
     boot_obj = None
     if args.bootstrap_json:
         bp = Path(args.bootstrap_json)
@@ -445,31 +553,35 @@ def main() -> int:
     boot_attach = attach_bootstrap_ci(
         bootstrap_path=args.bootstrap_json,
         bootstrap_obj=boot_obj,
-        manifest_examples=manifest["examples"],
-        base_preds=base,
-        adapted_preds=adapted,
-        recomputed_base_mean=recomputed_base,
-        recomputed_adapted_mean=recomputed_adapted,
+        current_provenance=current_prov,
     )
     boot = boot_attach["bootstrap"]
 
     # Gallery: deterministic categories
     def first_exact_success():
         for q in sorted(req):
-            refs = answers[q]
-            if exact_match_single(base[q].get("prediction") or "", refs) == 1.0:
+            m = rescore_primary(
+                base.get(q),
+                answers[q],
+                score_example_fn=score_example,
+                primary=SCORER_VERSION_PRIMARY,
+            )
+            if m["exact_match"] == 1.0:
                 return q
         return None
 
     def first_substantive_error():
         # ANLS=0 and not empty pred
         for q in sorted(req):
-            m = score_example(
-                base[q].get("prediction"),
+            rec = base.get(q)
+            m = rescore_primary(
+                rec,
                 answers[q],
-                status=base[q].get("status", "error"),
+                score_example_fn=score_example,
+                primary=SCORER_VERSION_PRIMARY,
             )
-            if m["anls"] == 0.0 and (base[q].get("prediction") or "").strip():
+            pred = None if rec is None else rec.get("prediction")
+            if m["anls"] == 0.0 and (pred or "").strip():
                 return q
         return None
 
@@ -504,17 +616,23 @@ def main() -> int:
             "question": q_by_id[qid].get("question"),
             "references": answers[qid],
             "image_relpath": q_by_id[qid].get("image_relpath"),
-            "base_prediction": base[qid].get("prediction"),
-            "adapted_prediction": adapted[qid].get("prediction"),
-            "base_anls": score_example(
-                base[qid].get("prediction"),
+            "base_prediction": None
+            if base.get(qid) is None
+            else base[qid].get("prediction"),
+            "adapted_prediction": None
+            if adapted.get(qid) is None
+            else adapted[qid].get("prediction"),
+            "base_anls": rescore_primary(
+                base.get(qid),
                 answers[qid],
-                status=base[qid].get("status", "error"),
+                score_example_fn=score_example,
+                primary=SCORER_VERSION_PRIMARY,
             )["anls"],
-            "adapted_anls": score_example(
-                adapted[qid].get("prediction"),
+            "adapted_anls": rescore_primary(
+                adapted.get(qid),
                 answers[qid],
-                status=adapted[qid].get("status", "error"),
+                score_example_fn=score_example,
+                primary=SCORER_VERSION_PRIMARY,
             )["anls"],
             "visual_cause_claim": (
                 "No visual-cause claim without inspecting the page image; "

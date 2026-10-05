@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import importlib.util
-import json
 import tempfile
 import unittest
 from pathlib import Path
 
+from vlm_doc.metrics import SCORER_VERSION_PRIMARY, score_example
 from vlm_doc.svg_plot import write_grouped_bar_svg
 
 
@@ -45,7 +45,7 @@ class TestBootstrapCorrespondence(unittest.TestCase):
     def setUp(self):
         self.mod = _load_analyze_module()
 
-    def _manifest(self, n=2, n_groups=2):
+    def _manifest(self, n=2, n_groups=1):
         examples = []
         for i in range(n):
             examples.append(
@@ -56,93 +56,229 @@ class TestBootstrapCorrespondence(unittest.TestCase):
             )
         return examples
 
-    def _preds(self, scores: dict[int, float]) -> dict[int, dict]:
-        return {
-            q: {
-                "question_id": q,
-                "status": "ok",
-                "metrics": {"anls_normalized_strict_v2": s, "anls": s},
-            }
-            for q, s in scores.items()
-        }
+    def _answers(self, n=2):
+        return {i + 1: ["ref"] for i in range(n)}
+
+    def _preds_from_anls(self, scores: dict[int, float]) -> dict[int, dict]:
+        """Build ok records whose canonical rescoring yields the requested ANLS.
+
+        Uses prediction=ref for 1.0 and a distant string for 0.0.
+        """
+        out = {}
+        for q, s in scores.items():
+            if s == 1.0:
+                pred = "ref"
+            elif s == 0.0:
+                pred = "zzzzzzzzzz"
+            else:
+                raise ValueError("synthetic helper only supports 0/1 ANLS")
+            out[q] = {"question_id": q, "status": "ok", "prediction": pred}
+        return out
 
     def test_omits_when_bootstrap_not_provided(self):
-        examples = self._manifest()
-        base = self._preds({1: 1.0, 2: 0.0})
-        adapted = self._preds({1: 1.0, 2: 1.0})
         out = self.mod.attach_bootstrap_ci(
             bootstrap_path=None,
             bootstrap_obj=None,
-            manifest_examples=examples,
-            base_preds=base,
-            adapted_preds=adapted,
-            recomputed_base_mean=0.5,
-            recomputed_adapted_mean=1.0,
+            current_provenance={
+                "schema": "holdout_bootstrap_inputs_v1",
+                "primary_metric": SCORER_VERSION_PRIMARY,
+                "paired_primary_scores_sha256": "abc",
+                "manifest_question_groups_sha256": "def",
+            },
         )
         self.assertFalse(out["bootstrap_attached"])
         self.assertEqual(out["bootstrap"], {})
         self.assertIn("No --bootstrap-json", out["bootstrap_omit_reason"])
 
-    def test_rejects_unrelated_bootstrap_despite_rounded_score_match(self):
-        examples = self._manifest(n=2, n_groups=2)
-        base = self._preds({1: 0.7927, 2: 0.7927})
-        adapted = self._preds({1: 0.7993, 2: 0.7993})
-        # Rounded display values match a plausible sealed CI, but exact floats / groups differ.
-        unrelated = {
-            "task": "holdout_ucsf_cluster_bootstrap_anls_diff",
-            "primary_metric": "anls_normalized_strict_v2",
-            "n_questions": 504,  # wrong vs this 2-qid analysis
-            "n_groups": 109,
-            "point_mean_anls_base": 0.7927,  # rounded-looking value, not exact mean
-            "point_mean_anls_adapted": 0.7993,
-            "point_diff_adapted_minus_base": 0.0066,
-            "bootstrap_diff_p2_5": -0.01,
-            "bootstrap_diff_p97_5": 0.02,
-        }
-        base_mean = self.mod.mean_requested_anls(base, [1, 2])
-        adapted_mean = self.mod.mean_requested_anls(adapted, [1, 2])
-        out = self.mod.attach_bootstrap_ci(
-            bootstrap_path="results/fake_bootstrap.json",
-            bootstrap_obj=unrelated,
+    def test_omits_historical_bootstrap_without_input_hashes(self):
+        """Historical sealed bootstrap has aggregates only — must not attach."""
+        examples = self._manifest()
+        answers = self._answers()
+        base = self._preds_from_anls({1: 0.0, 2: 1.0})
+        adapted = self._preds_from_anls({1: 0.0, 2: 1.0})
+        prov = self.mod.paired_primary_scores_provenance(
             manifest_examples=examples,
             base_preds=base,
             adapted_preds=adapted,
-            recomputed_base_mean=base_mean,
-            recomputed_adapted_mean=adapted_mean,
+            answers=answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
         )
-        self.assertFalse(out["bootstrap_attached"])
-        self.assertEqual(out["bootstrap"], {})
-        self.assertIn("n_questions", out["bootstrap_omit_reason"])
-        self.assertIn("mismatch", out["bootstrap_omit_reason"])
-
-    def test_attaches_when_exact_provenance_matches(self):
-        examples = self._manifest(n=2, n_groups=1)
-        base = self._preds({1: 0.5, 2: 1.0})
-        adapted = self._preds({1: 0.75, 2: 1.0})
-        base_mean = self.mod.mean_requested_anls(base, [1, 2])
-        adapted_mean = self.mod.mean_requested_anls(adapted, [1, 2])
-        boot = {
+        historical = {
             "task": "holdout_ucsf_cluster_bootstrap_anls_diff",
             "primary_metric": "anls_normalized_strict_v2",
             "n_questions": 2,
             "n_groups": 1,
-            "point_mean_anls_base": base_mean,
-            "point_mean_anls_adapted": adapted_mean,
-            "point_diff_adapted_minus_base": adapted_mean - base_mean,
+            "point_mean_anls_base": 0.5,
+            "point_mean_anls_adapted": 0.5,
+            "point_diff_adapted_minus_base": 0.0,
+            "bootstrap_diff_p2_5": -0.2,
+            "bootstrap_diff_p97_5": 0.2,
+        }
+        out = self.mod.attach_bootstrap_ci(
+            bootstrap_path="results/holdout_internvl_anls_bootstrap.json",
+            bootstrap_obj=historical,
+            current_provenance=prov,
+        )
+        self.assertFalse(out["bootstrap_attached"])
+        self.assertIn("lacks trustworthy input provenance", out["bootstrap_omit_reason"])
+
+    def test_rejects_old_ci_when_means_match_but_paired_scores_differ(self):
+        """base=[0,1], adapted=[0,1] vs base=[0,1], adapted=[1,0]: means match, CI must not transfer."""
+        examples = self._manifest(n=2, n_groups=1)
+        answers = self._answers()
+        old_base = self._preds_from_anls({1: 0.0, 2: 1.0})
+        old_adapted = self._preds_from_anls({1: 0.0, 2: 1.0})
+        new_base = self._preds_from_anls({1: 0.0, 2: 1.0})
+        new_adapted = self._preds_from_anls({1: 1.0, 2: 0.0})
+
+        old_prov = self.mod.paired_primary_scores_provenance(
+            manifest_examples=examples,
+            base_preds=old_base,
+            adapted_preds=old_adapted,
+            answers=answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        new_prov = self.mod.paired_primary_scores_provenance(
+            manifest_examples=examples,
+            base_preds=new_base,
+            adapted_preds=new_adapted,
+            answers=answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        # Means match for both pairings.
+        old_base_mean = self.mod.mean_requested_anls(
+            old_base,
+            [1, 2],
+            answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        new_base_mean = self.mod.mean_requested_anls(
+            new_base,
+            [1, 2],
+            answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        old_ad_mean = self.mod.mean_requested_anls(
+            old_adapted,
+            [1, 2],
+            answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        new_ad_mean = self.mod.mean_requested_anls(
+            new_adapted,
+            [1, 2],
+            answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        self.assertEqual(old_base_mean, new_base_mean)
+        self.assertEqual(old_ad_mean, new_ad_mean)
+        self.assertNotEqual(
+            old_prov["paired_primary_scores_sha256"],
+            new_prov["paired_primary_scores_sha256"],
+        )
+
+        old_boot = {
+            "task": "holdout_ucsf_cluster_bootstrap_anls_diff",
+            "primary_metric": SCORER_VERSION_PRIMARY,
+            "n_questions": 2,
+            "n_groups": 1,
+            "point_mean_anls_base": old_base_mean,
+            "point_mean_anls_adapted": old_ad_mean,
+            "point_diff_adapted_minus_base": 0.0,
+            "bootstrap_diff_p2_5": -0.11,
+            "bootstrap_diff_p97_5": 0.11,
+            "input_provenance": old_prov,
+        }
+        out = self.mod.attach_bootstrap_ci(
+            bootstrap_path="results/old_bootstrap.json",
+            bootstrap_obj=old_boot,
+            current_provenance=new_prov,
+        )
+        self.assertFalse(out["bootstrap_attached"])
+        self.assertEqual(out["bootstrap"], {})
+        self.assertIn("paired_primary_scores_sha256", out["bootstrap_omit_reason"])
+
+    def test_attaches_when_input_hashes_match(self):
+        examples = self._manifest()
+        answers = self._answers()
+        base = self._preds_from_anls({1: 0.0, 2: 1.0})
+        adapted = self._preds_from_anls({1: 1.0, 2: 1.0})
+        prov = self.mod.paired_primary_scores_provenance(
+            manifest_examples=examples,
+            base_preds=base,
+            adapted_preds=adapted,
+            answers=answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        boot = {
+            "task": "holdout_ucsf_cluster_bootstrap_anls_diff",
+            "primary_metric": SCORER_VERSION_PRIMARY,
             "bootstrap_diff_p2_5": -0.1,
             "bootstrap_diff_p97_5": 0.2,
+            "input_provenance": prov,
         }
         out = self.mod.attach_bootstrap_ci(
             bootstrap_path="results/ok_bootstrap.json",
             bootstrap_obj=boot,
-            manifest_examples=examples,
-            base_preds=base,
-            adapted_preds=adapted,
-            recomputed_base_mean=base_mean,
-            recomputed_adapted_mean=adapted_mean,
+            current_provenance=prov,
         )
         self.assertTrue(out["bootstrap_attached"])
         self.assertEqual(out["bootstrap"]["bootstrap_diff_p2_5"], -0.1)
+
+
+class TestCanonicalRescoring(unittest.TestCase):
+    def setUp(self):
+        self.mod = _load_analyze_module()
+
+    def test_failed_record_with_cached_nonzero_metrics_contributes_zero(self):
+        answers = {1: ["gold"], 2: ["gold"]}
+        preds = {
+            1: {
+                "question_id": 1,
+                "status": "ok",
+                "prediction": "gold",
+                "metrics": {
+                    "anls_normalized_strict_v2": 1.0,
+                    "exact_match": 1.0,
+                    "anls_vlmevalkit": 1.0,
+                },
+            },
+            2: {
+                "question_id": 2,
+                "status": "error",
+                "prediction": "gold",
+                # Stale cached metrics must be ignored.
+                "metrics": {
+                    "anls_normalized_strict_v2": 0.9,
+                    "exact_match": 1.0,
+                    "anls_vlmevalkit": 0.9,
+                },
+            },
+        }
+        mean = self.mod.mean_requested_anls(
+            preds,
+            [1, 2],
+            answers,
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        self.assertAlmostEqual(mean, 0.5)
+        failed = self.mod.rescore_primary(
+            preds[2],
+            answers[2],
+            score_example_fn=score_example,
+            primary=SCORER_VERSION_PRIMARY,
+        )
+        self.assertEqual(failed["anls_normalized_strict_v2"], 0.0)
+        self.assertEqual(failed["exact_match"], 0.0)
 
 
 class TestGalleryPresentationHelpers(unittest.TestCase):

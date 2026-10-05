@@ -157,11 +157,16 @@ python scripts/analyze_holdout_final.py \
 
 Prerequisites: `data/manifests/docvqa_holdout_v2.json`, `data/cache/docvqa_holdout_v2_answers.json`,
 and the four prediction JSONL files (not shipped; regenerate only if authorized).
-`--bootstrap-json` is optional and **never auto-loaded**. When provided, the script attaches the
-CI only after exact correspondence checks against the analyzed predictions and manifest;
-otherwise it omits the CI with an explicit reason. Do not point `--figure-svg` / `--out` /
-`--table-json` / `--gallery-md` at sealed `docs/report/figures/` or sealed `results/holdout_final_*`
-paths.
+`--bootstrap-json` is optional and **never auto-loaded**. When provided, the CI is attached
+only if the artifact carries trustworthy **input provenance hashes**
+(`input_provenance.paired_primary_scores_sha256` and
+`input_provenance.manifest_question_groups_sha256`) that match the analyzed
+predictions/manifest. Matching task labels, question/group counts, or aggregate means is
+**not** sufficient (distinct paired score distributions can share means but not CIs).
+The historical sealed `results/holdout_internvl_anls_bootstrap.json` lacks those hashes, so
+a recompute will omit the CI while leaving that file and the report’s historical CI unchanged.
+Do not point `--figure-svg` / `--out` / `--table-json` / `--gallery-md` at sealed
+`docs/report/figures/` or sealed `results/holdout_final_*` paths.
 
 ### Fresh model evaluation (GPU; separate from sealed evidence)
 
