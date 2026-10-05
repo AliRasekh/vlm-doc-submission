@@ -150,12 +150,18 @@ python scripts/analyze_holdout_final.py \
   --lora-adapter-dir artifacts/internvl3_1b_lora_v2_u200 \
   --out results/repro_holdout_analysis/holdout_final_analysis.json \
   --table-json results/repro_holdout_analysis/holdout_final_table.json \
-  --gallery-md results/repro_holdout_analysis/holdout_gallery.md
+  --gallery-md results/repro_holdout_analysis/holdout_gallery.md \
+  --figure-svg results/repro_holdout_analysis/holdout_primary_anls.svg \
+  --bootstrap-json results/holdout_internvl_anls_bootstrap.json
 ```
 
 Prerequisites: `data/manifests/docvqa_holdout_v2.json`, `data/cache/docvqa_holdout_v2_answers.json`,
 and the four prediction JSONL files (not shipped; regenerate only if authorized).
-Also requires existing `results/holdout_internvl_anls_bootstrap.json` for the paired CI block.
+`--bootstrap-json` is optional and **never auto-loaded**. When provided, the script attaches the
+CI only after exact correspondence checks against the analyzed predictions and manifest;
+otherwise it omits the CI with an explicit reason. Do not point `--figure-svg` / `--out` /
+`--table-json` / `--gallery-md` at sealed `docs/report/figures/` or sealed `results/holdout_final_*`
+paths.
 
 ### Fresh model evaluation (GPU; separate from sealed evidence)
 

@@ -50,8 +50,21 @@ def test_submission_guide_lists_all_four_holdout_systems():
     assert "holdout_internvl3_1b.jsonl" in guide
     assert "holdout_internvl3_1b_lora_v2_u200.jsonl" in guide
     assert "results/repro_holdout_analysis/" in guide
+    assert "--figure-svg results/repro_holdout_analysis/holdout_primary_anls.svg" in guide
+    assert "--bootstrap-json" in guide
     assert "Display sealed compact results" in guide
     assert "Fresh model evaluation" in guide
+
+
+def test_analyze_holdout_isolates_figure_and_bootstrap():
+    src = (REPO / "scripts/analyze_holdout_final.py").read_text()
+    assert "--figure-svg" in src
+    assert 'default="results/holdout_primary_anls_recompute.svg"' in src
+    assert "docs/report/figures/holdout_primary_anls.svg" not in src.split("write_grouped_bar_svg")[1][:400]
+    assert "--bootstrap-json" in src
+    assert "attach_bootstrap_ci" in src
+    # Must not auto-load the sealed bootstrap path unconditionally.
+    assert 'boot_path = Path("results/holdout_internvl_anls_bootstrap.json")' not in src
 
 
 def test_compact_holdout_table_present():

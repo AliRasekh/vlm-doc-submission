@@ -39,6 +39,150 @@ def _percentile(values: list[float], p: float) -> float | None:
     return xs[f] + (xs[c] - xs[f]) * (k - f)
 
 
+def count_ucsf_groups(manifest_examples: list[dict]) -> int:
+    groups: set[str] = set()
+    for ex in manifest_examples:
+        qid = int(ex["question_id"])
+        groups.add(str(ex.get("ucsf_document_id") or f"MISSING::{qid}"))
+    return len(groups)
+
+
+def mean_requested_anls(preds: dict[int, dict], req: list[int]) -> float:
+    """Requested-set mean primary ANLS; non-ok / missing contribute 0."""
+    total = 0.0
+    for q in req:
+        rec = preds.get(q)
+        if not rec or rec.get("status") != "ok":
+            continue
+        m = rec.get("metrics") or {}
+        total += float(m.get("anls_normalized_strict_v2", m.get("anls", 0.0)))
+    return total / max(len(req), 1)
+
+
+def attach_bootstrap_ci(
+    *,
+    bootstrap_path: str | None,
+    bootstrap_obj: dict | None,
+    manifest_examples: list[dict],
+    base_preds: dict[int, dict],
+    adapted_preds: dict[int, dict],
+    recomputed_base_mean: float,
+    recomputed_adapted_mean: float,
+) -> dict:
+    """Attach CI only when an explicit bootstrap artifact corresponds to this analysis.
+
+    Correspondence uses available sealed provenance fields: task/metric labels,
+    exact n_questions / n_groups vs the analyzed manifest, and exact (unrounded)
+    point means / difference vs means recomputed from the analyzed prediction
+    records. Matching rounded scores alone is rejected. Prediction-file content
+    hashes are not present in the sealed bootstrap artifact, so exact point
+    statistics + manifest structure are the binding checks available here.
+    """
+    if not bootstrap_path:
+        return {
+            "bootstrap": {},
+            "bootstrap_attached": False,
+            "bootstrap_omit_reason": (
+                "No --bootstrap-json provided; refusing to auto-load "
+                "results/holdout_internvl_anls_bootstrap.json for a possibly "
+                "unrelated prediction set."
+            ),
+        }
+    if bootstrap_obj is None:
+        return {
+            "bootstrap": {},
+            "bootstrap_attached": False,
+            "bootstrap_omit_reason": f"Bootstrap path not readable: {bootstrap_path}",
+        }
+
+    req = [int(e["question_id"]) for e in manifest_examples]
+    n_groups = count_ucsf_groups(manifest_examples)
+    point_diff = recomputed_adapted_mean - recomputed_base_mean
+    reasons: list[str] = []
+
+    if bootstrap_obj.get("task") != "holdout_ucsf_cluster_bootstrap_anls_diff":
+        reasons.append(
+            f"unexpected task={bootstrap_obj.get('task')!r} "
+            "(expected holdout_ucsf_cluster_bootstrap_anls_diff)"
+        )
+    if bootstrap_obj.get("primary_metric") not in (
+        None,
+        "anls_normalized_strict_v2",
+    ):
+        # Accept missing primary_metric only if other checks pass? Prefer require match when present.
+        if bootstrap_obj.get("primary_metric") != "anls_normalized_strict_v2":
+            reasons.append(
+                f"primary_metric={bootstrap_obj.get('primary_metric')!r} "
+                "does not match anls_normalized_strict_v2"
+            )
+    if int(bootstrap_obj.get("n_questions") or -1) != len(req):
+        reasons.append(
+            f"n_questions={bootstrap_obj.get('n_questions')} != manifest n={len(req)}"
+        )
+    if int(bootstrap_obj.get("n_groups") or -1) != n_groups:
+        reasons.append(
+            f"n_groups={bootstrap_obj.get('n_groups')} != manifest UCSF groups={n_groups}"
+        )
+
+    # Exact float equality (not rounded display values).
+    for key, got in (
+        ("point_mean_anls_base", recomputed_base_mean),
+        ("point_mean_anls_adapted", recomputed_adapted_mean),
+        ("point_diff_adapted_minus_base", point_diff),
+    ):
+        if key not in bootstrap_obj:
+            reasons.append(f"bootstrap missing provenance field {key}")
+            continue
+        stored = float(bootstrap_obj[key])
+        if stored != got:
+            reasons.append(
+                f"{key} mismatch: bootstrap={stored!r} vs recomputed_from_analyzed_preds={got!r}"
+            )
+
+    # Coverage: every manifest QID must exist in both prediction maps used for the means.
+    missing_base = [q for q in req if q not in base_preds]
+    missing_adapted = [q for q in req if q not in adapted_preds]
+    if missing_base or missing_adapted:
+        reasons.append(
+            "analyzed prediction maps incomplete vs manifest "
+            f"(missing_base={len(missing_base)}, missing_adapted={len(missing_adapted)})"
+        )
+
+    if reasons:
+        return {
+            "bootstrap": {},
+            "bootstrap_attached": False,
+            "bootstrap_path": bootstrap_path,
+            "bootstrap_omit_reason": (
+                "Explicit bootstrap JSON failed correspondence checks against "
+                "the analyzed predictions/manifest; CI omitted. " + "; ".join(reasons)
+            ),
+        }
+    return {
+        "bootstrap": bootstrap_obj,
+        "bootstrap_attached": True,
+        "bootstrap_path": bootstrap_path,
+        "bootstrap_omit_reason": None,
+        "bootstrap_correspondence": {
+            "checked": [
+                "task",
+                "primary_metric",
+                "n_questions",
+                "n_groups",
+                "point_mean_anls_base",
+                "point_mean_anls_adapted",
+                "point_diff_adapted_minus_base",
+                "prediction_coverage_vs_manifest",
+            ],
+            "note": (
+                "Sealed bootstrap artifact does not store prediction JSONL content "
+                "hashes; correspondence uses exact point statistics and manifest "
+                "structure available in the artifact."
+            ),
+        },
+    }
+
+
 def main() -> int:
     if os.environ.get("PYTHONNOUSERSITE") != "1":
         print("ERROR: export PYTHONNOUSERSITE=1 before python", file=sys.stderr)
@@ -91,6 +235,31 @@ def main() -> int:
         default="artifacts/internvl3_1b_lora_v2_u200",
         help="Metadata reference only (not loaded here).",
     )
+    ap.add_argument(
+        "--figure-svg",
+        default="results/holdout_primary_anls_recompute.svg",
+        help=(
+            "Output path for the primary-ANLS bar chart. Defaults under results/ so "
+            "recomputes do not overwrite sealed docs/report/figures/ assets."
+        ),
+    )
+    ap.add_argument(
+        "--bootstrap-json",
+        default=None,
+        help=(
+            "Optional path to a UCSF-cluster bootstrap JSON. Never auto-loaded. "
+            "Attached only after exact correspondence checks against the analyzed "
+            "predictions and manifest; otherwise the CI is omitted with an explanation."
+        ),
+    )
+    ap.add_argument(
+        "--manifest",
+        default="data/manifests/docvqa_holdout_v2.json",
+    )
+    ap.add_argument(
+        "--answers",
+        default="data/cache/docvqa_holdout_v2_answers.json",
+    )
     args = ap.parse_args()
 
     root = _repo_root()
@@ -131,14 +300,12 @@ def main() -> int:
         ),
     ]
 
-    manifest = json.loads(Path("data/manifests/docvqa_holdout_v2.json").read_text())
+    manifest = json.loads(Path(args.manifest).read_text())
     req = [int(e["question_id"]) for e in manifest["examples"]]
     q_by_id = {int(e["question_id"]): e for e in manifest["examples"]}
     answers = {
         int(a["question_id"]): list(a["answers"])
-        for a in json.loads(Path("data/cache/docvqa_holdout_v2_answers.json").read_text())[
-            "answers"
-        ]
+        for a in json.loads(Path(args.answers).read_text())["answers"]
     }
 
     rows = []
@@ -268,10 +435,23 @@ def main() -> int:
         else:
             regressed.append(row)
 
-    boot = {}
-    boot_path = Path("results/holdout_internvl_anls_bootstrap.json")
-    if boot_path.is_file():
-        boot = json.loads(boot_path.read_text())
+    recomputed_base = mean_requested_anls(base, req)
+    recomputed_adapted = mean_requested_anls(adapted, req)
+    boot_obj = None
+    if args.bootstrap_json:
+        bp = Path(args.bootstrap_json)
+        if bp.is_file():
+            boot_obj = json.loads(bp.read_text())
+    boot_attach = attach_bootstrap_ci(
+        bootstrap_path=args.bootstrap_json,
+        bootstrap_obj=boot_obj,
+        manifest_examples=manifest["examples"],
+        base_preds=base,
+        adapted_preds=adapted,
+        recomputed_base_mean=recomputed_base,
+        recomputed_adapted_mean=recomputed_adapted,
+    )
+    boot = boot_attach["bootstrap"]
 
     # Gallery: deterministic categories
     def first_exact_success():
@@ -372,9 +552,11 @@ def main() -> int:
         )
     Path(args.gallery_md).write_text("\n".join(md) + "\n")
 
-    # Compact bar chart of primary ANLS
+    # Compact bar chart of primary ANLS (explicit path; create parents)
+    figure_path = Path(args.figure_svg)
+    figure_path.parent.mkdir(parents=True, exist_ok=True)
     write_grouped_bar_svg(
-        Path("docs/report/figures/holdout_primary_anls.svg"),
+        figure_path,
         categories=["256M", "500M", "InternVL", "LoRA v2 u200"],
         series={
             "primary_ANLS": [
@@ -388,26 +570,37 @@ def main() -> int:
         ylabel="ANLS",
     )
 
+    paired = {
+        "n_improved": len(improved),
+        "n_regressed": len(regressed),
+        "n_tied": tied,
+        "mean_delta_anls": sum(deltas) / len(deltas),
+        "bootstrap": boot,
+        "bootstrap_attached": boot_attach["bootstrap_attached"],
+        "bootstrap_path": boot_attach.get("bootstrap_path"),
+        "bootstrap_omit_reason": boot_attach.get("bootstrap_omit_reason"),
+        "bootstrap_correspondence": boot_attach.get("bootstrap_correspondence"),
+        "top_improvements": sorted(
+            improved, key=lambda r: (-r["delta_anls"], r["question_id"])
+        )[:5],
+        "top_regressions": sorted(
+            regressed, key=lambda r: (r["delta_anls"], r["question_id"])
+        )[:5],
+    }
     analysis = {
         "task": "holdout_final_analysis",
         "n_requested": len(req),
         "deployment_candidate": "internvl3_1b_step0",
         "adaptation_comparison": "internvl3_1b_lora_v2_u200",
         "systems": rows,
-        "paired_internvl_base_vs_lora_v2_u200": {
-            "n_improved": len(improved),
-            "n_regressed": len(regressed),
-            "n_tied": tied,
-            "mean_delta_anls": sum(deltas) / len(deltas),
-            "bootstrap": boot,
-            "top_improvements": sorted(
-                improved, key=lambda r: (-r["delta_anls"], r["question_id"])
-            )[:5],
-            "top_regressions": sorted(
-                regressed, key=lambda r: (r["delta_anls"], r["question_id"])
-            )[:5],
-        },
+        "paired_internvl_base_vs_lora_v2_u200": paired,
         "gallery": gallery,
+        "outputs": {
+            "analysis_json": args.out,
+            "table_json": args.table_json,
+            "gallery_md": args.gallery_md,
+            "figure_svg": str(figure_path),
+        },
         "caveats": [
             "Visual-token budgets are not matched across model families.",
             "Bootstrap interval is design-based uncertainty, not all uncertainty.",
@@ -415,11 +608,26 @@ def main() -> int:
             "Diagnostic terminal-period EM is secondary and not official accuracy.",
         ],
     }
+    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.table_json).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.gallery_md).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(analysis, indent=2, ensure_ascii=False) + "\n")
     Path(args.table_json).write_text(
         json.dumps({"task": "holdout_final_table", "rows": rows}, indent=2) + "\n"
     )
-    print(json.dumps({"out": args.out, "n_systems": len(rows), "paired": analysis["paired_internvl_base_vs_lora_v2_u200"]["n_improved"]}, indent=2))
+    print(
+        json.dumps(
+            {
+                "out": args.out,
+                "figure_svg": str(figure_path),
+                "bootstrap_attached": paired["bootstrap_attached"],
+                "bootstrap_omit_reason": paired["bootstrap_omit_reason"],
+                "n_systems": len(rows),
+                "paired": paired["n_improved"],
+            },
+            indent=2,
+        )
+    )
     return 0
 
 
