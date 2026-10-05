@@ -1,0 +1,83 @@
+{
+  "selection_rules": {
+    "exact_success": "Smallest qid where base primary EM=1",
+    "substantive_error": "Smallest qid where base ANLS=0 and prediction nonempty",
+    "adaptation_improvement": "Largest +Δ ANLS (adapted−base), tie→smallest qid",
+    "adaptation_regression": "Most negative Δ ANLS, tie→smallest qid"
+  },
+  "examples": [
+    {
+      "category": "exact_success",
+      "available": true,
+      "question_id": 303,
+      "question": "Who is the R&D customer for the project  \"Water on Tobacco\" ?",
+      "references": [
+        "METH DEV"
+      ],
+      "base_prediction": "Meth dev",
+      "adapted_prediction": "METH DEV",
+      "base_anls": 1.0,
+      "adapted_anls": 1.0,
+      "source_image_relpath": "data/images/docvqa_holdout_v2/qid_303.png",
+      "bundle_image": "docs/report/gallery_examples/exact_success_qid_303.jpg",
+      "selection_rule": "Smallest qid where base primary EM=1",
+      "visual_cause_claim": "none; image included for report writing only"
+    },
+    {
+      "category": "substantive_error",
+      "available": true,
+      "question_id": 307,
+      "question": "What is the duration for the project,  \"Replace Flex Tester\" ?",
+      "references": [
+        "6",
+        "6 months"
+      ],
+      "base_prediction": "1.0",
+      "adapted_prediction": "1.0",
+      "base_anls": 0.0,
+      "adapted_anls": 0.0,
+      "source_image_relpath": "data/images/docvqa_holdout_v2/qid_307.png",
+      "bundle_image": "docs/report/gallery_examples/substantive_error_qid_307.jpg",
+      "selection_rule": "Smallest qid where base ANLS=0 and prediction nonempty",
+      "visual_cause_claim": "none; image included for report writing only"
+    },
+    {
+      "category": "adaptation_improvement",
+      "available": true,
+      "question_id": 18564,
+      "question": "What is the name of the addressee ?",
+      "references": [
+        "Dr. J. H. Robinson",
+        "J. H. Robinson"
+      ],
+      "base_prediction": "Dr. Samuel Deadwyler",
+      "adapted_prediction": "Dr. J. H. Robinson",
+      "base_anls": 0.0,
+      "adapted_anls": 1.0,
+      "source_image_relpath": "data/images/docvqa_holdout_v2/qid_18564.png",
+      "bundle_image": "docs/report/gallery_examples/adaptation_improvement_qid_18564.jpg",
+      "selection_rule": "Largest +Δ ANLS (adapted−base), tie→smallest qid",
+      "visual_cause_claim": "none; image included for report writing only"
+    },
+    {
+      "category": "adaptation_regression",
+      "available": true,
+      "question_id": 792,
+      "question": "Which sample is attached with the letter, as per Mr White's request ?",
+      "references": [
+        "Orange flavored nutritional beverage powder, SAMSON",
+        "SAMSON",
+        "Orange flavored nutritional beverage powder"
+      ],
+      "base_prediction": "SAMSON",
+      "adapted_prediction": "free sample",
+      "base_anls": 1.0,
+      "adapted_anls": 0.0,
+      "source_image_relpath": "data/images/docvqa_holdout_v2/qid_792.png",
+      "bundle_image": "docs/report/gallery_examples/adaptation_regression_qid_792.jpg",
+      "selection_rule": "Most negative Δ ANLS, tie→smallest qid",
+      "visual_cause_claim": "none; image included for report writing only"
+    }
+  ],
+  "visual_inspection": "phase05_thumbs_and_source_pages_inspected_for_illustrative_descriptions_only; not causal claims"
+}

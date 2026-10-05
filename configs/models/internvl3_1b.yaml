@@ -1,0 +1,14 @@
+adapter: internvl3
+model_id: OpenGVLab/InternVL3-1B
+revision: 4415a3b810e636d11dfa86b0e9ba40bb00535aa8
+max_new_tokens: 64
+prefer_bf16: true
+use_flash_attn: false
+max_num: 12
+use_thumbnail: true
+image_size: 448
+instruction: "Answer the question using a single word or short phrase."
+seed: 0
+notes: >
+  Cross-family comparator. Official dynamic preprocess: 448px tiles, max_num=12,
+  use_thumbnail=True (model-card recipe). Not a matched visual-token budget vs SmolVLM.

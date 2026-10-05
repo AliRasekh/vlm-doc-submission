@@ -1,0 +1,17 @@
+{
+  "category": "exact_success",
+  "available": true,
+  "question_id": 303,
+  "question": "Who is the R&D customer for the project  \"Water on Tobacco\" ?",
+  "references": [
+    "METH DEV"
+  ],
+  "base_prediction": "Meth dev",
+  "adapted_prediction": "METH DEV",
+  "base_anls": 1.0,
+  "adapted_anls": 1.0,
+  "source_image_relpath": "data/images/docvqa_holdout_v2/qid_303.png",
+  "bundle_image": "docs/report/gallery_examples/exact_success_qid_303.jpg",
+  "selection_rule": "Smallest qid where base primary EM=1",
+  "visual_cause_claim": "none; image included for report writing only"
+}

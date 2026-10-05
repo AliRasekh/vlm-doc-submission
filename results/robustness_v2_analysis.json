@@ -1,0 +1,120 @@
+{
+  "task": "phase03c_robustness_refresh",
+  "best_corrected_trained_step": 200,
+  "fresh_clean_vs_full_dev_v2_u200": {
+    "n_compared": 54,
+    "n_exact_match": 54,
+    "match_rate": 1.0
+  },
+  "results_table": [
+    {
+      "experiment": "phase03b_historical",
+      "model": "base",
+      "condition": "clean",
+      "anls": 0.7670781893004114,
+      "em": 0.7037037037037037,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": false
+    },
+    {
+      "experiment": "phase03b_historical",
+      "model": "base",
+      "condition": "half_detail",
+      "anls": 0.7691358024691358,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": false
+    },
+    {
+      "experiment": "phase03b_historical",
+      "model": "base",
+      "condition": "jpeg_q40",
+      "anls": 0.7292181069958845,
+      "em": 0.6666666666666666,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": false
+    },
+    {
+      "experiment": "phase03b_historical",
+      "model": "lora100",
+      "condition": "clean",
+      "anls": 0.7534979423868312,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": true
+    },
+    {
+      "experiment": "phase03b_historical",
+      "model": "lora100",
+      "condition": "half_detail",
+      "anls": 0.7699905033238366,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": true
+    },
+    {
+      "experiment": "phase03b_historical",
+      "model": "lora100",
+      "condition": "jpeg_q40",
+      "anls": 0.7144032921810698,
+      "em": 0.6666666666666666,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": true
+    },
+    {
+      "experiment": "phase03c_v2",
+      "model": "lora200",
+      "condition": "clean",
+      "anls": 0.7707818930041151,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": false
+    },
+    {
+      "experiment": "phase03c_v2",
+      "model": "lora200",
+      "condition": "half_detail",
+      "anls": 0.7699905033238366,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": false
+    },
+    {
+      "experiment": "phase03c_v2",
+      "model": "lora200",
+      "condition": "jpeg_q40",
+      "anls": 0.7315402704291593,
+      "em": 0.6851851851851852,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "historical_v1_note": false
+    }
+  ],
+  "caveat": "Tiny deltas are not statistical superiority; v1 adapter results are historical with termination-bug caveat."
+}

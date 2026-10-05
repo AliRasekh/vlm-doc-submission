@@ -1,0 +1,124 @@
+{
+  "task": "pascal_visual_input_dependence",
+  "label": "supplementary_development_analysis_post_final_eval",
+  "n_dev": 208,
+  "denominator": "requested_development_manifest_qids",
+  "metric_policy": "failures_and_missing_count_as_zero_on_requested_set",
+  "conditions": [
+    {
+      "condition": "clean",
+      "n_requested": 208,
+      "n_ok": 208,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_duplicates": 0,
+      "generation_cap_hits": 0,
+      "anls": 0.8276239617265598,
+      "em": 0.7644230769230769,
+      "delta_anls_vs_clean": 0.0,
+      "prediction_agreement_vs_clean": 1.0,
+      "prediction_agreement_n_matches": 208,
+      "prediction_agreement_n_comparable": 208,
+      "prediction_agreement_denominator": "n_pairs_where_both_condition_and_clean_status_ok; missing/error pairs excluded (do not agree via empty normalization)",
+      "n_improved_vs_clean": 0,
+      "n_regressed_vs_clean": 0,
+      "n_tied_vs_clean": 208,
+      "tile_count_mean": 12.58173076923077,
+      "tile_count_histogram": {
+        "7": 13,
+        "10": 3,
+        "13": 192
+      },
+      "summary_anls": 0.8276239617265598,
+      "summary_em": 0.7644230769230769
+    },
+    {
+      "condition": "white",
+      "n_requested": 208,
+      "n_ok": 208,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_duplicates": 0,
+      "generation_cap_hits": 2,
+      "anls": 0.04210737179487179,
+      "em": 0.028846153846153848,
+      "delta_anls_vs_clean": -0.785516589931688,
+      "prediction_agreement_vs_clean": 0.02403846153846154,
+      "prediction_agreement_n_matches": 5,
+      "prediction_agreement_n_comparable": 208,
+      "prediction_agreement_denominator": "n_pairs_where_both_condition_and_clean_status_ok; missing/error pairs excluded (do not agree via empty normalization)",
+      "n_improved_vs_clean": 2,
+      "n_regressed_vs_clean": 172,
+      "n_tied_vs_clean": 34,
+      "tile_count_mean": 12.58173076923077,
+      "tile_count_histogram": {
+        "7": 13,
+        "10": 3,
+        "13": 192
+      },
+      "summary_anls": 0.04210737179487179,
+      "summary_em": 0.028846153846153848
+    },
+    {
+      "condition": "unrelated",
+      "n_requested": 208,
+      "n_ok": 208,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_duplicates": 0,
+      "generation_cap_hits": 1,
+      "anls": 0.04691315628815628,
+      "em": 0.028846153846153848,
+      "delta_anls_vs_clean": -0.7807108054384035,
+      "prediction_agreement_vs_clean": 0.028846153846153848,
+      "prediction_agreement_n_matches": 6,
+      "prediction_agreement_n_comparable": 208,
+      "prediction_agreement_denominator": "n_pairs_where_both_condition_and_clean_status_ok; missing/error pairs excluded (do not agree via empty normalization)",
+      "n_improved_vs_clean": 2,
+      "n_regressed_vs_clean": 170,
+      "n_tied_vs_clean": 36,
+      "tile_count_mean": 12.625,
+      "tile_count_histogram": {
+        "7": 13,
+        "13": 195
+      },
+      "summary_anls": 0.04691315628815628,
+      "summary_em": 0.028846153846153848
+    }
+  ],
+  "runtime": {
+    "hostname": "pascal-node09",
+    "slurm_job_id": "117260",
+    "gpu_name": "Tesla V100-PCIE-32GB",
+    "dtype": "bfloat16",
+    "bf16_supported": true,
+    "prefer_bf16": true,
+    "use_flash_attn": false,
+    "attention_backend": "eager",
+    "max_num": 12,
+    "use_thumbnail": true,
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "instruction": "Answer the question using a single word or short phrase.",
+    "model_id": "OpenGVLab/InternVL3-1B",
+    "model_revision": "4415a3b810e636d11dfa86b0e9ba40bb00535aa8",
+    "source_revision": "5a4c5174feb5331ed641480cd756b81d8654d096",
+    "mapping_sha256": "6d45e1b188f89e9a501213889b5381e417e0fa88d602184bd271d2fe34cce674",
+    "config_sha256": "0eb33646a2a3822b70ea5e993ebbf985bfc54a96ce809c7469f2681f70eacad9",
+    "manifest_content_sha256": "8dce2b86837c5ce52002acc802c8a45188d00bf1c45362bdf6112969a5e54744"
+  },
+  "interpretation": {
+    "summary": "Replacing the correct page with a white or unrelated image reduced development ANLS by approximately 78 percentage points, indicating strong dependence on the correct visual input.",
+    "white": "Residual performance without readable document content.",
+    "unrelated": "Diagnostic scores against the original question references; may also change layout and visual token/tile count \u2014 not a pure content-only intervention. Not ordinary accuracy on the donor.",
+    "non_claims": [
+      "Not an exact decomposition of performance into visual vs non-visual parts.",
+      "Does not prove fine-grained visual grounding.",
+      "Residual correct answers do not establish memorization or contamination.",
+      "Not the planned severity-robustness (P4) study."
+    ]
+  },
+  "figures": {
+    "comparison": "companion/pascal/results/figures/visual_dependence_anls_em.png"
+  }
+}

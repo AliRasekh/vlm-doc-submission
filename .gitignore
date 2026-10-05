@@ -1,0 +1,145 @@
+# Environments
+.venv/
+venv/
+envs/
+*.egg-info/
+.Python
+
+# Caches / build
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.ipynb_checkpoints/
+
+# Hugging Face / torch caches (project-local)
+.hf_cache/
+.torch_cache/
+.cache_local/
+hf_home/
+data/raw/
+data/images/**
+!data/images/README.md
+data/cache/**
+!data/cache/README.md
+data/downloads/
+
+# Datasets, images, checkpoints, predictions
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+checkpoints/
+outputs/
+predictions/
+runs/
+results/raw/
+*.tsv
+!data/manifests/**
+
+# Logs and Slurm
+logs/
+*.out
+*.err
+slurm-*.out
+slurm-*.err
+
+# Local cluster / machine config
+*.local.md
+*.local.yaml
+*.local.yml
+configs/local/
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Probe / audit artifacts from Phase 0
+vlm_doc_probe*.out
+vlm_doc_probe*.err
+vlm_doc_probe.sbatch
+phase0_neumann.local.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Keep manifests tracked; ignore answer sidecars explicitly
+!data/manifests/
+!data/manifests/**
+
+# Environment lock helpers are tracked under environment/
+# Ignore local conda env directories if ever created under repo
+environment/local/
+
+# Probe leftover
+results/*.jsonl
+results/*_summary.json
+results/model_download_*.json
+
+# Phase review packets (local only)
+results/phase02a_review.txt
+results/phase02b_review.txt
+# Keep sealed / corrected compact summaries trackable
+!results/holdout_smolvlm256m_summary.json
+!results/holdout_smolvlm500m_summary.json
+!results/holdout_internvl3_1b_summary.json
+!results/holdout_internvl3_1b_lora_v2_u200_summary.json
+!results/train_internvl3_1b_lora_v2_summary.json
+!results/dev_internvl3_1b_summary.json
+!results/dev_internvl3_1b_lora_v2_u100_summary.json
+!results/dev_internvl3_1b_lora_v2_u200_summary.json
+!results/dev_smolvlm500m_summary.json
+# Keep small audit/rescore JSON (not jsonl dumps) trackable when force-added
+!results/split_leakage*.json
+!results/ucsf_*.json
+!results/dev_smolvlm*_rescore_*.json
+!results/historical/
+data/manifests/historical/*.pre_canonical_hash.json
+results/val_member_index_phase02b.json
+
+!results/phase02b_cpu_followup_analysis.json
+
+results/phase02b_full_review.txt
+results/phase02c_full_review.txt
+results/phase02d_full_review.txt
+results/phase03a_full_review.txt
+results/phase03b_review.txt
+results/phase03c_review.txt
+results/phase04_review.txt
+artifacts/vlm_doc_report_inputs.zip
+results/robustness_v1/*.jsonl
+results/robustness_v2/*.jsonl
+results/dev_internvl3_1b_lora_v2_*.jsonl
+results/train_internvl3_1b_lora_v2.jsonl
+
+
+# Report build venv (separate from pinned ML env)
+.venv_report/
+
+# LaTeX build intermediates / local preview renders
+reports/*.aux
+reports/*.bbl
+reports/*.blg
+reports/*.log
+reports/*.out
+reports/*.toc
+reports/build*.log
+reports/page_previews/
+reports/figures/*.png
+# Official LoRA v2 u200 is tracked under artifacts/ (directory + zip).
+# Do not ignore those delivery paths:
+!artifacts/internvl3_1b_lora_v2_u200/
+!artifacts/internvl3_1b_lora_v2_u200/**
+!artifacts/internvl3_1b_lora_v2_u200_adapter.zip
+!artifacts/internvl3_1b_lora_v2_u200_adapter_sha256.txt

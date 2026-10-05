@@ -1,0 +1,142 @@
+{
+  "task": "pascal_p3_seed_reproducibility",
+  "label": "supplementary_development_analysis_post_final_eval",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "n_dev": 208,
+  "denominator": "requested_development_manifest_qids",
+  "metric_policy": "failures_and_missing_count_as_zero_on_requested_set",
+  "fresh_base": {
+    "summary_path": "/home/ali.rasekh/teth/vlm_doc/companion/pascal/artifacts/p3/eval_fresh_base/dev_eval_summary.json",
+    "primary_anls": 0.8276239617265598,
+    "primary_em": 0.7644230769230769,
+    "n_ok": 208,
+    "n_failed": 0,
+    "n_missing": 0,
+    "recomputed_n_ok": 208,
+    "recomputed_n_failed": 0,
+    "recomputed_n_missing": 0
+  },
+  "p1_cap12_diagnostic": {
+    "p1_cap12_anls": 0.8276239617265598,
+    "p1_cap12_em": 0.7644230769230769,
+    "fresh_base_anls": 0.8276239617265598
+  },
+  "neumann_v2_u200_reference_separate": {
+    "label": "historical_neumann_v2_u200_separate_reference",
+    "excluded_from_mean_sd": true,
+    "source": "/home/ali.rasekh/teth/vlm_doc/results/dev_internvl_lora_v2_comparison.json",
+    "scores": {
+      "0": {
+        "anls": 0.8324316540342522,
+        "em": 0.7692307692307693,
+        "label": "step0_baseline"
+      },
+      "100": {
+        "anls": 0.8262885646674785,
+        "em": 0.7692307692307693,
+        "label": "step100"
+      },
+      "200": {
+        "anls": 0.8290014767553907,
+        "em": 0.7740384615384616,
+        "label": "step200"
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "adapter_weight_sha256": "fb35e2213a1a9f012cebcf5d4633138901718671b15750c31bc56a8c7f1b246e",
+      "completed_updates": 200,
+      "samples_seen": 1600,
+      "unique_qids": 1600,
+      "presentation_qid_sha256": "952cf7fca9e19efd55b8bf4015c9d9b317f9b5efa5398214b2cf71d19a41cb86",
+      "unique_qid_set_sha256": "03f580af7d794355b97bdd7f7a00092f0060f053c9680aca4e9ef7e61fe3469c",
+      "mean_loss_first_20": 0.2701182082295418,
+      "mean_loss_last_20": 0.23266526758670808,
+      "dev_anls": 0.8192695420234557,
+      "dev_em": 0.7644230769230769,
+      "fresh_base_anls": 0.8276239617265598,
+      "delta_anls_adapted_minus_base": -0.008354419703104132,
+      "n_improved": 5,
+      "n_regressed": 6,
+      "n_tied": 197,
+      "n_failed_or_non_ok": 0,
+      "n_missing": 0,
+      "generation_cap_hits": 0,
+      "n_scored_requested": 208,
+      "n_ok": 208,
+      "eval_summary_primary_anls": 0.8192695420234557
+    },
+    {
+      "seed": 43,
+      "adapter_weight_sha256": "3b0d90463a3e0640e63e7588fbe66ffd972c83800c179d670b8adfaca2c42e2f",
+      "completed_updates": 200,
+      "samples_seen": 1600,
+      "unique_qids": 1600,
+      "presentation_qid_sha256": "8a265069cdcca1b913a1c559d132353e19e47c2ef5b117d237d9291df106d74c",
+      "unique_qid_set_sha256": "7185b580e18b1418305265749e0b6c760f467e78b54e914f7feb7534dcb13d40",
+      "mean_loss_first_20": 0.27758282199501993,
+      "mean_loss_last_20": 0.2171405792236328,
+      "dev_anls": 0.8178423326156151,
+      "dev_em": 0.7596153846153846,
+      "fresh_base_anls": 0.8276239617265598,
+      "delta_anls_adapted_minus_base": -0.009781629110944712,
+      "n_improved": 8,
+      "n_regressed": 7,
+      "n_tied": 193,
+      "n_failed_or_non_ok": 0,
+      "n_missing": 0,
+      "generation_cap_hits": 0,
+      "n_scored_requested": 208,
+      "n_ok": 208,
+      "eval_summary_primary_anls": 0.8178423326156151
+    },
+    {
+      "seed": 44,
+      "adapter_weight_sha256": "9ffea211147bece915a22cd8136b6aee6d90938db3fe114aba79929dc2778847",
+      "completed_updates": 200,
+      "samples_seen": 1600,
+      "unique_qids": 1600,
+      "presentation_qid_sha256": "18bb65f0790f76559c87cc36dd141acbf31719641ad28e42dbcff861b19f289f",
+      "unique_qid_set_sha256": "e63747153d8e3113f3ed6aef5daee7954cc6a78778a6d7b8d17a7f608d165619",
+      "mean_loss_first_20": 0.29436829015612603,
+      "mean_loss_last_20": 0.1764366179704666,
+      "dev_anls": 0.8316667938943918,
+      "dev_em": 0.7740384615384616,
+      "fresh_base_anls": 0.8276239617265598,
+      "delta_anls_adapted_minus_base": 0.004042832167831967,
+      "n_improved": 6,
+      "n_regressed": 3,
+      "n_tied": 199,
+      "n_failed_or_non_ok": 0,
+      "n_missing": 0,
+      "generation_cap_hits": 0,
+      "n_scored_requested": 208,
+      "n_ok": 208,
+      "eval_summary_primary_anls": 0.8316667938943918
+    }
+  ],
+  "three_seed_adapted_anls": {
+    "values": [
+      0.8192695420234557,
+      0.8178423326156151,
+      0.8316667938943918
+    ],
+    "mean": 0.8229262228444876,
+    "sample_sd_ddof1": 0.0076031189904062066,
+    "min": 0.8178423326156151,
+    "max": 0.8316667938943918,
+    "note": "Descriptive summary of three Pascal seeds only. Does not establish broad statistical significance. Neumann historical result excluded."
+  },
+  "loss_semantics": "Per-update mean loss over grad_accum microbatches; different seeds may present different examples \u2014 training statistic, not matched pairs. Figures show raw loss (low opacity) plus trailing 20-update mean.",
+  "training_pool_coverage_note": "1600 unique QIDs per completed run is 80% of the 2000-example training pool under shuffle+wrap \u2014 not full-pool coverage.",
+  "figures": {
+    "loss_curves": "companion/pascal/results/figures/p3_loss_curves.png",
+    "dev_anls": "companion/pascal/results/figures/p3_dev_anls.png"
+  }
+}

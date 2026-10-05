@@ -1,0 +1,43 @@
+{
+  "task": "adapter_base_model_name_audit",
+  "adapter_config_base_model_name_or_path": "./pretrained/Qwen2.5-32B-Instruct",
+  "origin": "InternVL3-1B hub config llm_config._name_or_path copied by PEFT save on language_model",
+  "hub_llm_config_name_or_path": "./pretrained/Qwen2.5-32B-Instruct",
+  "hub_llm_hidden_size": 896,
+  "hub_llm_num_hidden_layers": 24,
+  "interpretation": "stale_inherited_metadata_not_32B_training_evidence",
+  "supported_load_route": "load_internvl(OpenGVLab/InternVL3-1B@4415a3b8)+load_language_lora(language_model)",
+  "generic_autoload_from_adapter_config_supported": false,
+  "weights_sha256": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a",
+  "weights_byte_identical_to_checkpoint": true,
+  "adapter_config_byte_identical_to_checkpoint": true,
+  "zip_sha256": "ce9e20a011b95f39cacd160471e078f260473043afd86fed1e92384106cb4845",
+  "cpu_tensor_check_now": {
+    "n_tensors": 192,
+    "n_lora_A": 96,
+    "n_lora_B": 96,
+    "unique_shapes": [
+      [
+        16,
+        896
+      ],
+      [
+        128,
+        16
+      ],
+      [
+        896,
+        16
+      ]
+    ]
+  },
+  "historical_save_reload_gate_v2": {
+    "ok": true,
+    "logits_max_abs_diff": 0.0,
+    "logits_tolerance": 0.05,
+    "greedy_pred_before": "a post-hoc analysis of VMI data has been performed and will be included as part of the submission.",
+    "greedy_pred_after": "a post-hoc analysis of VMI data has been performed and will be included as part of the submission.",
+    "greedy_match": true
+  },
+  "loading_mismatch": false
+}

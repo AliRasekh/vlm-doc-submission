@@ -1,0 +1,1 @@
+HISTORICAL: Phase 3B robustness figure (includes v1 LoRA). Main report figure is docs/report/figures/robustness_v2_anls.svg (base + corrected LoRA v2 u200).

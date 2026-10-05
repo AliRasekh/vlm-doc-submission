@@ -1,0 +1,43 @@
+# P3 train settings — identical to corrected v2 except seed/paths overridden per seed.
+adapter: internvl3
+model_id: OpenGVLab/InternVL3-1B
+revision: 4415a3b810e636d11dfa86b0e9ba40bb00535aa8
+prefer_bf16: true
+use_flash_attn: false
+max_num: 12
+use_thumbnail: true
+image_size: 448
+instruction: "Answer the question using a single word or short phrase."
+max_new_tokens: 64
+phase_label: "Pascal P3 LoRA v2 corrected termination (seeded)"
+
+train_manifest: data/manifests/docvqa_train_subset_v1.json
+train_answers: data/cache/docvqa_train_subset_v1_answers.json
+target_field: target_answer
+target_selection_rule: first_nonempty_source_listed_answer
+
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_bias: none
+
+lr: 5.0e-5
+weight_decay: 0.01
+grad_clip: 1.0
+microbatch_size: 1
+grad_accum: 8
+max_updates: 200
+warmup_updates: 10
+seed: 42
+max_seq_length: 8192
+gradient_checkpointing: true
+
+# Paths filled by train_wrap for each seed under companion/pascal/artifacts/p3/
+checkpoint_root: companion/pascal/artifacts/p3/seed_42/checkpoints
+save_updates: [100, 200]
+log_jsonl: companion/pascal/artifacts/p3/seed_42/train.jsonl
+summary_json: companion/pascal/artifacts/p3/seed_42/train_summary.json
+supervised_example_md: companion/pascal/artifacts/p3/seed_42/supervised_example.md
+supervised_example_json: companion/pascal/artifacts/p3/seed_42/supervised_example.json
+
+collator_fix: single_assistant_eos_no_trailing_newline

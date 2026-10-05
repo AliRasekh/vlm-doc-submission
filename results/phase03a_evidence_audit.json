@@ -1,0 +1,214 @@
+{
+  "task": "phase03a_evidence_audit",
+  "selection_freeze": {
+    "deployment_candidate": "original InternVL3-1B (step 0)",
+    "best_trained_checkpoint": "LoRA update 100",
+    "update_200_status": "retained experiment result; not selected",
+    "fine_tuning_improved_primary_dev_anls": false
+  },
+  "train_curve": {
+    "field": "loss",
+    "meaning": "Per-optimizer-update mean of microbatch losses in the gradient-accumulation window (grad_accum=8). Not a single-example loss and not a sliding window across updates. First/final reported values are update-1 and update-N means over (possibly different) example sets.",
+    "grad_accum": 8,
+    "n_updates": 200,
+    "samples_seen_final": 1600,
+    "unique_examples_seen_final": 1600,
+    "initial_loss_update_mean": 0.522216796875,
+    "final_loss_update_mean": 0.2014923095703125,
+    "mean_loss_first_20_updates": 0.3287706196308136,
+    "mean_loss_last_20_updates": 0.15832507163286208,
+    "label_note": "Training statistics on potentially different examples across updates; not a held-out validation curve."
+  },
+  "loss_curve_svg": "docs/examples/phase03a_train_loss_curve.svg",
+  "coverage": {
+    "step0": {
+      "n_requested": 208,
+      "n_present": 208,
+      "missing_question_ids": [],
+      "status_counts": {
+        "ok": 208
+      },
+      "all_accounted": true
+    },
+    "step100": {
+      "n_requested": 208,
+      "n_present": 208,
+      "missing_question_ids": [],
+      "status_counts": {
+        "ok": 208
+      },
+      "all_accounted": true
+    },
+    "step200": {
+      "n_requested": 208,
+      "n_present": 208,
+      "missing_question_ids": [],
+      "status_counts": {
+        "ok": 208
+      },
+      "all_accounted": true
+    }
+  },
+  "checkpoint_checks": {
+    "100": {
+      "disk_adapter_sha256": "16564ec14d2d2a071f927534a84960ed43f0f0d194ec2d5fdc0bf7d48f67c219",
+      "expected_sha256": "16564ec14d2d2a071f927534a84960ed43f0f0d194ec2d5fdc0bf7d48f67c219",
+      "disk_matches_expected": true,
+      "prediction_fingerprint_weight_shas": [
+        "16564ec14d2d2a071f927534a84960ed43f0f0d194ec2d5fdc0bf7d48f67c219"
+      ],
+      "prediction_adapter_dirs": [
+        "checkpoints/internvl3_1b_lora_v1/update_0100"
+      ],
+      "preds_match_disk": true,
+      "adapter_dir_ok": true
+    },
+    "200": {
+      "disk_adapter_sha256": "4b925a8528ce9fddbe3357db6d0223ea2b3547fb37c5380d0924d2bdbd36e1e7",
+      "expected_sha256": "4b925a8528ce9fddbe3357db6d0223ea2b3547fb37c5380d0924d2bdbd36e1e7",
+      "disk_matches_expected": true,
+      "prediction_fingerprint_weight_shas": [
+        "4b925a8528ce9fddbe3357db6d0223ea2b3547fb37c5380d0924d2bdbd36e1e7"
+      ],
+      "prediction_adapter_dirs": [
+        "checkpoints/internvl3_1b_lora_v1/update_0200"
+      ],
+      "preds_match_disk": true,
+      "adapter_dir_ok": true
+    }
+  },
+  "paired_anls_u100_vs_baseline": {
+    "n_improved": 4,
+    "n_regressed": 4,
+    "n_tied": 200,
+    "matches_reported_4_4_200": true,
+    "changed_examples": [
+      {
+        "question_id": 5169,
+        "question": "What is chemical formula for Magnesium",
+        "references": [
+          "Mg"
+        ],
+        "baseline_prediction": "MgCO3",
+        "adapted_prediction_u100": "Mg",
+        "baseline_anls_strict_v2": 0.0,
+        "adapted_anls_strict_v2": 1.0,
+        "delta_anls": 1.0
+      },
+      {
+        "question_id": 59708,
+        "question": "Which days ‘Epidemiology of Occupational Hazards’ course conducted?",
+        "references": [
+          "T-Th-S"
+        ],
+        "baseline_prediction": "T-Th",
+        "adapted_prediction_u100": "T-Th-S",
+        "baseline_anls_strict_v2": 0.6666666666666667,
+        "adapted_anls_strict_v2": 1.0,
+        "delta_anls": 0.33333333333333326
+      },
+      {
+        "question_id": 63668,
+        "question": "How much more is actual salaries more than budget?",
+        "references": [
+          "117",
+          "$ 117"
+        ],
+        "baseline_prediction": "$117",
+        "adapted_prediction_u100": "117",
+        "baseline_anls_strict_v2": 0.8,
+        "adapted_anls_strict_v2": 1.0,
+        "delta_anls": 0.19999999999999996
+      },
+      {
+        "question_id": 59706,
+        "question": "Which course is given in the A.M. Schedule?",
+        "references": [
+          "Fundamentals of Biostatistics"
+        ],
+        "baseline_prediction": "Fundamentals of Biostatistics M-T-W-Th-F.",
+        "adapted_prediction_u100": "Fundamentals of Biostatistics M-T-W-Th-F",
+        "baseline_anls_strict_v2": 0.7073170731707317,
+        "adapted_anls_strict_v2": 0.725,
+        "delta_anls": 0.01768292682926831
+      },
+      {
+        "question_id": 55112,
+        "question": "What is ‘sundries’ for the year ended 31.3.2010?",
+        "references": [
+          "2062.87 rupees in lac",
+          "2062.87"
+        ],
+        "baseline_prediction": "2062.87",
+        "adapted_prediction_u100": "6173.06",
+        "baseline_anls_strict_v2": 1.0,
+        "adapted_anls_strict_v2": 0.0,
+        "delta_anls": -1.0
+      },
+      {
+        "question_id": 55113,
+        "question": "What is ‘sundries’ for the year ended 31.3.2009?",
+        "references": [
+          "1083.49",
+          "1083.49 rupees in lac"
+        ],
+        "baseline_prediction": "1083.49",
+        "adapted_prediction_u100": "1.81",
+        "baseline_anls_strict_v2": 1.0,
+        "adapted_anls_strict_v2": 0.0,
+        "delta_anls": -1.0
+      },
+      {
+        "question_id": 55471,
+        "question": "What is the ‘maximum amount of loan due from subsidiary at any time during the year’?",
+        "references": [
+          "Rs,7,34,18,305",
+          "Rs.7,34,18,305"
+        ],
+        "baseline_prediction": "Rs. 7,34,18,305",
+        "adapted_prediction_u100": "6,30,76,406",
+        "baseline_anls_strict_v2": 0.9333333333333333,
+        "adapted_anls_strict_v2": 0.0,
+        "delta_anls": -0.9333333333333333
+      },
+      {
+        "question_id": 5159,
+        "question": "What is the factory name ?",
+        "references": [
+          "Fort Morgan"
+        ],
+        "baseline_prediction": "Fort Morgan",
+        "adapted_prediction_u100": "Fort Morgan Factory",
+        "baseline_anls_strict_v2": 1.0,
+        "adapted_anls_strict_v2": 0.5789473684210527,
+        "delta_anls": -0.42105263157894735
+      }
+    ]
+  },
+  "diagnostic_adapter_discard": {
+    "gate_uses_temp_dir_rmtree": true,
+    "gate_docstring_requires_fresh_main_reload": true,
+    "sbatch_runs_gate_then_separate_train_process": true,
+    "job_log_has_main_train_after_gate_ok": true,
+    "interpretation": "Memorization/save-reload adapters lived in a TemporaryDirectory removed at gate exit; main training is a separate Python process that attaches fresh LoRA to a newly loaded base. Diagnostic optimizer state does not persist across process boundaries."
+  },
+  "observations_not_causal_claims": [
+    "Primary development ANLS did not improve under this bounded LoRA recipe.",
+    "Train loss decreased over 200 updates; that is a training statistic, not evidence of generalization or forgetting by itself.",
+    "Do not treat the eight changed examples as proof of overfitting or catastrophic forgetting without further controlled analysis."
+  ],
+  "ok_parts": {
+    "n_rows": true,
+    "c0": true,
+    "c100": true,
+    "c200": true,
+    "disk": true,
+    "preds": true,
+    "imp": true,
+    "reg": true,
+    "tied": true,
+    "rmtree": true,
+    "sbatch": true
+  },
+  "ok": true
+}

@@ -1,0 +1,27 @@
+{
+  "holdout": "docvqa_holdout_v2",
+  "dev": "docvqa_dev_v1",
+  "smoke": "docvqa_smoke_v1",
+  "counts": {
+    "dev_ucsf": 45,
+    "hold_ucsf": 109,
+    "smoke_ucsf": 7,
+    "dev_missing_ucsf": 0,
+    "hold_missing_ucsf": 0,
+    "smoke_missing_ucsf": 0
+  },
+  "overlap_ucsf_dev_hold": [],
+  "overlap_ucsf_smoke_hold": [],
+  "overlap_ucsf_smoke_dev": [
+    "snbx0223"
+  ],
+  "overlap_page_ids_dev_hold": [],
+  "overlap_page_ids_smoke_hold": [],
+  "overlap_src_hash_dev_hold": [],
+  "overlap_rgb_hash_dev_hold": [],
+  "overlap_src_hash_smoke_hold": [],
+  "overlap_rgb_hash_smoke_hold": [],
+  "grouping_policy": "UCSF source-document ID when present; else PAGE_FALLBACK(doc_id, page, source_image_sha256). Missing IDs must not collapse into one empty-string group. Future training samples must be checked against development and holdout UCSF IDs and page hashes.",
+  "n_overlap_signals": 0,
+  "leakage_detected": false
+}

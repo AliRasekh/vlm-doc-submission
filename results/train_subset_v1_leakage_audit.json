@@ -1,0 +1,79 @@
+{
+  "task": "train_subset_v1_leakage_audit",
+  "timestamp_utc": "2026-10-02T07:28:40Z",
+  "dataset_id": "HuggingFaceM4/DocumentVQA",
+  "dataset_revision": "a44195f8f989c10d06ab4ccc98ffe9cdb6d928e4",
+  "seed": 42,
+  "target_n": 2000,
+  "n_selected": 2000,
+  "n_train_raw_rows_scanned": 39463,
+  "n_train_shards": 38,
+  "n_missing_ucsf_in_train_scanned": 0,
+  "n_no_valid_answer": 0,
+  "n_groups_eligible": 5175,
+  "exclusion_counts": {
+    "ucsf_in_eval_splits": 2406
+  },
+  "eval_blocklist_sizes": {
+    "ucsf": 160,
+    "qids": 720,
+    "pages": 185,
+    "src_hashes": 185,
+    "png_hashes": 185,
+    "rgb_hashes": 185
+  },
+  "eval_split_inventory": {
+    "smoke": {
+      "n_examples": 8,
+      "n_ucsf": 7,
+      "n_qids": 8,
+      "n_pages": 8,
+      "n_src_hashes": 8,
+      "n_png_hashes": 8,
+      "n_rgb_hashes": 8,
+      "manifest": "data/manifests/docvqa_smoke_v1.json",
+      "manifest_sha256": "79afe6bf02ce2ba2cddb08dfb94068963733119e7ced380b1b3db90ffa2d997f"
+    },
+    "dev": {
+      "n_examples": 208,
+      "n_ucsf": 45,
+      "n_qids": 208,
+      "n_pages": 48,
+      "n_src_hashes": 48,
+      "n_png_hashes": 48,
+      "n_rgb_hashes": 48,
+      "manifest": "data/manifests/docvqa_dev_v1.json",
+      "manifest_sha256": "240bee9197d1739567c9c9f9a76470bfbf9fdf4932d493e0c0c7b5fbe02296b1"
+    },
+    "holdout_v2": {
+      "n_examples": 504,
+      "n_ucsf": 109,
+      "n_qids": 504,
+      "n_pages": 129,
+      "n_src_hashes": 129,
+      "n_png_hashes": 129,
+      "n_rgb_hashes": 129,
+      "manifest": "data/manifests/docvqa_holdout_v2.json",
+      "manifest_sha256": "59b845f3cb058e70b96b269966c5eb4dc383409cf7ec0a6fb07ad882430d7dfb"
+    }
+  },
+  "overlap_after_selection": {
+    "ucsf": [],
+    "qids": [],
+    "pages": [],
+    "source_image_sha256": [],
+    "rgb_hash": [],
+    "png_hash": []
+  },
+  "n_overlap_signals": 0,
+  "leakage_detected": false,
+  "manifest_path": "data/manifests/docvqa_train_subset_v1.json",
+  "manifest_sha256": "79fe9acaa0fc6ed35759a06789d99c338a579929f3de7fd17782322b502c60d0",
+  "examples_content_sha256": "e013cda163f83ba1cf66c9c9ed6a247bffc0ec433c5025af080170e03d60f0a8",
+  "answers_path": "data/cache/docvqa_train_subset_v1_answers.json",
+  "answers_sha256": "50832a3aad26d88876974d7fe182f3eeac7df130c9462c63f175b58691051db0",
+  "image_dir": "data/images/docvqa_train_subset_v1",
+  "target_selection_rule": "first_nonempty_source_listed_answer",
+  "sampling_seed": 42,
+  "notes": "Training subset prepared for future adaptation only. No training loop executed. Development/holdout answers unused as training targets. Selection independent of model predictions."
+}

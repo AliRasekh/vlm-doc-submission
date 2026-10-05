@@ -1,0 +1,18 @@
+# Large / local-only artifacts (keep compact tables/plots tracked under results/)
+artifacts/
+logs/
+.tmp/
+uploads/
+*.jsonl
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+envs/
+*.egg-info/
+.hf_cache_local/
+smoke_*/
+*.out
+*.err
+*.bundle
+/bundles/

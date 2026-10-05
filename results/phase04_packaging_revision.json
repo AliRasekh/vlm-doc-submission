@@ -1,0 +1,16 @@
+{
+  "task": "phase04_packaging_revision",
+  "packaging_git_sha": "3ed37f905d4ad3cf3af8a5ea85b874f18e7c60bc",
+  "evaluation_git_sha": "a9b0695ca05a593bdf680529bd673d28b0106e19",
+  "holdout_job": "84636",
+  "holdout_job_state": "COMPLETED",
+  "compact_artifacts": [
+    "results/holdout_final_table.json",
+    "results/holdout_final_analysis.json",
+    "results/holdout_internvl_anls_bootstrap.json",
+    "docs/report/evidence_index.md",
+    "docs/progress/phase04.md"
+  ],
+  "recorded_utc": "2026-10-03T08:04:57Z",
+  "note": "SHA of the commit that introduced Phase 4 compact evidence packaging (separate from evaluation revision)."
+}

@@ -1,0 +1,69 @@
+#!/bin/bash
+#SBATCH --job-name=vlm_doc_smoke
+#SBATCH --partition=ampere
+#SBATCH --account=ampere
+#SBATCH --qos=normal
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=00:30:00
+#SBATCH --output=logs/vlm_doc_smoke_%j.out
+#SBATCH --error=logs/vlm_doc_smoke_%j.err
+
+set -euo pipefail
+
+cd "${SLURM_SUBMIT_DIR:-$PWD}"
+mkdir -p logs results
+
+# Isolate from user-site package pollution
+export PYTHONNOUSERSITE=1
+
+# Persistent caches (authoritative). /local is optional ephemeral staging only.
+export HF_HOME="${HF_HOME:-$PWD/.hf_cache}"
+export HF_HUB_CACHE="${HF_HUB_CACHE:-$HF_HOME/hub}"
+# Prefer HF_HOME only (TRANSFORMERS_CACHE is deprecated in Transformers v5+)
+unset TRANSFORMERS_CACHE || true
+export TORCH_HOME="${TORCH_HOME:-$PWD/.torch_cache}"
+mkdir -p "$HF_HUB_CACHE" "$TORCH_HOME"
+
+# Optional node-local TMP only (not authoritative model cache)
+if [ -d /local ] && [ -w /local ]; then
+  export TMPDIR="/local/${USER}/vlm_doc/tmp"
+  mkdir -p "$TMPDIR"
+fi
+
+ENV_PREFIX="${VLM_DOC_ENV:-$HOME/.conda/envs/vlm_doc}"
+PYTHON="${ENV_PREFIX}/bin/python"
+if [ ! -x "$PYTHON" ]; then
+  echo "ERROR: missing python at $PYTHON" >&2
+  exit 2
+fi
+
+echo "host=$(hostname)"
+echo "date=$(date -Is)"
+echo "SLURM_JOB_ID=${SLURM_JOB_ID:-}"
+echo "SLURM_JOB_PARTITION=${SLURM_JOB_PARTITION:-}"
+echo "SLURM_JOB_ACCOUNT=${SLURM_JOB_ACCOUNT:-}"
+echo "SLURM_JOB_QOS=${SLURM_JOB_QOS:-}"
+echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-}"
+echo "HF_HOME=$HF_HOME"
+echo "PYTHON=$PYTHON"
+nvidia-smi || true
+
+"$PYTHON" - <<'PY'
+import torch
+print("torch", torch.__version__, "cuda", torch.version.cuda)
+print("cuda_available", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("gpu", torch.cuda.get_device_name(0))
+    print("bf16", torch.cuda.is_bf16_supported())
+PY
+
+"$PYTHON" scripts/smoke_inference.py \
+  --config configs/models/smolvlm_256m.yaml \
+  --manifest data/manifests/docvqa_smoke_v1.json \
+  --out-jsonl results/smoke_smolvlm256m.jsonl \
+  --summary-json results/smoke_smolvlm256m_summary.json \
+  --cache-dir "$HF_HOME"
+
+echo "SMOKE_DONE"

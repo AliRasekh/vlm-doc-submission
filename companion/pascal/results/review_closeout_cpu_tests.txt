@@ -1,0 +1,8 @@
+# Pascal companion review close-out — CPU tests
+# command:
+/home/ali.rasekh/.conda/envs/vlm_doc_pascal_p1/bin/python -m pytest companion/pascal/tests/test_p3_analyze.py companion/pascal/tests/test_p3_provenance.py companion/pascal/tests/test_visual_dep_analyze.py companion/pascal/tests/test_visual_dep_mapping.py -q
+# results:
+.................                                                        [100%]
+17 passed in 2.73s
+---COMMAND---
+$HOME/.conda/envs/vlm_doc_pascal_p1/bin/python -m pytest companion/pascal/tests/test_p3_analyze.py companion/pascal/tests/test_p3_provenance.py companion/pascal/tests/test_visual_dep_analyze.py companion/pascal/tests/test_visual_dep_mapping.py -q

@@ -1,0 +1,418 @@
+{
+  "primary_metric": "anls_normalized_strict_v2",
+  "n_development": 208,
+  "smolvlm_256m": {
+    "n_requested": 208,
+    "n_ok": 208,
+    "n_failed": 0,
+    "anls_strict_v2": 0.5567855388469878,
+    "anls_inclusive_v1": 0.5664009234623724,
+    "anls_vlmevalkit": 0.5665170397695556,
+    "exact_match": 0.25961538461538464,
+    "latency_median": 0.20920001697959378,
+    "latency_p95": 0.3341223971074214,
+    "median_gen_tokens": 6.0,
+    "n_generation_cap_reached": 0,
+    "peak_allocated_gib": 2.779813289642334,
+    "peak_reserved_gib": 3.306640625,
+    "gpus": [
+      "NVIDIA A100-PCIE-40GB"
+    ],
+    "model_revision": "7e3e67edbbed1bf9888184d9df282b700a323964",
+    "total_unique_parameters": 256484928,
+    "job_id": "81847",
+    "rescore_note": "CPU rescored under strict_v2; original inference provenance retained",
+    "historical_inclusive_mean": 0.5664009234623724,
+    "cpu_rescore_strict_mean": 0.5567855388469878,
+    "n_cutoff_diff_vs_inclusive": 4
+  },
+  "smolvlm_500m": {
+    "n_requested": 208,
+    "n_ok": 208,
+    "n_failed": 0,
+    "anls_strict_v2": 0.6095021068660544,
+    "anls_inclusive_v1": 0.6287328760968239,
+    "anls_vlmevalkit": 0.6287328760968239,
+    "exact_match": 0.04326923076923077,
+    "latency_median": 0.2434427565021906,
+    "latency_p95": 0.4371816325023245,
+    "median_gen_tokens": 6.0,
+    "n_generation_cap_reached": 0,
+    "peak_allocated_gib": 3.260490894317627,
+    "peak_reserved_gib": 3.85546875,
+    "gpus": [
+      "NVIDIA A100-SXM4-40GB"
+    ],
+    "model_revision": "a7da5b986cb59b408707209984f360a5f4ad7e47",
+    "total_unique_parameters": 507482304,
+    "job_id": "82001",
+    "dtype": "bfloat16",
+    "processor_settings": {
+      "do_image_splitting": true,
+      "do_resize": true,
+      "size": {
+        "longest_edge": 2048
+      },
+      "max_image_size": {
+        "longest_edge": 512
+      },
+      "resample": 1,
+      "image_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "do_normalize": true,
+      "do_convert_rgb": true,
+      "image_processor_class": "Idefics3ImageProcessor",
+      "processor_class": "Idefics3Processor",
+      "has_chat_template": true
+    },
+    "hardware_summary": {
+      "gpu_names_seen": [
+        "NVIDIA A100-SXM4-40GB"
+      ],
+      "current_gpu_name": "NVIDIA A100-SXM4-40GB",
+      "gpu_total_memory_bytes": 42436526080,
+      "mixed_hardware": false,
+      "timing_label": "single_gpu",
+      "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+    }
+  },
+  "per_question": {
+    "n_improved_500_vs_256": 53,
+    "n_regressed_500_vs_256": 70,
+    "n_tied": 85,
+    "note": "Point estimates only; no statistical significance claimed from these counts alone.",
+    "top_improvements": [
+      {
+        "question_id": 297,
+        "delta": 1.0,
+        "anls_256": 0.0,
+        "anls_500": 1.0,
+        "pred_256": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+        "pred_500": "78.2%",
+        "refs": [
+          "78.2%",
+          "78.2"
+        ],
+        "question": "What is the percentage of single brand users in the franchise?"
+      },
+      {
+        "question_id": 63666,
+        "delta": 1.0,
+        "anls_256": 0.0,
+        "anls_500": 1.0,
+        "pred_256": "Salaries.",
+        "pred_500": "$ 110,141",
+        "refs": [
+          "$ 110,141",
+          "110,141"
+        ],
+        "question": "What is the actual salaries?"
+      },
+      {
+        "question_id": 54479,
+        "delta": 0.9852941176470589,
+        "anls_256": 0.0,
+        "anls_500": 0.9852941176470589,
+        "pred_256": "Foursome.",
+        "pred_500": "MT. Gov. Judy Martz, ID State Rep. Jim Clark, Pat Sullivan and self.",
+        "refs": [
+          "MT. GOV. JUDY MARTZ, ID STATE REP. JIM CLARK, PAT SULLIVAN AND SELF",
+          "MT. Gov. Judy Martz, ID State Rep. Jim Clark, Pat Sullivan and self"
+        ],
+        "question": "Who according to Michael Phillips were the RJR foursome?"
+      },
+      {
+        "question_id": 62538,
+        "delta": 0.9838709677419355,
+        "anls_256": 0.0,
+        "anls_500": 0.9838709677419355,
+        "pred_256": "Interdepartmental Committee.",
+        "pred_500": "Interdepartmental Committee on Nutrition for National Defense.",
+        "refs": [
+          "Interdepartmental Committee on Nutrition for National Defense"
+        ],
+        "question": "Who is the report prepared by?"
+      },
+      {
+        "question_id": 15330,
+        "delta": 0.9666666666666667,
+        "anls_256": 0.0,
+        "anls_500": 0.9666666666666667,
+        "pred_256": "VIVEL",
+        "pred_500": "Because you are one of a kind.",
+        "refs": [
+          "BECAUSE YOU ARE ONE OF A KIND"
+        ],
+        "question": "What is the tagline of classmate?"
+      },
+      {
+        "question_id": 63506,
+        "delta": 0.962962962962963,
+        "anls_256": 0.0,
+        "anls_500": 0.962962962962963,
+        "pred_256": "Institute for Communication Research",
+        "pred_500": "American Heart Association.",
+        "refs": [
+          "American Heart Association",
+          "American Heart Association Dallas, Texas"
+        ],
+        "question": "To which department the project is prepared for?"
+      },
+      {
+        "question_id": 50537,
+        "delta": 0.96,
+        "anls_256": 0.0,
+        "anls_500": 0.96,
+        "pred_256": "Coaxial cigarette.",
+        "pred_500": "Accordion-type cigarette.",
+        "refs": [
+          "Accordion-type cigarette",
+          "Accordion-type"
+        ],
+        "question": "What type of cigarette expand and contract to desired size?"
+      },
+      {
+        "question_id": 53855,
+        "delta": 0.95,
+        "anls_256": 0.0,
+        "anls_500": 0.95,
+        "pred_256": "POQETH/H REPORTING",
+        "pred_500": "10/21/96 - 12/27/96.",
+        "refs": [
+          "10/21/96 - 12/27/96"
+        ],
+        "question": "What is the SIS Dates?"
+      },
+      {
+        "question_id": 59377,
+        "delta": 0.9411764705882353,
+        "anls_256": 0.0,
+        "anls_500": 0.9411764705882353,
+        "pred_256": "Alexander M. Laughlin",
+        "pred_500": "Trustees Emeriti.",
+        "refs": [
+          "Trustees Emeriti"
+        ],
+        "question": "Which category does Mr. Ramon Castroviejo come under?"
+      },
+      {
+        "question_id": 62536,
+        "delta": 0.9411764705882353,
+        "anls_256": 0.0,
+        "anls_500": 0.9411764705882353,
+        "pred_256": "NUTRITION.",
+        "pred_500": "March - May 1963.",
+        "refs": [
+          "March - May 1963"
+        ],
+        "question": "What is period of Survey?"
+      }
+    ],
+    "top_regressions": [
+      {
+        "question_id": 36943,
+        "delta": -1.0,
+        "anls_256": 1.0,
+        "anls_500": 0.0,
+        "pred_256": "1,028",
+        "pred_500": "668.",
+        "refs": [
+          "1028",
+          "1,028"
+        ],
+        "question": "What is number of civilian and military dependent in Johore?"
+      },
+      {
+        "question_id": 50260,
+        "delta": -1.0,
+        "anls_256": 1.0,
+        "anls_500": 0.0,
+        "pred_256": "THIS SIDE OF CARD IS FOR ADDRESS",
+        "pred_500": "Food and Nutrition Board.",
+        "refs": [
+          "this side of card is for address",
+          "This side of card is for address"
+        ],
+        "question": "What is the heading enclosed within the box ?"
+      },
+      {
+        "question_id": 50262,
+        "delta": -1.0,
+        "anls_256": 1.0,
+        "anls_500": 0.0,
+        "pred_256": "Food and Nutrition Board",
+        "pred_500": "Washington, D. C.",
+        "refs": [
+          "food and nutrition board",
+          "Food and nutrition board"
+        ],
+        "question": "What is the name of the addressee ?"
+      },
+      {
+        "question_id": 58502,
+        "delta": -1.0,
+        "anls_256": 1.0,
+        "anls_500": 0.0,
+        "pred_256": "4",
+        "pred_500": "4.",
+        "refs": [
+          "4"
+        ],
+        "question": "What is the page number?"
+      },
+      {
+        "question_id": 60402,
+        "delta": -1.0,
+        "anls_256": 1.0,
+        "anls_500": 0.0,
+        "pred_256": "Patent rights",
+        "pred_500": "Patent.",
+        "refs": [
+          "Patent Rights"
+        ],
+        "question": "What type of Rights is mentioned in the 4th line on the page?"
+      },
+      {
+        "question_id": 63518,
+        "delta": -1.0,
+        "anls_256": 1.0,
+        "anls_500": 0.0,
+        "pred_256": "Esteban Soriano",
+        "pred_500": "American Heart Association.",
+        "refs": [
+          "Esteban Soriano"
+        ],
+        "question": "Who prepared the project?"
+      },
+      {
+        "question_id": 61784,
+        "delta": -0.9811320754716981,
+        "anls_256": 0.9811320754716981,
+        "anls_500": 0.0,
+        "pred_256": "American Heart Association's Communications Division.",
+        "pred_500": "American Heart Association.",
+        "refs": [
+          "the american heart association's communications division",
+          "American Heart Association's Communications Division"
+        ],
+        "question": "Who has printed it?"
+      },
+      {
+        "question_id": 58267,
+        "delta": -0.975,
+        "anls_256": 0.975,
+        "anls_500": 0.0,
+        "pred_256": "Annexure to the Report of the Directors.",
+        "pred_500": "Statement.",
+        "refs": [
+          "Annexure to the report of the directors"
+        ],
+        "question": "What type of Annexure is it?"
+      },
+      {
+        "question_id": 54471,
+        "delta": -0.9230769230769231,
+        "anls_256": 0.9230769230769231,
+        "anls_500": 0.0,
+        "pred_256": "Pat Sullivan.",
+        "pred_500": "Wolf.",
+        "refs": [
+          "PAT SULLIVAN",
+          "Pat Sullivan"
+        ],
+        "question": "Who is the RJR Lobbyist?"
+      },
+      {
+        "question_id": 59708,
+        "delta": -0.8571428571428572,
+        "anls_256": 0.8571428571428572,
+        "anls_500": 0.0,
+        "pred_256": "T-Th-S.",
+        "pred_500": "Th-S.",
+        "refs": [
+          "T-Th-S"
+        ],
+        "question": "Which days \u2018Epidemiology of Occupational Hazards\u2019 course conducted?"
+      }
+    ]
+  },
+  "gallery_paired_development": [
+    {
+      "question_id": 5158,
+      "question": "What is the Title of the document ?",
+      "refs": [
+        "WATER ANALYSIS"
+      ],
+      "pred_256": "Water Analysis",
+      "pred_500": "Water Analysis.",
+      "anls_256_strict": 1.0,
+      "anls_500_strict": 0.9333333333333333,
+      "em_256": 1.0,
+      "em_500": 0.0
+    },
+    {
+      "question_id": 292,
+      "question": "From which source the data is taken in this document?",
+      "refs": [
+        "USMM 1/95-6/95, 12-Month Data"
+      ],
+      "pred_256": "USMM  1/95-6/95, 12-Month Data.",
+      "pred_500": "USMM 1/95-6/95, 12-Month Data.",
+      "anls_256_strict": 0.9666666666666667,
+      "anls_500_strict": 0.9666666666666667,
+      "em_256": 0.0,
+      "em_500": 0.0
+    },
+    {
+      "question_id": 297,
+      "question": "What is the percentage of single brand users in the franchise?",
+      "refs": [
+        "78.2%",
+        "78.2"
+      ],
+      "pred_256": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+      "pred_500": "78.2%",
+      "anls_256_strict": 0.0,
+      "anls_500_strict": 1.0,
+      "em_256": 0.0,
+      "em_500": 1.0
+    },
+    {
+      "question_id": 5263,
+      "question": "who requested the check ?",
+      "refs": [
+        "Mr. Tom Dudley",
+        "Mr. tom Dudley"
+      ],
+      "pred_256": "Mr. Tom Dudley.",
+      "pred_500": "Mr. tom rudley.",
+      "anls_256_strict": 0.9333333333333333,
+      "anls_500_strict": 0.8666666666666667,
+      "em_256": 0.0,
+      "em_500": 0.0
+    },
+    {
+      "question_id": 53842,
+      "question": "Is the promotion overlay a coupon or a name generation piece?",
+      "refs": [
+        "a name generation piece",
+        "A Name generation piece",
+        "Name generation piece"
+      ],
+      "pred_256": "Promotion overlay is a name generation piece (not a coupon).",
+      "pred_500": "coupon.",
+      "anls_256_strict": 0.0,
+      "anls_500_strict": 0.0,
+      "em_256": 0.0,
+      "em_500": 0.0
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "task": "docvqa_eval",
+  "manifest_name": "docvqa_dev_v1",
+  "manifest_content_sha256": "8dce2b86837c5ce52002acc802c8a45188d00bf1c45362bdf6112969a5e54744",
+  "manifest_raw_file_sha256": "240bee9197d1739567c9c9f9a76470bfbf9fdf4932d493e0c0c7b5fbe02296b1",
+  "manifest_hash_note": "canonical_content_sha256 excludes the self-hash field and uses sort_keys JSON; raw_file_sha256 is the on-disk file digest and may differ.",
+  "manifest_role": "dev",
+  "model_id": "HuggingFaceTB/SmolVLM-500M-Instruct",
+  "model_revision": "a7da5b986cb59b408707209984f360a5f4ad7e47",
+  "total_unique_parameters": 507482304,
+  "dtype": "bfloat16",
+  "bf16_supported": true,
+  "processor_settings": {
+    "do_image_splitting": true,
+    "do_resize": true,
+    "size": {
+      "longest_edge": 2048
+    },
+    "max_image_size": {
+      "longest_edge": 512
+    },
+    "resample": 1,
+    "image_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "image_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "do_normalize": true,
+    "do_convert_rgb": true,
+    "image_processor_class": "Idefics3ImageProcessor",
+    "processor_class": "Idefics3Processor",
+    "has_chat_template": true
+  },
+  "seed": 0,
+  "instruction": "Answer the question using a single word or short phrase.",
+  "max_new_tokens": 64,
+  "do_sample": false,
+  "run_fingerprint": {
+    "model_id": "HuggingFaceTB/SmolVLM-500M-Instruct",
+    "model_revision": "a7da5b986cb59b408707209984f360a5f4ad7e47",
+    "manifest_content_sha256": "8dce2b86837c5ce52002acc802c8a45188d00bf1c45362bdf6112969a5e54744",
+    "instruction": "Answer the question using a single word or short phrase.",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "prefer_bf16": true,
+    "seed": 0,
+    "config_path": "configs/models/smolvlm_500m.yaml",
+    "config_sha256": "0991da572fff94474e7e5120296a635385f6d0d550ea917572aff36946ffd4c0",
+    "resolved_dtype": "bfloat16",
+    "processor_settings": {
+      "do_image_splitting": true,
+      "do_resize": true,
+      "size": {
+        "longest_edge": 2048
+      },
+      "max_image_size": {
+        "longest_edge": 512
+      },
+      "resample": 1,
+      "image_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "do_normalize": true,
+      "do_convert_rgb": true,
+      "image_processor_class": "Idefics3ImageProcessor",
+      "processor_class": "Idefics3Processor",
+      "has_chat_template": true
+    },
+    "software": {
+      "torch": "2.5.1+cu118",
+      "torch_cuda": "11.8",
+      "transformers": "4.48.3",
+      "python": "3.11.16"
+    },
+    "inference_source_hashes": {
+      "src/vlm_doc/infer.py": "0ba8963444457c6604f388f87793f6ddefa5447cb5d8ee04289563827049ff51",
+      "src/vlm_doc/model.py": "2ba3e25e06534e00f81b64f2b65cf76f143c10afa08c643c714e6dfad6fc8270",
+      "scripts/run_eval.py": "3d3b79705632b28fad06686054a186da22efc6dbaffc7582a7512f607ffbb114",
+      "configs/models/smolvlm_500m.yaml": "0991da572fff94474e7e5120296a635385f6d0d550ea917572aff36946ffd4c0"
+    },
+    "fingerprint_schema": "inference_v2",
+    "run_fingerprint_sha256": "4b670e66e685451ab545c3438591938d0372347f4224543cd82f32a75aa5effe"
+  },
+  "run_metadata": {
+    "git_commit": "6bf6da2b903cc6b3f3aec1679251c666b2610b49",
+    "git_branch": "main",
+    "git_dirty": true,
+    "hostname": "gpunode06",
+    "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+    "python_version": "3.11.16",
+    "cwd": "/homes/neumann/ali.rasekh/teth/vlm_doc",
+    "slurm_job_id": "82001",
+    "slurm_partition": "ampere",
+    "slurm_account": "ampere",
+    "slurm_qos": "normal",
+    "cuda_visible_devices": "0"
+  },
+  "hardware": {
+    "gpu_names_seen": [
+      "NVIDIA A100-SXM4-40GB"
+    ],
+    "current_gpu_name": "NVIDIA A100-SXM4-40GB",
+    "gpu_total_memory_bytes": 42436526080,
+    "mixed_hardware": false,
+    "timing_label": "single_gpu",
+    "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+  },
+  "host_memory_note": "Slurm MaxRSS is host (CPU) resident memory for the job, not GPU memory.",
+  "gpu_memory_peaks": {
+    "peak_allocated_bytes": 3500925440,
+    "peak_reserved_bytes": 4139778048,
+    "peak_allocated_gib": 3.260490894317627,
+    "peak_reserved_gib": 3.85546875,
+    "gib_conversion": "bytes / 1024**3",
+    "scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} from the same deduplicated selected records; not nvidia-smi."
+  },
+  "latency_seconds": {
+    "n": 208,
+    "median": 0.2434427565021906,
+    "p95": 0.4371816325023245,
+    "mean": 0.2706096069755054,
+    "warmup_excluded": true,
+    "cuda_synchronized": true,
+    "source": "deduplicated_selected_records",
+    "hardware_timing_label": "single_gpu"
+  },
+  "generation_diagnostics": {
+    "n_with_length": 208,
+    "median_generated_token_length": 6.0,
+    "n_generation_cap_reached": 0,
+    "max_new_tokens": 64
+  },
+  "software": {
+    "torch": "2.5.1+cu118",
+    "torch_cuda": "11.8",
+    "transformers": "4.48.3",
+    "python": "3.11.16"
+  },
+  "prediction_whitespace_note": "prediction_raw is saved before strip(); prediction is stripped. Older Phase-2A records only stored stripped decoded outputs.",
+  "note": "Development/smoke scores are not full-benchmark results and must not be presented as unbiased final DocVQA performance.",
+  "scoring_provenance": {
+    "primary_metric": "anls_normalized_strict_v2",
+    "answer_sidecar_sha256": "894b54f8c9da99499fa261660a084598d8fcadde67358c060354da3370d91a8f",
+    "scorer_source_sha256": "63fb8aaee686c6dd4cce4f7e4d40dfb2a6ed71a660b6598e00176f672691155f",
+    "scoring_schema": "scoring_v2"
+  },
+  "scores": {
+    "n_requested": 208,
+    "n_records": 208,
+    "n_completed_ok": 208,
+    "n_failed": 0,
+    "n_missing": 0,
+    "failure_rate_requested": 0.0,
+    "primary_metric": "anls_normalized_strict_v2",
+    "mean_anls_requested": 0.6095021068660544,
+    "mean_exact_match_requested": 0.04326923076923077,
+    "mean_anls_normalized_inclusive_v1_requested": 0.6287328760968239,
+    "mean_anls_vlmevalkit_requested": 0.6287328760968239,
+    "mean_anls_completed_ok_only": 0.6095021068660544,
+    "mean_exact_match_completed_ok_only": 0.04326923076923077,
+    "anls_definition": "anls_normalized_strict_v2: lowercase+strip+collapse_ws; NL=edit/max(len_norm); score=1-NL if NL<0.5 else 0; max over nonempty refs; failures/missing count as 0 in requested mean",
+    "scorer_source_sha256": "63fb8aaee686c6dd4cce4f7e4d40dfb2a6ed71a660b6598e00176f672691155f"
+  }
+}

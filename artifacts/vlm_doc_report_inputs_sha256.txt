@@ -1,0 +1,8 @@
+9b6dbb0bb9b1e95009504dce38d6fd2742cd8c4f45fd0f0ff1f22fe71cfcb49e  artifacts/vlm_doc_report_inputs.zip
+{
+  "path": "artifacts/vlm_doc_report_inputs.zip",
+  "nbytes": 791318,
+  "mib": 0.755,
+  "sha256": "9b6dbb0bb9b1e95009504dce38d6fd2742cd8c4f45fd0f0ff1f22fe71cfcb49e",
+  "n_entries": 64
+}

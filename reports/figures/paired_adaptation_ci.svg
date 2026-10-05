@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="260" viewBox="0 0 560 260">
+  <rect width="560" height="260" fill="#ffffff"/>
+  <text x="280.0" y="24" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#111">Holdout paired ANLS difference (UCSF-cluster 95% CI)</text>
+  <line x1="80" y1="142.22222222222223" x2="520" y2="142.22222222222223" stroke="#888" stroke-width="1"/>
+  <line x1="300.0" y1="162.84884190086353" x2="300.0" y2="68.15810163874352" stroke="#4C78A8" stroke-width="2"/>
+  <line x1="292.0" y1="162.84884190086353" x2="308.0" y2="162.84884190086353" stroke="#4C78A8" stroke-width="2"/>
+  <line x1="292.0" y1="68.15810163874352" x2="308.0" y2="68.15810163874352" stroke="#4C78A8" stroke-width="2"/>
+  <circle cx="300.0" cy="116.4037674818726" r="5" fill="#4C78A8"/>
+  <text x="314.0" y="120.4037674818726" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222">delta = +0.006639</text>
+  <text x="314.0" y="134.4037674818726" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222">95% CI [-0.00530, 0.01905]</text>
+  <text x="18" y="132.5" text-anchor="middle" transform="rotate(-90 18,132.5)" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#333">Adapted - base ANLS</text>
+  <text x="72" y="224.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444">-0.020</text>
+  <text x="72" y="49.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444">0.025</text>
+</svg>

@@ -1,0 +1,125 @@
+{
+  "name": "docvqa_smoke_v1",
+  "n_examples": 8,
+  "dataset_id": "HuggingFaceM4/DocumentVQA",
+  "dataset_revision": "a44195f8f989c10d06ab4ccc98ffe9cdb6d928e4",
+  "split": "validation",
+  "shard": "data/validation-00000-of-00017.parquet",
+  "shard_bytes": 45950315,
+  "selection": {
+    "procedure": "Sort shard by questionId ascending; take 8 evenly spaced indices round(i*(n-1)/7) for i in 0..7. Independent of model outputs.",
+    "k": 8,
+    "sorted_shard_indices": [
+      0,
+      45,
+      90,
+      135,
+      179,
+      224,
+      269,
+      314
+    ]
+  },
+  "holdout_note": "These question_id / document pages must be excluded from final holdout evaluation.",
+  "vlmevalkit_note": "VLMEvalKit DocVQA_VAL TSV at opencompass.openxlab.space failed HTTPS (expired certificate) during Phase 1; HuggingFaceM4/DocumentVQA validation is used as an accessible official DocVQA validation mirror.",
+  "examples": [
+    {
+      "smoke_index": 0,
+      "question_id": 223,
+      "doc_id": 214,
+      "ucsf_document_id": "ttwl0228",
+      "ucsf_document_page_no": "4",
+      "question": "What is the title of the chart?",
+      "image_relpath": "data/images/docvqa_smoke/qid_223.png",
+      "image_sha256_png": "50a7471bae8af290ed6fbad7e1856431adb4684ed8dab4c307aa26f2e1a933ce",
+      "source_image_sha256": "50a7471bae8af290ed6fbad7e1856431adb4684ed8dab4c307aa26f2e1a933ce",
+      "shard_row_index_sorted": 0
+    },
+    {
+      "smoke_index": 1,
+      "question_id": 383,
+      "doc_id": 295,
+      "ucsf_document_id": "phxj0037",
+      "ucsf_document_page_no": "1",
+      "question": "Which nitrosamine is formed during the curing and smoking of tobacco?",
+      "image_relpath": "data/images/docvqa_smoke/qid_383.png",
+      "image_sha256_png": "f8d3a6abe3ac2d2f0420d502ee55a36d03f03c369d2ad043beffb39196071ebc",
+      "source_image_sha256": "0a7c22a4838d2e811302b6912d5c9d837b9a832eecc08750b1022827c30e1206",
+      "shard_row_index_sorted": 45
+    },
+    {
+      "smoke_index": 2,
+      "question_id": 16606,
+      "doc_id": 5258,
+      "ucsf_document_id": "rpcw0217",
+      "ucsf_document_page_no": "2",
+      "question": "What type of form is the document ?",
+      "image_relpath": "data/images/docvqa_smoke/qid_16606.png",
+      "image_sha256_png": "9a4a33336e6c29927839782f8773ac117a5889eef279281d695ab40f24820556",
+      "source_image_sha256": "47a5e8128009ef9e91cc60f6a5bc6c9957a9a1fb80eca4a90856d45333d818bc",
+      "shard_row_index_sorted": 90
+    },
+    {
+      "smoke_index": 3,
+      "question_id": 32897,
+      "doc_id": 9419,
+      "ucsf_document_id": "sxvg0227",
+      "ucsf_document_page_no": "1",
+      "question": "TO whom is the memorandum addressed ?",
+      "image_relpath": "data/images/docvqa_smoke/qid_32897.png",
+      "image_sha256_png": "c3b39cbd332b006bc6641025298bdb4f2213e592615fa459c045de282061b1c9",
+      "source_image_sha256": "48a166dffb7f6ff609e4208182b08e35be2a6a184371119a6ed94427f3004275",
+      "shard_row_index_sorted": 135
+    },
+    {
+      "smoke_index": 4,
+      "question_id": 49394,
+      "doc_id": 14326,
+      "ucsf_document_id": "xkbv0228",
+      "ucsf_document_page_no": "3",
+      "question": "What is the full form of IUNS ?",
+      "image_relpath": "data/images/docvqa_smoke/qid_49394.png",
+      "image_sha256_png": "b7ceba931030bd7152b40803ffd24025ef19d80ec11e2277caf9bdce28d1c127",
+      "source_image_sha256": "1a0f7f6d6bc81371150d9a8db1ea408930fff305080c89bf168488629d84473d",
+      "shard_row_index_sorted": 179
+    },
+    {
+      "smoke_index": 5,
+      "question_id": 57368,
+      "doc_id": 4751,
+      "ucsf_document_id": "snbx0223",
+      "ucsf_document_page_no": "44",
+      "question": "How many nomination committee meetings has Y. C. Deveshwar attended?",
+      "image_relpath": "data/images/docvqa_smoke/qid_57368.png",
+      "image_sha256_png": "bed9e19cb7517c55afbd9163dfbc997a27e81723b2708d744a573d80a48a6fe1",
+      "source_image_sha256": "c7f48bea02e7a16646508e2b2cff6bd06f0d88e0909502f046abf5e131ab84d7",
+      "shard_row_index_sorted": 224
+    },
+    {
+      "smoke_index": 6,
+      "question_id": 57529,
+      "doc_id": 4847,
+      "ucsf_document_id": "snbx0223",
+      "ucsf_document_page_no": "15",
+      "question": "Which ITC Brand has 'Liquid Crystal Freezing Technology'?",
+      "image_relpath": "data/images/docvqa_smoke/qid_57529.png",
+      "image_sha256_png": "61d10c177e812273e803115cba97eab1e296c09aa88a2f6c05fcb4f3d637b050",
+      "source_image_sha256": "85b1795ec8895211e5567a86b1bb04931dc502a4553686f036cc0055e9836602",
+      "shard_row_index_sorted": 269
+    },
+    {
+      "smoke_index": 7,
+      "question_id": 58702,
+      "doc_id": 5694,
+      "ucsf_document_id": "fgbd0079",
+      "ucsf_document_page_no": "7",
+      "question": "What is the percentage of net pounds out over net pounds infeed (handwritten)?",
+      "image_relpath": "data/images/docvqa_smoke/qid_58702.png",
+      "image_sha256_png": "3bb43c3b8fbfa3391216ae99eff8baac899b64c1ea38347054bb613e312a3dad",
+      "source_image_sha256": "226732f4c3029b398c01a147f52ccc867b39f740b7b47f3c7bb217b2e34fa8c7",
+      "shard_row_index_sorted": 314
+    }
+  ],
+  "manifest_hash_note": "manifest_sha256 is canonical content hash excluding self-hash fields (sort_keys JSON + trailing newline). Differs from raw file SHA256. Prior Phase 2A value kept in manifest_sha256_phase02a_recorded when present.",
+  "manifest_sha256": "1d2f7bd611f6710d81ac0c59eb907da68d0d4a9bdb7213c9773daefa3cb8814c"
+}

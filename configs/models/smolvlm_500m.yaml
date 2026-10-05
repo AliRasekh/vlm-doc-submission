@@ -1,0 +1,6 @@
+model_id: HuggingFaceTB/SmolVLM-500M-Instruct
+revision: a7da5b986cb59b408707209984f360a5f4ad7e47
+max_new_tokens: 64
+prefer_bf16: true
+instruction: "Answer the question using a single word or short phrase."
+seed: 0

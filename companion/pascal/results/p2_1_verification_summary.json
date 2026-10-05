@@ -1,0 +1,98 @@
+{
+  "task": "pascal_p2_1_verification_summary",
+  "slurm_job_id": "117232",
+  "state": "COMPLETED",
+  "elapsed": "00:01:30",
+  "node": "pascal-node10.l3s.intra",
+  "gpu": "Tesla V100-SXM3-32GB",
+  "source_git_revision_at_job_start": "101d1b7afd9ac27df10a7af7dfbb1a7c369bad0b",
+  "note_revision": "Job ran dirty working tree (P2.1 fixes not yet committed); final commit SHA recorded after commit.",
+  "compute_capability": [
+    7,
+    0
+  ],
+  "is_bf16_supported_default": true,
+  "is_bf16_supported_including_emulation_false": false,
+  "dtype": "bfloat16",
+  "param_dtype_sample": "bfloat16",
+  "cli": {
+    "returncode": 0,
+    "strict_json_parse_ok": true,
+    "parse_error": null,
+    "prediction": "USMM 1/95-6/95, 12-Month Data",
+    "matches_engine_cap12": true,
+    "stdout_is_pure_json": true,
+    "actual_tile_count": 13
+  },
+  "engine_runs": {
+    "cap12": {
+      "prediction": "USMM 1/95-6/95, 12-Month Data",
+      "tiles": 13,
+      "request_s": 2.9084778199903667
+    },
+    "cap4": {
+      "prediction": "USMM 1/95-6/95, 12-Month Data",
+      "tiles": 5,
+      "request_s": 1.2610421709250659
+    },
+    "second_question": {
+      "qid": 5169,
+      "prediction": "MgCO3",
+      "tiles": 13
+    },
+    "cap_isolation_ok": true
+  },
+  "reference_association": {
+    "content_hash_match_ok": true,
+    "matched_id": "exact_success",
+    "unrelated_question_rejected": true
+  },
+  "serialization_ok": true,
+  "ui_http_ok": true,
+  "visual_qa_passed": true,
+  "client_api_ok": true,
+  "browser_actions": [
+    "client_apply_preset",
+    "client_run_cap12",
+    "client_run_cap4",
+    "client_upload_like_run",
+    "client_invalid_empty_question",
+    "browser_open_page",
+    "browser_load_preset",
+    "browser_run_cap12",
+    "browser_run_cap4",
+    "browser_upload_run",
+    "browser_invalid_empty_question"
+  ],
+  "browser_tile_counts": {
+    "cap12": 13,
+    "cap4": 5,
+    "cap_field_12": 12,
+    "cap_field_4": 4
+  },
+  "browser_cap12_prediction": "USMM 1/95-6/95, 12-Month Data",
+  "browser_cap4_prediction": "USMM 1/95-6/95, 12-Month Data",
+  "browser_upload_prediction": "MgSO4",
+  "browser_invalid_status": "Error: Question is empty. Enter a non-empty question.",
+  "screenshots": [
+    "01_open.png",
+    "02_preset_loaded.png",
+    "03_run_cap12.png",
+    "04_run_cap4.png",
+    "05_upload_run.png",
+    "06_invalid_empty_question.png"
+  ],
+  "ssh_tunnel_tested": false,
+  "ssh_tunnel_note": "Instructions corrected; external laptop\u2192cluster tunnel not exercised.",
+  "gradio_versions": {
+    "gradio": "5.9.1",
+    "gradio_client": "1.5.2"
+  },
+  "schema_workaround": "gradio_schema_patch.get_type + _json_schema_to_python_type for bool schemas",
+  "ok": true,
+  "recorded_utc": "2026-10-03T10:33:58Z",
+  "final_commit": "aa5490cbdd0a893b456a833269092e558e287a6b",
+  "tested_working_tree_base": "101d1b7afd9ac27df10a7af7dfbb1a7c369bad0b",
+  "code_commit": "d74e5afdd8c1902f532bb7d66e8e46d0a0f342f4",
+  "verification_job": "117232"
+}

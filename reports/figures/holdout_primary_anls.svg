@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="380" viewBox="0 0 640 380">
+<rect width="640" height="380" fill="#ffffff"/>
+<text x="320.0" y="24" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#111">Holdout primary ANLS (n=504)</text>
+<text x="18" y="185.0" text-anchor="middle" transform="rotate(-90 18,185.0)" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#333">Primary ANLS (strict v2)</text>
+<line x1="70" y1="45" x2="70" y2="325" stroke="#333"/>
+<line x1="70" y1="325" x2="610" y2="325" stroke="#333"/>
+<line x1="66" y1="325.0" x2="70" y2="325.0" stroke="#333"/>
+<text x="62" y="329.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#444">0.00</text>
+<line x1="66" y1="255.0" x2="70" y2="255.0" stroke="#333"/>
+<text x="62" y="259.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#444">0.25</text>
+<line x1="66" y1="185.0" x2="70" y2="185.0" stroke="#333"/>
+<text x="62" y="189.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#444">0.50</text>
+<line x1="66" y1="115.0" x2="70" y2="115.0" stroke="#333"/>
+<text x="62" y="119.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#444">0.75</text>
+<line x1="66" y1="45.0" x2="70" y2="45.0" stroke="#333"/>
+<text x="62" y="49.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#444">1.00</text>
+<rect x="100.375" y="163.92204997178436" width="74.25" height="161.07795002821564" fill="#4C78A8"/>
+<text x="137.5" y="158.92204997178436" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">0.5753</text>
+<text x="137.5" y="343" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">SmolVLM-256M</text>
+<rect x="235.375" y="157.07369611924133" width="74.25" height="167.92630388075867" fill="#72B7B2"/>
+<text x="272.5" y="152.07369611924133" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">0.5997</text>
+<text x="272.5" y="343" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">SmolVLM-500M</text>
+<rect x="370.375" y="103.04430852009466" width="74.25" height="221.95569147990534" fill="#54A24B"/>
+<text x="407.5" y="98.04430852009466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">0.7927</text>
+<text x="407.5" y="343" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">InternVL3-1B base</text>
+<rect x="505.375" y="101.1853797787895" width="74.25" height="223.8146202212105" fill="#F58518"/>
+<text x="542.5" y="96.1853797787895" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">0.7993</text>
+<text x="542.5" y="343" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#222">InternVL+LoRA v2 u200</text>
+</svg>

@@ -1,0 +1,48 @@
+{
+  "question_id": 46350,
+  "target_answer": "a post-hoc analysis of VMI data has been performed and will be included as part of the submission.",
+  "v1_buggy_tail_ids": [
+    949,
+    315,
+    279,
+    20503,
+    13,
+    151645,
+    198,
+    151645
+  ],
+  "v1_buggy_tail_tokens": [
+    "\u0120part",
+    "\u0120of",
+    "\u0120the",
+    "\u0120submission",
+    ".",
+    "<|im_end|>",
+    "\u010a",
+    "<|im_end|>"
+  ],
+  "v1_buggy_label_excerpt": "[MASK\u00d7299] a \u0120post -h oc \u0120analysis \u0120of \u0120V MI \u0120data \u0120has \u0120been \u0120performed \u0120and \u0120will \u0120be \u0120included \u0120as \u0120part \u0120of \u0120the \u0120submission . <|im_end|> \u010a <|im_end|>",
+  "v2_fixed_tail_ids": [
+    5230,
+    438,
+    949,
+    315,
+    279,
+    20503,
+    13,
+    151645
+  ],
+  "v2_fixed_tail_tokens": [
+    "\u0120included",
+    "\u0120as",
+    "\u0120part",
+    "\u0120of",
+    "\u0120the",
+    "\u0120submission",
+    ".",
+    "<|im_end|>"
+  ],
+  "v2_fixed_label_excerpt": "[MASK\u00d7299] a \u0120post -h oc \u0120analysis \u0120of \u0120V MI \u0120data \u0120has \u0120been \u0120performed \u0120and \u0120will \u0120be \u0120included \u0120as \u0120part \u0120of \u0120the \u0120submission . <|im_end|>",
+  "v1_n_supervised": 25,
+  "v2_n_supervised": 23
+}

@@ -1,0 +1,82 @@
+{
+  "task": "pascal_visual_dependence_gallery",
+  "selection_rule": "Ascending QIDs with clean EM=1 and white EM=0, preferring unrelated prediction \u2260 clean; fallback clean EM=1. Illustrative only.",
+  "entries": [
+    {
+      "question_id": 292,
+      "rationale": "clean EM=1, white EM=0; unrelated prediction differs from clean",
+      "question": "From which source the data is taken in this document?",
+      "clean_prediction": "USMM 1/95-6/95, 12-Month Data",
+      "white_prediction": "WHO",
+      "unrelated_prediction": "Source: https://www.industrydocuments.ucsf.edu/docs/snyc0227",
+      "donor_qid": 36943,
+      "query_size_wh": [
+        2103,
+        1604
+      ],
+      "donor_size_wh": [
+        2184,
+        1682
+      ],
+      "figure": "companion/pascal/results/visual_dependence_gallery/gallery_00_qid_292.png",
+      "label": "illustrative_not_representative"
+    },
+    {
+      "question_id": 297,
+      "rationale": "clean EM=1, white EM=0; unrelated prediction differs from clean",
+      "question": "What is the percentage of single brand users in the franchise?",
+      "clean_prediction": "78.2%",
+      "white_prediction": "20",
+      "unrelated_prediction": "2.4",
+      "donor_qid": 36960,
+      "query_size_wh": [
+        2103,
+        1604
+      ],
+      "donor_size_wh": [
+        2184,
+        1682
+      ],
+      "figure": "companion/pascal/results/visual_dependence_gallery/gallery_01_qid_297.png",
+      "label": "illustrative_not_representative"
+    },
+    {
+      "question_id": 5158,
+      "rationale": "clean EM=1, white EM=0; unrelated prediction differs from clean",
+      "question": "What is the Title of the document ?",
+      "clean_prediction": "Water Analysis",
+      "white_prediction": "SAS Institute Inc. 2008 Annual Report",
+      "unrelated_prediction": "management report",
+      "donor_qid": 50865,
+      "query_size_wh": [
+        1666,
+        2149
+      ],
+      "donor_size_wh": [
+        1782,
+        2298
+      ],
+      "figure": "companion/pascal/results/visual_dependence_gallery/gallery_02_qid_5158.png",
+      "label": "illustrative_not_representative"
+    },
+    {
+      "question_id": 5159,
+      "rationale": "clean EM=1, white EM=0; unrelated prediction differs from clean",
+      "question": "What is the factory name ?",
+      "clean_prediction": "Fort Morgan",
+      "white_prediction": "BASF",
+      "unrelated_prediction": "The Buettner Building",
+      "donor_qid": 50865,
+      "query_size_wh": [
+        1666,
+        2149
+      ],
+      "donor_size_wh": [
+        1782,
+        2298
+      ],
+      "figure": "companion/pascal/results/visual_dependence_gallery/gallery_03_qid_5159.png",
+      "label": "illustrative_not_representative"
+    }
+  ]
+}

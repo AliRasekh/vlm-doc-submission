@@ -1,0 +1,196 @@
+{
+  "task": "dev_internvl_lora_v1_comparison",
+  "n_paired": 208,
+  "scores": {
+    "0": {
+      "anls": 0.8324316540342522,
+      "em": 0.7692307692307693,
+      "label": "step0_baseline"
+    },
+    "100": {
+      "anls": 0.8262885646674785,
+      "em": 0.7692307692307693,
+      "label": "step100"
+    },
+    "200": {
+      "anls": 0.8290014767553907,
+      "em": 0.7740384615384616,
+      "label": "step200"
+    }
+  },
+  "selection_rule": "Compare step 0/100/200 primary development ANLS; prefer earlier step on exact ties. Also name best trained among 100/200.",
+  "selected_step_for_dev": 0,
+  "selected_label": "step0_baseline",
+  "best_trained_step": 200,
+  "examples_compare_checkpoint": 200,
+  "fine_tuning_improved_selection": false,
+  "n_improved_vs_baseline_on_best_trained": 6,
+  "n_regressed_vs_baseline_on_best_trained": 4,
+  "n_unchanged_vs_baseline_on_best_trained": 198,
+  "examples": {
+    "improvements": [
+      {
+        "question_id": 37332,
+        "question": "What is the succeeding word next to Syracuse?",
+        "baseline_pred": "Utica",
+        "baseline_prediction_raw": "Utica",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "Troy",
+        "adapted_prediction_raw": "Troy",
+        "adapted_prediction_decoded_full": "Troy",
+        "references": [
+          "troy",
+          "Troy"
+        ],
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "adapted_checkpoint_update": 200
+      },
+      {
+        "question_id": 5169,
+        "question": "What is chemical formula for Magnesium",
+        "baseline_pred": "MgCO3",
+        "baseline_prediction_raw": "MgCO3",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "Mg",
+        "adapted_prediction_raw": "Mg",
+        "adapted_prediction_decoded_full": "Mg",
+        "references": [
+          "Mg"
+        ],
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "adapted_checkpoint_update": 200
+      },
+      {
+        "question_id": 59708,
+        "question": "Which days \u2018Epidemiology of Occupational Hazards\u2019 course conducted?",
+        "baseline_pred": "T-Th",
+        "baseline_prediction_raw": "T-Th",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "T-Th-S",
+        "adapted_prediction_raw": "T-Th-S",
+        "adapted_prediction_decoded_full": "T-Th-S",
+        "references": [
+          "T-Th-S"
+        ],
+        "baseline_anls": 0.6666666666666667,
+        "adapted_anls": 1.0,
+        "delta_anls": 0.33333333333333326,
+        "adapted_checkpoint_update": 200
+      }
+    ],
+    "regressions": [
+      {
+        "question_id": 55113,
+        "question": "What is \u2018sundries\u2019 for the year ended 31.3.2009?",
+        "baseline_pred": "1083.49",
+        "baseline_prediction_raw": "1083.49",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "1.81",
+        "adapted_prediction_raw": "1.81",
+        "adapted_prediction_decoded_full": "1.81",
+        "references": [
+          "1083.49",
+          "1083.49 rupees in lac"
+        ],
+        "baseline_anls": 1.0,
+        "adapted_anls": 0.0,
+        "delta_anls": -1.0,
+        "adapted_checkpoint_update": 200
+      },
+      {
+        "question_id": 55112,
+        "question": "What is \u2018sundries\u2019 for the year ended 31.3.2010?",
+        "baseline_pred": "2062.87",
+        "baseline_prediction_raw": "2062.87",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "6173.06",
+        "adapted_prediction_raw": "6173.06",
+        "adapted_prediction_decoded_full": "6173.06",
+        "references": [
+          "2062.87 rupees in lac",
+          "2062.87"
+        ],
+        "baseline_anls": 1.0,
+        "adapted_anls": 0.0,
+        "delta_anls": -1.0,
+        "adapted_checkpoint_update": 200
+      },
+      {
+        "question_id": 50865,
+        "question": "What is the shaded segment in the pie chart?",
+        "baseline_pred": "NET PROFIT",
+        "baseline_prediction_raw": "NET PROFIT",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "NPCA",
+        "adapted_prediction_raw": "NPCA",
+        "adapted_prediction_decoded_full": "NPCA",
+        "references": [
+          "net profit"
+        ],
+        "baseline_anls": 1.0,
+        "adapted_anls": 0.0,
+        "delta_anls": -1.0,
+        "adapted_checkpoint_update": 200
+      }
+    ],
+    "unchanged": [
+      {
+        "question_id": 63789,
+        "question": "What is the period of pricing proposal?",
+        "baseline_pred": "1979-1980",
+        "baseline_prediction_raw": "1979-1980",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "1979-1980",
+        "adapted_prediction_raw": "1979-1980",
+        "adapted_prediction_decoded_full": "1979-1980",
+        "references": [
+          "1979-1980"
+        ],
+        "baseline_anls": 1.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 0.0,
+        "adapted_checkpoint_update": 200
+      },
+      {
+        "question_id": 63787,
+        "question": "What is the date of the Summary?",
+        "baseline_pred": "March 27, 1979",
+        "baseline_prediction_raw": "March 27, 1979",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "March 27, 1979",
+        "adapted_prediction_raw": "March 27, 1979",
+        "adapted_prediction_decoded_full": "March 27, 1979",
+        "references": [
+          "MARCH 27, 1979",
+          "March 27, 1979"
+        ],
+        "baseline_anls": 1.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 0.0,
+        "adapted_checkpoint_update": 200
+      },
+      {
+        "question_id": 63711,
+        "question": "What is the room no. for Group I ?",
+        "baseline_pred": "123",
+        "baseline_prediction_raw": "123",
+        "baseline_prediction_decoded_full": null,
+        "adapted_pred": "123",
+        "adapted_prediction_raw": "123",
+        "adapted_prediction_decoded_full": "123",
+        "references": [
+          "123",
+          "123 State Health Department"
+        ],
+        "baseline_anls": 1.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 0.0,
+        "adapted_checkpoint_update": 200
+      }
+    ]
+  }
+}

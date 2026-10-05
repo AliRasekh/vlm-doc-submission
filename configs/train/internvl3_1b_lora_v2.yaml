@@ -1,0 +1,46 @@
+adapter: internvl3
+model_id: OpenGVLab/InternVL3-1B
+revision: 4415a3b810e636d11dfa86b0e9ba40bb00535aa8
+prefer_bf16: true
+use_flash_attn: false
+max_num: 12
+use_thumbnail: true
+image_size: 448
+instruction: "Answer the question using a single word or short phrase."
+max_new_tokens: 64
+phase_label: "Phase 3C LoRA v2 (corrected termination)"
+
+# Data (identical membership/targets to v1)
+train_manifest: data/manifests/docvqa_train_subset_v1.json
+train_answers: data/cache/docvqa_train_subset_v1_answers.json
+target_field: target_answer
+target_selection_rule: first_nonempty_source_listed_answer
+
+# LoRA (language_model attention only) — unchanged from v1
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_bias: none
+
+# Optim — unchanged from v1
+lr: 5.0e-5
+weight_decay: 0.01
+grad_clip: 1.0
+microbatch_size: 1
+grad_accum: 8
+max_updates: 200
+warmup_updates: 10
+seed: 42
+max_seq_length: 8192
+gradient_checkpointing: true
+
+# Checkpoints / logs — separate v2 paths (do not overwrite v1)
+checkpoint_root: checkpoints/internvl3_1b_lora_v2
+save_updates: [100, 200]
+log_jsonl: results/train_internvl3_1b_lora_v2.jsonl
+summary_json: results/train_internvl3_1b_lora_v2_summary.json
+supervised_example_md: docs/examples/train_lora_v2_supervised_example.md
+supervised_example_json: results/train_lora_v2_supervised_example.json
+
+# Only intentional change vs v1: corrected supervised termination in collator.py
+collator_fix: single_assistant_eos_no_trailing_newline

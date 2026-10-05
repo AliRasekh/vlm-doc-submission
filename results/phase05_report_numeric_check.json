@@ -1,0 +1,139 @@
+{
+  "task": "phase05_report_numeric_check",
+  "pdf": "reports/vlm_doc_technical_report.pdf",
+  "checks": [
+    {
+      "name": "InternViT-300M-448px-V2_5",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "Qwen2.5-0.5B",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "Qwen2ForCausalLM",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.7927",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.7993",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.006639",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.00530",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.01905",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.2561",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "0.2143",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "940,355,712",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "2,162,688",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "208",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "504",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "2000",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "1600",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "54",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "109",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "45",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "298",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "AdamW",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "percentage points",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "half_detail_any",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "subsampling",
+      "ok": true,
+      "present": true
+    },
+    {
+      "name": "forbid:938.2M+",
+      "ok": true,
+      "present": false
+    }
+  ],
+  "all_ok": true,
+  "first20_full": 0.25614097751677034,
+  "last20_full": 0.21429072171449662,
+  "delta": 0.006639031218947045,
+  "ci": [
+    -0.005303987917364911,
+    0.01904505957860881
+  ]
+}

@@ -1,0 +1,17 @@
+# P2 UI-only pins (install into the P1 ML env WITHOUT upgrading torch/transformers).
+# Install:
+#   pip install -r companion/pascal/requirements-ui.txt
+#   pip install 'Pillow==11.1.0'   # keep ML pin if a UI dep changes Pillow
+#
+# Gradio 5.9.1 / gradio_client 1.5.2: Image/File event JSON schemas may set
+# additionalProperties=True (bool). Upstream get_type() then raises TypeError.
+# companion/pascal/p2/gradio_schema_patch.py patches get_type to treat bare bool
+# schemas as Any — restores Blocks.get_api_info() without blanking the API schema.
+#
+# Optional for P2.1 headless UI tests (do not upgrade ML stack):
+#   pip install 'playwright==1.49.1'
+#   python -m playwright install chromium
+gradio==5.9.1
+fastapi==0.115.6
+uvicorn==0.32.1
+python-multipart==0.0.32

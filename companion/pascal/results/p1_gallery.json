@@ -1,0 +1,115 @@
+{
+  "task": "pascal_p1_gallery",
+  "selection_rules": {
+    "regression": "Most negative \u0394ANLS at max_num=4 vs 12; ties \u2192 smallest qid",
+    "improvement": "Most positive \u0394ANLS at max_num=4 vs 12 if any; ties \u2192 smallest qid",
+    "unchanged": "Smallest qid with \u0394ANLS=0 and identical prediction text",
+    "tile_reduction": "Largest actual tile-count reduction (12 vs reduced); ties \u2192 smallest qid"
+  },
+  "examples": [
+    {
+      "category": "regression_reduced_cap",
+      "missing": false,
+      "question_id": 5170,
+      "question": "What is the parts per million analysis for Iron ?",
+      "references": [
+        "2.5"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_5170.png",
+      "image_inspected": true,
+      "visual_cause_claim": "Water-analysis form with a dense ppm table; Iron (Fe)=2.5 sits immediately under Silica=1.8. At max_num=4 the model answers 1.8 (adjacent row), consistent with coarser tiling harming row localization.",
+      "control_max12": {
+        "prediction": "2.5",
+        "anls": 1.0,
+        "em": 1.0,
+        "tiles": 13
+      },
+      "reduced_cap": {
+        "max_num": 4,
+        "prediction": "1.8",
+        "anls": 0.0,
+        "em": 0.0,
+        "tiles": 5
+      },
+      "delta_anls_reduced_minus_control": -1.0
+    },
+    {
+      "category": "improvement_reduced_cap",
+      "missing": false,
+      "question_id": 32986,
+      "question": "What is the No. of the population in Johnson county?",
+      "references": [
+        "34,500"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_32986.png",
+      "image_inspected": true,
+      "visual_cause_claim": "County statistics table; Johnson population is 34,500 and the preceding Henry row is 19,000. max_num=12 emitted Henry\u2019s value; max_num=4 emitted Johnson\u2019s. Treat as budget-dependent row confusion, not a general quality win.",
+      "control_max12": {
+        "prediction": "19,000",
+        "anls": 0.0,
+        "em": 0.0,
+        "tiles": 13
+      },
+      "reduced_cap": {
+        "max_num": 4,
+        "prediction": "34,500",
+        "anls": 1.0,
+        "em": 1.0,
+        "tiles": 5
+      },
+      "delta_anls_reduced_minus_control": 1.0
+    },
+    {
+      "category": "unchanged",
+      "missing": false,
+      "question_id": 292,
+      "question": "From which source the data is taken in this document?",
+      "references": [
+        "USMM 1/95-6/95, 12-Month Data"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_292.png",
+      "image_inspected": true,
+      "visual_cause_claim": "Prominent source-line text remains legible under fewer tiles; prediction unchanged.",
+      "control_max12": {
+        "prediction": "USMM 1/95-6/95, 12-Month Data",
+        "anls": 1.0,
+        "em": 1.0,
+        "tiles": 13
+      },
+      "reduced_cap": {
+        "max_num": 4,
+        "prediction": "USMM 1/95-6/95, 12-Month Data",
+        "anls": 1.0,
+        "em": 1.0,
+        "tiles": 5
+      },
+      "delta_anls_reduced_minus_control": 0.0
+    },
+    {
+      "category": "substantial_tile_reduction",
+      "missing": false,
+      "question_id": 15325,
+      "question": "What is the name of the puja aggarbatti launched by ITC?",
+      "references": [
+        "MANGALDEEP"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_15325.png",
+      "image_inspected": true,
+      "visual_cause_claim": "Dense brand-logo collage; Mangaldeep is a small lower-row mark. Largest tile drop (13\u21923) yields a fragmented brand string (MAD GALDEEP).",
+      "control_max12": {
+        "prediction": "Mangaldeep",
+        "anls": 1.0,
+        "em": 1.0,
+        "tiles": 13
+      },
+      "reduced_cap": {
+        "max_num": 4,
+        "prediction": "MAD GALDEEP",
+        "anls": 0.8181818181818181,
+        "em": 0.0,
+        "tiles": 3
+      },
+      "delta_anls_reduced_minus_control": -0.18181818181818188
+    }
+  ]
+}

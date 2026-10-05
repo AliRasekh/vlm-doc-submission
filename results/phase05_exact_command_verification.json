@@ -1,0 +1,51 @@
+{
+  "task": "phase05_exact_command_verification",
+  "parser_checks": [
+    {
+      "script": "scripts/run_eval.py",
+      "help_ok": true,
+      "missing": []
+    },
+    {
+      "script": "scripts/prepare_smoke_manifest.py",
+      "help_ok": true,
+      "missing": []
+    },
+    {
+      "script": "scripts/prepare_frozen_splits.py",
+      "help_ok": true,
+      "missing": []
+    },
+    {
+      "script": "scripts/prepare_train_subset_v1.py",
+      "help_ok": true,
+      "missing": []
+    },
+    {
+      "script": "scripts/prepare_robustness_subset_v1.py",
+      "help_ok": true,
+      "missing": []
+    },
+    {
+      "script": "scripts/rebuild_holdout_v2.py",
+      "exists": true,
+      "note": "fixed script; no CLI flags"
+    }
+  ],
+  "paths": {
+    "configs/models/internvl3_1b.yaml": true,
+    "configs/train/internvl3_1b_lora_v2.yaml": true,
+    "data/manifests/docvqa_dev_v1.json": true,
+    "data/manifests/docvqa_holdout_v2.json": true,
+    "data/manifests/docvqa_smoke_v1.json": true,
+    "data/manifests/docvqa_train_subset_v1.json": true,
+    "data/manifests/docvqa_dev_robustness_v1.json": true,
+    "environment/requirements.txt": true,
+    "scripts/slurm/phase03c_internvl_lora_v2.sbatch": true,
+    "checkpoints/internvl3_1b_lora_v2/update_0200/adapter_model.safetensors": true,
+    "data/cache/docvqa_dev_v1_answers.json": true,
+    "data/cache/docvqa_holdout_v2_answers.json": true
+  },
+  "all_parsers_ok": true,
+  "all_paths_ok": true
+}

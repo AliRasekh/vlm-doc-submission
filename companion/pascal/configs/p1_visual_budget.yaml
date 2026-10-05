@@ -1,0 +1,33 @@
+# Pascal P1 — InternVL3-1B visual-budget ablation (development only)
+# Supplementary experiment; does not alter frozen deployment selection.
+task: pascal_p1_visual_budget
+adapter: internvl3
+model_id: OpenGVLab/InternVL3-1B
+revision: 4415a3b810e636d11dfa86b0e9ba40bb00535aa8
+manifest: data/manifests/docvqa_dev_v1.json
+answers: data/cache/docvqa_dev_v1_answers.json
+max_new_tokens: 64
+prefer_bf16: true
+# If bf16 unsupported (e.g. V100), wrapper falls back to float16 (documented).
+fallback_dtype_if_no_bf16: float16
+use_flash_attn: false
+attention_backend: eager  # transformers default path; flash-attn disabled
+min_num: 1
+original_max_num: 12
+# Predeclared unique sorted candidates: {1, min(4, M), M}
+candidate_max_num_rule: "{1, min(4, original_max_num), original_max_num}"
+use_thumbnail: true
+image_size: 448
+instruction: "Answer the question using a single word or short phrase."
+seed: 0
+do_sample: false
+# Execution order: control (original M) first, then reduced caps descending.
+execution_order: descending_from_original
+warmup_example_indices: [0, 1, 2]
+warmup_note: "Fixed development manifest prefix; excluded from scored records and latency summaries."
+cache_dir: .hf_cache
+historical_dev_jsonl: results/dev_internvl3_1b.jsonl
+historical_dev_summary: results/dev_internvl3_1b_summary.json
+notes: >
+  Change only max_num. Native dynamic_preprocess, 448px tiles, thumbnail rule,
+  instruction, and greedy decoding remain identical across conditions.

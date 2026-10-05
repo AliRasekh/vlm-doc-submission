@@ -1,0 +1,907 @@
+{
+  "name": "docvqa_dev_robustness_v1",
+  "role": "dev_robustness_subset",
+  "parent_manifest": "data/manifests/docvqa_dev_v1.json",
+  "parent_manifest_raw_file_sha256": "240bee9197d1739567c9c9f9a76470bfbf9fdf4932d493e0c0c7b5fbe02296b1",
+  "selection": {
+    "seed": 42,
+    "n_groups_requested": 16,
+    "max_questions_per_group": 4,
+    "method": "sample_16_ucsf_groups_uniform_wo_replacement_from_sorted_ids; within_group_seeded_shuffle_take_up_to_4; independent_of_predictions",
+    "sampled_ucsf_document_ids": [
+      "fmnf0227",
+      "fpbw0217",
+      "fsgj0223",
+      "fxpc0228",
+      "gfhv0228",
+      "gncw0217",
+      "jjvg0227",
+      "jpgn0226",
+      "jybx0223",
+      "qhbw0217",
+      "tqgk0023",
+      "txcx0227",
+      "xnyc0227",
+      "znbx0223",
+      "ztnk0226",
+      "zxjw0023"
+    ],
+    "membership_by_group": [
+      {
+        "ucsf_document_id": "fmnf0227",
+        "n_available": 4,
+        "n_selected": 4,
+        "question_ids": [
+          63665,
+          63666,
+          63667,
+          63668
+        ]
+      },
+      {
+        "ucsf_document_id": "fpbw0217",
+        "n_available": 4,
+        "n_selected": 4,
+        "question_ids": [
+          58502,
+          58504,
+          58512,
+          58515
+        ]
+      },
+      {
+        "ucsf_document_id": "fsgj0223",
+        "n_available": 2,
+        "n_selected": 2,
+        "question_ids": [
+          55107,
+          55471
+        ]
+      },
+      {
+        "ucsf_document_id": "fxpc0228",
+        "n_available": 5,
+        "n_selected": 4,
+        "question_ids": [
+          50260,
+          50261,
+          50262,
+          50274
+        ]
+      },
+      {
+        "ucsf_document_id": "gfhv0228",
+        "n_available": 4,
+        "n_selected": 4,
+        "question_ids": [
+          59374,
+          59376,
+          59377,
+          59379
+        ]
+      },
+      {
+        "ucsf_document_id": "gncw0217",
+        "n_available": 1,
+        "n_selected": 1,
+        "question_ids": [
+          45817
+        ]
+      },
+      {
+        "ucsf_document_id": "jjvg0227",
+        "n_available": 8,
+        "n_selected": 4,
+        "question_ids": [
+          32984,
+          32987,
+          32995,
+          32996
+        ]
+      },
+      {
+        "ucsf_document_id": "jpgn0226",
+        "n_available": 7,
+        "n_selected": 4,
+        "question_ids": [
+          44210,
+          44216,
+          44226,
+          44271
+        ]
+      },
+      {
+        "ucsf_document_id": "jybx0223",
+        "n_available": 10,
+        "n_selected": 4,
+        "question_ids": [
+          55110,
+          55111,
+          55206,
+          55208
+        ]
+      },
+      {
+        "ucsf_document_id": "qhbw0217",
+        "n_available": 3,
+        "n_selected": 3,
+        "question_ids": [
+          45796,
+          45797,
+          45798
+        ]
+      },
+      {
+        "ucsf_document_id": "tqgk0023",
+        "n_available": 9,
+        "n_selected": 4,
+        "question_ids": [
+          54444,
+          54461,
+          54479,
+          54490
+        ]
+      },
+      {
+        "ucsf_document_id": "txcx0227",
+        "n_available": 3,
+        "n_selected": 3,
+        "question_ids": [
+          21063,
+          21064,
+          21068
+        ]
+      },
+      {
+        "ucsf_document_id": "xnyc0227",
+        "n_available": 6,
+        "n_selected": 4,
+        "question_ids": [
+          62533,
+          62538,
+          62539,
+          62541
+        ]
+      },
+      {
+        "ucsf_document_id": "znbx0223",
+        "n_available": 1,
+        "n_selected": 1,
+        "question_ids": [
+          57240
+        ]
+      },
+      {
+        "ucsf_document_id": "ztnk0226",
+        "n_available": 5,
+        "n_selected": 4,
+        "question_ids": [
+          60398,
+          60400,
+          60401,
+          60402
+        ]
+      },
+      {
+        "ucsf_document_id": "zxjw0023",
+        "n_available": 6,
+        "n_selected": 4,
+        "question_ids": [
+          8117,
+          8118,
+          8120,
+          8122
+        ]
+      }
+    ]
+  },
+  "n_examples": 54,
+  "n_groups": 16,
+  "question_ids": [
+    8117,
+    8118,
+    8120,
+    8122,
+    21063,
+    21064,
+    21068,
+    32984,
+    32987,
+    32995,
+    32996,
+    44210,
+    44216,
+    44226,
+    44271,
+    45796,
+    45797,
+    45798,
+    45817,
+    50260,
+    50261,
+    50262,
+    50274,
+    54444,
+    54461,
+    54479,
+    54490,
+    55107,
+    55110,
+    55111,
+    55206,
+    55208,
+    55471,
+    57240,
+    58502,
+    58504,
+    58512,
+    58515,
+    59374,
+    59376,
+    59377,
+    59379,
+    60398,
+    60400,
+    60401,
+    60402,
+    62533,
+    62538,
+    62539,
+    62541,
+    63665,
+    63666,
+    63667,
+    63668
+  ],
+  "examples": [
+    {
+      "index": 35,
+      "question_id": 8117,
+      "doc_id": 2834,
+      "ucsf_document_id": "zxjw0023",
+      "ucsf_document_page_no": "1",
+      "question": "Which is the RJR Brand mentioned?",
+      "image_relpath": "data/images/docvqa_dev/qid_8117.png",
+      "image_sha256_png": "2d6e1ffe8bbb73ad48c324f18e72ccb58f393f222b43f8e871611d49ec95c077",
+      "source_image_sha256": "d90b4c653277f5a317e9b85e50b01484df70ecdb93dac30e744fb10ba5227d94",
+      "n_answers": 2
+    },
+    {
+      "index": 36,
+      "question_id": 8118,
+      "doc_id": 2834,
+      "ucsf_document_id": "zxjw0023",
+      "ucsf_document_page_no": "1",
+      "question": "What is the Response Code?",
+      "image_relpath": "data/images/docvqa_dev/qid_8118.png",
+      "image_sha256_png": "2d6e1ffe8bbb73ad48c324f18e72ccb58f393f222b43f8e871611d49ec95c077",
+      "source_image_sha256": "d90b4c653277f5a317e9b85e50b01484df70ecdb93dac30e744fb10ba5227d94",
+      "n_answers": 2
+    },
+    {
+      "index": 38,
+      "question_id": 8120,
+      "doc_id": 2834,
+      "ucsf_document_id": "zxjw0023",
+      "ucsf_document_page_no": "1",
+      "question": "Is age verification needed?",
+      "image_relpath": "data/images/docvqa_dev/qid_8120.png",
+      "image_sha256_png": "2d6e1ffe8bbb73ad48c324f18e72ccb58f393f222b43f8e871611d49ec95c077",
+      "source_image_sha256": "d90b4c653277f5a317e9b85e50b01484df70ecdb93dac30e744fb10ba5227d94",
+      "n_answers": 2
+    },
+    {
+      "index": 40,
+      "question_id": 8122,
+      "doc_id": 2834,
+      "ucsf_document_id": "zxjw0023",
+      "ucsf_document_page_no": "1",
+      "question": "Who requested response code?",
+      "image_relpath": "data/images/docvqa_dev/qid_8122.png",
+      "image_sha256_png": "2d6e1ffe8bbb73ad48c324f18e72ccb58f393f222b43f8e871611d49ec95c077",
+      "source_image_sha256": "d90b4c653277f5a317e9b85e50b01484df70ecdb93dac30e744fb10ba5227d94",
+      "n_answers": 2
+    },
+    {
+      "index": 98,
+      "question_id": 21063,
+      "doc_id": 6207,
+      "ucsf_document_id": "txcx0227",
+      "ucsf_document_page_no": "13",
+      "question": "What is the birth date written in data",
+      "image_relpath": "data/images/docvqa_dev/qid_21063.png",
+      "image_sha256_png": "5fbf6bffb383c379078ae15d802b2ebc6fba14ff16633be6440a990fa5c59fec",
+      "source_image_sha256": "be41c6430f4ac5f82621c29ff2d3322491716b4ec363ea45b9288b5617a80af6",
+      "n_answers": 1
+    },
+    {
+      "index": 99,
+      "question_id": 21064,
+      "doc_id": 6207,
+      "ucsf_document_id": "txcx0227",
+      "ucsf_document_page_no": "13",
+      "question": "What is the place of birth written in data",
+      "image_relpath": "data/images/docvqa_dev/qid_21064.png",
+      "image_sha256_png": "5fbf6bffb383c379078ae15d802b2ebc6fba14ff16633be6440a990fa5c59fec",
+      "source_image_sha256": "be41c6430f4ac5f82621c29ff2d3322491716b4ec363ea45b9288b5617a80af6",
+      "n_answers": 1
+    },
+    {
+      "index": 100,
+      "question_id": 21068,
+      "doc_id": 6207,
+      "ucsf_document_id": "txcx0227",
+      "ucsf_document_page_no": "13",
+      "question": "What is the Role in proposed  project",
+      "image_relpath": "data/images/docvqa_dev/qid_21068.png",
+      "image_sha256_png": "5fbf6bffb383c379078ae15d802b2ebc6fba14ff16633be6440a990fa5c59fec",
+      "source_image_sha256": "be41c6430f4ac5f82621c29ff2d3322491716b4ec363ea45b9288b5617a80af6",
+      "n_answers": 1
+    },
+    {
+      "index": 146,
+      "question_id": 32984,
+      "doc_id": 9305,
+      "ucsf_document_id": "jjvg0227",
+      "ucsf_document_page_no": "8",
+      "question": "What is the No. of the population in Henry county?",
+      "image_relpath": "data/images/docvqa_dev/qid_32984.png",
+      "image_sha256_png": "a9f11f61ec8f9fc479fb2636adb5caa91356c81ec70c067ec9d1268fe35b0a37",
+      "source_image_sha256": "5b22189479805ce0b77a3bee6dda82d0cad952d192705fc744e78fee0afa8b6c",
+      "n_answers": 1
+    },
+    {
+      "index": 148,
+      "question_id": 32987,
+      "doc_id": 9305,
+      "ucsf_document_id": "jjvg0227",
+      "ucsf_document_page_no": "8",
+      "question": "What is the percentage of families in Poverty in Miller county?",
+      "image_relpath": "data/images/docvqa_dev/qid_32987.png",
+      "image_sha256_png": "a9f11f61ec8f9fc479fb2636adb5caa91356c81ec70c067ec9d1268fe35b0a37",
+      "source_image_sha256": "5b22189479805ce0b77a3bee6dda82d0cad952d192705fc744e78fee0afa8b6c",
+      "n_answers": 1
+    },
+    {
+      "index": 152,
+      "question_id": 32995,
+      "doc_id": 9305,
+      "ucsf_document_id": "jjvg0227",
+      "ucsf_document_page_no": "8",
+      "question": "What is the percentage of families in Poverty in Henry county?",
+      "image_relpath": "data/images/docvqa_dev/qid_32995.png",
+      "image_sha256_png": "a9f11f61ec8f9fc479fb2636adb5caa91356c81ec70c067ec9d1268fe35b0a37",
+      "source_image_sha256": "5b22189479805ce0b77a3bee6dda82d0cad952d192705fc744e78fee0afa8b6c",
+      "n_answers": 1
+    },
+    {
+      "index": 153,
+      "question_id": 32996,
+      "doc_id": 9305,
+      "ucsf_document_id": "jjvg0227",
+      "ucsf_document_page_no": "8",
+      "question": "What is the No. of population in Miller county?",
+      "image_relpath": "data/images/docvqa_dev/qid_32996.png",
+      "image_sha256_png": "a9f11f61ec8f9fc479fb2636adb5caa91356c81ec70c067ec9d1268fe35b0a37",
+      "source_image_sha256": "5b22189479805ce0b77a3bee6dda82d0cad952d192705fc744e78fee0afa8b6c",
+      "n_answers": 1
+    },
+    {
+      "index": 169,
+      "question_id": 44210,
+      "doc_id": 12658,
+      "ucsf_document_id": "jpgn0226",
+      "ucsf_document_page_no": "221",
+      "question": "What is the third name under ' DePuv' ?",
+      "image_relpath": "data/images/docvqa_dev/qid_44210.png",
+      "image_sha256_png": "3747c62f40d7d3be5aa1b3fa3ca0231ef910f0facedf8531ed9243dee2617d31",
+      "source_image_sha256": "d5c391d5b9b5e8a7c28126a115d87a13c61573ff95f431e53de3aa555dcb184b",
+      "n_answers": 1
+    },
+    {
+      "index": 170,
+      "question_id": 44216,
+      "doc_id": 12658,
+      "ucsf_document_id": "jpgn0226",
+      "ucsf_document_page_no": "221",
+      "question": "What is the last point under the sub heading 'section' ?",
+      "image_relpath": "data/images/docvqa_dev/qid_44216.png",
+      "image_sha256_png": "3747c62f40d7d3be5aa1b3fa3ca0231ef910f0facedf8531ed9243dee2617d31",
+      "source_image_sha256": "d5c391d5b9b5e8a7c28126a115d87a13c61573ff95f431e53de3aa555dcb184b",
+      "n_answers": 1
+    },
+    {
+      "index": 171,
+      "question_id": 44226,
+      "doc_id": 12658,
+      "ucsf_document_id": "jpgn0226",
+      "ucsf_document_page_no": "221",
+      "question": "What is the first point under  'discussion points'?",
+      "image_relpath": "data/images/docvqa_dev/qid_44226.png",
+      "image_sha256_png": "3747c62f40d7d3be5aa1b3fa3ca0231ef910f0facedf8531ed9243dee2617d31",
+      "source_image_sha256": "d5c391d5b9b5e8a7c28126a115d87a13c61573ff95f431e53de3aa555dcb184b",
+      "n_answers": 1
+    },
+    {
+      "index": 173,
+      "question_id": 44271,
+      "doc_id": 12658,
+      "ucsf_document_id": "jpgn0226",
+      "ucsf_document_page_no": "221",
+      "question": "What comes after 'case report forms' under the sub heading 'item'?",
+      "image_relpath": "data/images/docvqa_dev/qid_44271.png",
+      "image_sha256_png": "3747c62f40d7d3be5aa1b3fa3ca0231ef910f0facedf8531ed9243dee2617d31",
+      "source_image_sha256": "d5c391d5b9b5e8a7c28126a115d87a13c61573ff95f431e53de3aa555dcb184b",
+      "n_answers": 1
+    },
+    {
+      "index": 176,
+      "question_id": 45796,
+      "doc_id": 13561,
+      "ucsf_document_id": "qhbw0217",
+      "ucsf_document_page_no": "2",
+      "question": "What is the compound?",
+      "image_relpath": "data/images/docvqa_dev/qid_45796.png",
+      "image_sha256_png": "3299a731fe54427427ac188c2f526c751c07647736088ad75dadfd42128e6363",
+      "source_image_sha256": "598d1b2a99f4b8f9d6595a770e9dc7eb54cbf448a0db2b788d26e5a939cb65a9",
+      "n_answers": 1
+    },
+    {
+      "index": 177,
+      "question_id": 45797,
+      "doc_id": 13561,
+      "ucsf_document_id": "qhbw0217",
+      "ucsf_document_page_no": "2",
+      "question": "What is the Protocol No.?",
+      "image_relpath": "data/images/docvqa_dev/qid_45797.png",
+      "image_sha256_png": "3299a731fe54427427ac188c2f526c751c07647736088ad75dadfd42128e6363",
+      "source_image_sha256": "598d1b2a99f4b8f9d6595a770e9dc7eb54cbf448a0db2b788d26e5a939cb65a9",
+      "n_answers": 1
+    },
+    {
+      "index": 178,
+      "question_id": 45798,
+      "doc_id": 13561,
+      "ucsf_document_id": "qhbw0217",
+      "ucsf_document_page_no": "2",
+      "question": "Who is the study sponsor?",
+      "image_relpath": "data/images/docvqa_dev/qid_45798.png",
+      "image_sha256_png": "3299a731fe54427427ac188c2f526c751c07647736088ad75dadfd42128e6363",
+      "source_image_sha256": "598d1b2a99f4b8f9d6595a770e9dc7eb54cbf448a0db2b788d26e5a939cb65a9",
+      "n_answers": 1
+    },
+    {
+      "index": 180,
+      "question_id": 45817,
+      "doc_id": 13577,
+      "ucsf_document_id": "gncw0217",
+      "ucsf_document_page_no": "1",
+      "question": "What is the Target Publication Date/Journal for Classification \" Pharmacology\"?",
+      "image_relpath": "data/images/docvqa_dev/qid_45817.png",
+      "image_sha256_png": "caa87b32d2847bac769f6a7bead4ba3c526602fd0ef36b806c929311d1b2ef0c",
+      "source_image_sha256": "993050a2b6df7bbbd5828e3b6d097e4f20512c68ca35272a043362752aa11dc8",
+      "n_answers": 1
+    },
+    {
+      "index": 196,
+      "question_id": 50260,
+      "doc_id": 14560,
+      "ucsf_document_id": "fxpc0228",
+      "ucsf_document_page_no": "2",
+      "question": "What is the heading enclosed within the box ?",
+      "image_relpath": "data/images/docvqa_dev/qid_50260.png",
+      "image_sha256_png": "a154d561c1a837b9fb90401fec9b6ea1f2bf8959c7665c626134fac150572be2",
+      "source_image_sha256": "f8014caea3468b5b9603a3b5d35391c9d510af6e36d45b101030408e33b92e8a",
+      "n_answers": 2
+    },
+    {
+      "index": 197,
+      "question_id": 50261,
+      "doc_id": 14560,
+      "ucsf_document_id": "fxpc0228",
+      "ucsf_document_page_no": "2",
+      "question": "What is the date sealed on the envelope?",
+      "image_relpath": "data/images/docvqa_dev/qid_50261.png",
+      "image_sha256_png": "a154d561c1a837b9fb90401fec9b6ea1f2bf8959c7665c626134fac150572be2",
+      "source_image_sha256": "f8014caea3468b5b9603a3b5d35391c9d510af6e36d45b101030408e33b92e8a",
+      "n_answers": 2
+    },
+    {
+      "index": 198,
+      "question_id": 50262,
+      "doc_id": 14560,
+      "ucsf_document_id": "fxpc0228",
+      "ucsf_document_page_no": "2",
+      "question": "What is the name of the addressee ?",
+      "image_relpath": "data/images/docvqa_dev/qid_50262.png",
+      "image_sha256_png": "a154d561c1a837b9fb90401fec9b6ea1f2bf8959c7665c626134fac150572be2",
+      "source_image_sha256": "f8014caea3468b5b9603a3b5d35391c9d510af6e36d45b101030408e33b92e8a",
+      "n_answers": 2
+    },
+    {
+      "index": 200,
+      "question_id": 50274,
+      "doc_id": 14560,
+      "ucsf_document_id": "fxpc0228",
+      "ucsf_document_page_no": "2",
+      "question": "What is the zip code?",
+      "image_relpath": "data/images/docvqa_dev/qid_50274.png",
+      "image_sha256_png": "a154d561c1a837b9fb90401fec9b6ea1f2bf8959c7665c626134fac150572be2",
+      "source_image_sha256": "f8014caea3468b5b9603a3b5d35391c9d510af6e36d45b101030408e33b92e8a",
+      "n_answers": 1
+    },
+    {
+      "index": 51,
+      "question_id": 54444,
+      "doc_id": 3645,
+      "ucsf_document_id": "tqgk0023",
+      "ucsf_document_page_no": "13",
+      "question": "What is the date of the claim?",
+      "image_relpath": "data/images/docvqa_dev/qid_54444.png",
+      "image_sha256_png": "e38e85e87f66f4648a648e0f46b95765002c28dabe1d5e2ead909079fcf6532d",
+      "source_image_sha256": "0404a881f32c074672e9f238ae2abb1bd09e739c3c756158613ac3bf456e1e56",
+      "n_answers": 2
+    },
+    {
+      "index": 54,
+      "question_id": 54461,
+      "doc_id": 3645,
+      "ucsf_document_id": "tqgk0023",
+      "ucsf_document_page_no": "13",
+      "question": "What was the amount spent on one carton of Salem Slim Light 100s?",
+      "image_relpath": "data/images/docvqa_dev/qid_54461.png",
+      "image_sha256_png": "e38e85e87f66f4648a648e0f46b95765002c28dabe1d5e2ead909079fcf6532d",
+      "source_image_sha256": "0404a881f32c074672e9f238ae2abb1bd09e739c3c756158613ac3bf456e1e56",
+      "n_answers": 2
+    },
+    {
+      "index": 57,
+      "question_id": 54479,
+      "doc_id": 3645,
+      "ucsf_document_id": "tqgk0023",
+      "ucsf_document_page_no": "13",
+      "question": "Who according to Michael Phillips were the RJR foursome?",
+      "image_relpath": "data/images/docvqa_dev/qid_54479.png",
+      "image_sha256_png": "e38e85e87f66f4648a648e0f46b95765002c28dabe1d5e2ead909079fcf6532d",
+      "source_image_sha256": "0404a881f32c074672e9f238ae2abb1bd09e739c3c756158613ac3bf456e1e56",
+      "n_answers": 2
+    },
+    {
+      "index": 58,
+      "question_id": 54490,
+      "doc_id": 3645,
+      "ucsf_document_id": "tqgk0023",
+      "ucsf_document_page_no": "13",
+      "question": "How much did the photographs of RJR foursome cost?",
+      "image_relpath": "data/images/docvqa_dev/qid_54490.png",
+      "image_sha256_png": "e38e85e87f66f4648a648e0f46b95765002c28dabe1d5e2ead909079fcf6532d",
+      "source_image_sha256": "0404a881f32c074672e9f238ae2abb1bd09e739c3c756158613ac3bf456e1e56",
+      "n_answers": 2
+    },
+    {
+      "index": 65,
+      "question_id": 55107,
+      "doc_id": 4295,
+      "ucsf_document_id": "fsgj0223",
+      "ucsf_document_page_no": "10",
+      "question": "What is the title of the ‘table’?",
+      "image_relpath": "data/images/docvqa_dev/qid_55107.png",
+      "image_sha256_png": "539b6c95e1fcd8d9f87a3b638f19a9a1f9bdb8276b102d465e3faa00c26cd8a1",
+      "source_image_sha256": "70f4a487ca6995e2492f1a62f551b694e7b17cce507a2352f35ca0e0542fc89c",
+      "n_answers": 3
+    },
+    {
+      "index": 68,
+      "question_id": 55110,
+      "doc_id": 4300,
+      "ucsf_document_id": "jybx0223",
+      "ucsf_document_page_no": "85",
+      "question": "What is ‘rent and hire charges (gross)’ for the year ended 31.3.2010?",
+      "image_relpath": "data/images/docvqa_dev/qid_55110.png",
+      "image_sha256_png": "dd2fede1b6ba5b9682ccf249f9d96ccf47260f776cd593acec90c3d5956c3ee8",
+      "source_image_sha256": "ed44117745bec5132258a764ddefea6bc3bda7e6334a65849f94120bbe2b8960",
+      "n_answers": 2
+    },
+    {
+      "index": 69,
+      "question_id": 55111,
+      "doc_id": 4300,
+      "ucsf_document_id": "jybx0223",
+      "ucsf_document_page_no": "85",
+      "question": "What is ‘rent and hire charges (gross)’ for the year ended 31.3.2009?",
+      "image_relpath": "data/images/docvqa_dev/qid_55111.png",
+      "image_sha256_png": "dd2fede1b6ba5b9682ccf249f9d96ccf47260f776cd593acec90c3d5956c3ee8",
+      "source_image_sha256": "ed44117745bec5132258a764ddefea6bc3bda7e6334a65849f94120bbe2b8960",
+      "n_answers": 2
+    },
+    {
+      "index": 61,
+      "question_id": 55206,
+      "doc_id": 4261,
+      "ucsf_document_id": "jybx0223",
+      "ucsf_document_page_no": "22",
+      "question": "What is the designation of Mr. Lalit Bhasin ?",
+      "image_relpath": "data/images/docvqa_dev/qid_55206.png",
+      "image_sha256_png": "e8c30f7d4bfa7aa312830148d5795fd25b1e797f4fd623b889d9004f19320504",
+      "source_image_sha256": "fa91f0a5fe84c0d11ea04aa8e7a05749685a813a7afaad9924a176b01d135110",
+      "n_answers": 2
+    },
+    {
+      "index": 62,
+      "question_id": 55208,
+      "doc_id": 4261,
+      "ucsf_document_id": "jybx0223",
+      "ucsf_document_page_no": "22",
+      "question": "From which University did Mr. R. Ramamurthy graduate?",
+      "image_relpath": "data/images/docvqa_dev/qid_55208.png",
+      "image_sha256_png": "e8c30f7d4bfa7aa312830148d5795fd25b1e797f4fd623b889d9004f19320504",
+      "source_image_sha256": "fa91f0a5fe84c0d11ea04aa8e7a05749685a813a7afaad9924a176b01d135110",
+      "n_answers": 2
+    },
+    {
+      "index": 72,
+      "question_id": 55471,
+      "doc_id": 4340,
+      "ucsf_document_id": "fsgj0223",
+      "ucsf_document_page_no": "96",
+      "question": "What is the ‘maximum amount of loan due from subsidiary at any time during the year’?",
+      "image_relpath": "data/images/docvqa_dev/qid_55471.png",
+      "image_sha256_png": "342db4b4abebb38c41578f9045b12ba678581ad896fa840a94bf36a3c7bb0775",
+      "source_image_sha256": "754f6f590783337736573288dcc23c04e2a5df88814b9fb1f903f6fd9221aa7a",
+      "n_answers": 2
+    },
+    {
+      "index": 78,
+      "question_id": 57240,
+      "doc_id": 4794,
+      "ucsf_document_id": "znbx0223",
+      "ucsf_document_page_no": "11",
+      "question": "Which company helped rebuild Gujarat after tye earthquake?",
+      "image_relpath": "data/images/docvqa_dev/qid_57240.png",
+      "image_sha256_png": "60161cc0633ce279614a8667839918aae59ea3ee5ae0d9078516d3c4ebc74bc7",
+      "source_image_sha256": "5477cad10d6ec32cf8ccf7b21417241f2473643696c448b76f17fc6076263b56",
+      "n_answers": 2
+    },
+    {
+      "index": 90,
+      "question_id": 58502,
+      "doc_id": 5326,
+      "ucsf_document_id": "fpbw0217",
+      "ucsf_document_page_no": "4",
+      "question": "What is the page number?",
+      "image_relpath": "data/images/docvqa_dev/qid_58502.png",
+      "image_sha256_png": "f8e1e6f1a098bb31edd6e909391d068a5a175bd51af308570393b4a994977319",
+      "source_image_sha256": "efc4d0416374309f8a04a35a14d173fd403b63b05bf1c63f9b70f3e12feb0898",
+      "n_answers": 1
+    },
+    {
+      "index": 91,
+      "question_id": 58504,
+      "doc_id": 5326,
+      "ucsf_document_id": "fpbw0217",
+      "ucsf_document_page_no": "4",
+      "question": "What is SERM?",
+      "image_relpath": "data/images/docvqa_dev/qid_58504.png",
+      "image_sha256_png": "f8e1e6f1a098bb31edd6e909391d068a5a175bd51af308570393b4a994977319",
+      "source_image_sha256": "efc4d0416374309f8a04a35a14d173fd403b63b05bf1c63f9b70f3e12feb0898",
+      "n_answers": 2
+    },
+    {
+      "index": 92,
+      "question_id": 58512,
+      "doc_id": 5326,
+      "ucsf_document_id": "fpbw0217",
+      "ucsf_document_page_no": "4",
+      "question": "What is subheading I ?",
+      "image_relpath": "data/images/docvqa_dev/qid_58512.png",
+      "image_sha256_png": "f8e1e6f1a098bb31edd6e909391d068a5a175bd51af308570393b4a994977319",
+      "source_image_sha256": "efc4d0416374309f8a04a35a14d173fd403b63b05bf1c63f9b70f3e12feb0898",
+      "n_answers": 2
+    },
+    {
+      "index": 93,
+      "question_id": 58515,
+      "doc_id": 5326,
+      "ucsf_document_id": "fpbw0217",
+      "ucsf_document_page_no": "4",
+      "question": "For which family of products is the Publication program being initiated?",
+      "image_relpath": "data/images/docvqa_dev/qid_58515.png",
+      "image_sha256_png": "f8e1e6f1a098bb31edd6e909391d068a5a175bd51af308570393b4a994977319",
+      "source_image_sha256": "efc4d0416374309f8a04a35a14d173fd403b63b05bf1c63f9b70f3e12feb0898",
+      "n_answers": 3
+    },
+    {
+      "index": 94,
+      "question_id": 59374,
+      "doc_id": 6206,
+      "ucsf_document_id": "gfhv0228",
+      "ucsf_document_page_no": "2",
+      "question": "Whose name has been striked out from the list?",
+      "image_relpath": "data/images/docvqa_dev/qid_59374.png",
+      "image_sha256_png": "4b5ab8875befe380c4510c59050674779f57ebc707aa6e4dcd8109f946654415",
+      "source_image_sha256": "38962c689009f280641c55e2e5a3c9c4d97847cc73b44f56ce4eb826c3cd31f6",
+      "n_answers": 1
+    },
+    {
+      "index": 95,
+      "question_id": 59376,
+      "doc_id": 6206,
+      "ucsf_document_id": "gfhv0228",
+      "ucsf_document_page_no": "2",
+      "question": "Which category does Mitchell Brock come under?",
+      "image_relpath": "data/images/docvqa_dev/qid_59376.png",
+      "image_sha256_png": "4b5ab8875befe380c4510c59050674779f57ebc707aa6e4dcd8109f946654415",
+      "source_image_sha256": "38962c689009f280641c55e2e5a3c9c4d97847cc73b44f56ce4eb826c3cd31f6",
+      "n_answers": 1
+    },
+    {
+      "index": 96,
+      "question_id": 59377,
+      "doc_id": 6206,
+      "ucsf_document_id": "gfhv0228",
+      "ucsf_document_page_no": "2",
+      "question": "Which category does Mr. Ramon Castroviejo come under?",
+      "image_relpath": "data/images/docvqa_dev/qid_59377.png",
+      "image_sha256_png": "4b5ab8875befe380c4510c59050674779f57ebc707aa6e4dcd8109f946654415",
+      "source_image_sha256": "38962c689009f280641c55e2e5a3c9c4d97847cc73b44f56ce4eb826c3cd31f6",
+      "n_answers": 1
+    },
+    {
+      "index": 97,
+      "question_id": 59379,
+      "doc_id": 6206,
+      "ucsf_document_id": "gfhv0228",
+      "ucsf_document_page_no": "2",
+      "question": "At what time was the meeting called to order?",
+      "image_relpath": "data/images/docvqa_dev/qid_59379.png",
+      "image_sha256_png": "4b5ab8875befe380c4510c59050674779f57ebc707aa6e4dcd8109f946654415",
+      "source_image_sha256": "38962c689009f280641c55e2e5a3c9c4d97847cc73b44f56ce4eb826c3cd31f6",
+      "n_answers": 1
+    },
+    {
+      "index": 116,
+      "question_id": 60398,
+      "doc_id": 7127,
+      "ucsf_document_id": "ztnk0226",
+      "ucsf_document_page_no": "6",
+      "question": "What is the page number?",
+      "image_relpath": "data/images/docvqa_dev/qid_60398.png",
+      "image_sha256_png": "86712cfe5602e03517f5348cca82db9d58ab2ac9c93c3e7521e1264eaf264437",
+      "source_image_sha256": "a01ed42e6bdb4fa7364bc1dc42ac39cefe04fcea0fd9be620b05c6283e1fc175",
+      "n_answers": 2
+    },
+    {
+      "index": 118,
+      "question_id": 60400,
+      "doc_id": 7127,
+      "ucsf_document_id": "ztnk0226",
+      "ucsf_document_page_no": "6",
+      "question": "Who shall pay license fee?",
+      "image_relpath": "data/images/docvqa_dev/qid_60400.png",
+      "image_sha256_png": "86712cfe5602e03517f5348cca82db9d58ab2ac9c93c3e7521e1264eaf264437",
+      "source_image_sha256": "a01ed42e6bdb4fa7364bc1dc42ac39cefe04fcea0fd9be620b05c6283e1fc175",
+      "n_answers": 1
+    },
+    {
+      "index": 119,
+      "question_id": 60401,
+      "doc_id": 7127,
+      "ucsf_document_id": "ztnk0226",
+      "ucsf_document_page_no": "6",
+      "question": "To whom shall the license fee be paid?",
+      "image_relpath": "data/images/docvqa_dev/qid_60401.png",
+      "image_sha256_png": "86712cfe5602e03517f5348cca82db9d58ab2ac9c93c3e7521e1264eaf264437",
+      "source_image_sha256": "a01ed42e6bdb4fa7364bc1dc42ac39cefe04fcea0fd9be620b05c6283e1fc175",
+      "n_answers": 2
+    },
+    {
+      "index": 120,
+      "question_id": 60402,
+      "doc_id": 7127,
+      "ucsf_document_id": "ztnk0226",
+      "ucsf_document_page_no": "6",
+      "question": "What type of Rights is mentioned in the 4th line on the page?",
+      "image_relpath": "data/images/docvqa_dev/qid_60402.png",
+      "image_sha256_png": "86712cfe5602e03517f5348cca82db9d58ab2ac9c93c3e7521e1264eaf264437",
+      "source_image_sha256": "a01ed42e6bdb4fa7364bc1dc42ac39cefe04fcea0fd9be620b05c6283e1fc175",
+      "n_answers": 1
+    },
+    {
+      "index": 135,
+      "question_id": 62533,
+      "doc_id": 8589,
+      "ucsf_document_id": "xnyc0227",
+      "ucsf_document_page_no": "2",
+      "question": "What is the name hand written at the top right corner?",
+      "image_relpath": "data/images/docvqa_dev/qid_62533.png",
+      "image_sha256_png": "0b08c76906f25b730a2f40b02dee1f2c78d5e418a78727b91c714707fbe0b20e",
+      "source_image_sha256": "2ca3ca4dbc54c46a7e6ba64a9028e6f0327296b693c21848b5ebe08316ca7dc7",
+      "n_answers": 1
+    },
+    {
+      "index": 138,
+      "question_id": 62538,
+      "doc_id": 8589,
+      "ucsf_document_id": "xnyc0227",
+      "ucsf_document_page_no": "2",
+      "question": "Who is the report prepared by?",
+      "image_relpath": "data/images/docvqa_dev/qid_62538.png",
+      "image_sha256_png": "0b08c76906f25b730a2f40b02dee1f2c78d5e418a78727b91c714707fbe0b20e",
+      "source_image_sha256": "2ca3ca4dbc54c46a7e6ba64a9028e6f0327296b693c21848b5ebe08316ca7dc7",
+      "n_answers": 1
+    },
+    {
+      "index": 139,
+      "question_id": 62539,
+      "doc_id": 8589,
+      "ucsf_document_id": "xnyc0227",
+      "ucsf_document_page_no": "2",
+      "question": "Which is the area surveyed?",
+      "image_relpath": "data/images/docvqa_dev/qid_62539.png",
+      "image_sha256_png": "0b08c76906f25b730a2f40b02dee1f2c78d5e418a78727b91c714707fbe0b20e",
+      "source_image_sha256": "2ca3ca4dbc54c46a7e6ba64a9028e6f0327296b693c21848b5ebe08316ca7dc7",
+      "n_answers": 1
+    },
+    {
+      "index": 140,
+      "question_id": 62541,
+      "doc_id": 8589,
+      "ucsf_document_id": "xnyc0227",
+      "ucsf_document_page_no": "2",
+      "question": "What type of report is this?",
+      "image_relpath": "data/images/docvqa_dev/qid_62541.png",
+      "image_sha256_png": "0b08c76906f25b730a2f40b02dee1f2c78d5e418a78727b91c714707fbe0b20e",
+      "source_image_sha256": "2ca3ca4dbc54c46a7e6ba64a9028e6f0327296b693c21848b5ebe08316ca7dc7",
+      "n_answers": 1
+    },
+    {
+      "index": 154,
+      "question_id": 63665,
+      "doc_id": 9376,
+      "ucsf_document_id": "fmnf0227",
+      "ucsf_document_page_no": "1",
+      "question": "What type of statement is it?",
+      "image_relpath": "data/images/docvqa_dev/qid_63665.png",
+      "image_sha256_png": "602fae627eb7b4e2cc8c72c0864005d6cce90caf7ac824e87adf0e971e705f14",
+      "source_image_sha256": "871a3f930c8d36ab3f9c565c88e2f09c1d0e0c61ee210eeb0e0d967d1ccf36bc",
+      "n_answers": 3
+    },
+    {
+      "index": 155,
+      "question_id": 63666,
+      "doc_id": 9376,
+      "ucsf_document_id": "fmnf0227",
+      "ucsf_document_page_no": "1",
+      "question": "What is the actual salaries?",
+      "image_relpath": "data/images/docvqa_dev/qid_63666.png",
+      "image_sha256_png": "602fae627eb7b4e2cc8c72c0864005d6cce90caf7ac824e87adf0e971e705f14",
+      "source_image_sha256": "871a3f930c8d36ab3f9c565c88e2f09c1d0e0c61ee210eeb0e0d967d1ccf36bc",
+      "n_answers": 2
+    },
+    {
+      "index": 156,
+      "question_id": 63667,
+      "doc_id": 9376,
+      "ucsf_document_id": "fmnf0227",
+      "ucsf_document_page_no": "1",
+      "question": "What is the budgeted salaries?",
+      "image_relpath": "data/images/docvqa_dev/qid_63667.png",
+      "image_sha256_png": "602fae627eb7b4e2cc8c72c0864005d6cce90caf7ac824e87adf0e971e705f14",
+      "source_image_sha256": "871a3f930c8d36ab3f9c565c88e2f09c1d0e0c61ee210eeb0e0d967d1ccf36bc",
+      "n_answers": 2
+    },
+    {
+      "index": 157,
+      "question_id": 63668,
+      "doc_id": 9376,
+      "ucsf_document_id": "fmnf0227",
+      "ucsf_document_page_no": "1",
+      "question": "How much more is actual salaries more than budget?",
+      "image_relpath": "data/images/docvqa_dev/qid_63668.png",
+      "image_sha256_png": "602fae627eb7b4e2cc8c72c0864005d6cce90caf7ac824e87adf0e971e705f14",
+      "source_image_sha256": "871a3f930c8d36ab3f9c565c88e2f09c1d0e0c61ee210eeb0e0d967d1ccf36bc",
+      "n_answers": 2
+    }
+  ],
+  "manifest_sha256": "603c654d2783d76baf7f144f127a5392e4a7128275e00bfd19147cd240681107"
+}

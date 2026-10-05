@@ -1,0 +1,36 @@
+{
+  "missing_ucsf_rows_in_full_val": 0,
+  "n_ucsf_with_multiple_doc_ids": 178,
+  "n_doc_ids_with_multiple_ucsf": 0,
+  "yjbj0227_doc_ids": [],
+  "dev_qids_fixed_n": 208,
+  "overlap_ucsf_dev_hold": [
+    "gfhv0228",
+    "jjvg0227",
+    "jrcy0227",
+    "krcy0227",
+    "kzng0227",
+    "ynbx0223"
+  ],
+  "overlap_ucsf_smoke_hold": [],
+  "overlap_ucsf_smoke_dev": [
+    "snbx0223"
+  ],
+  "overlap_doc_dev_hold": [],
+  "overlap_page_ids_dev_hold": [],
+  "overlap_page_ids_smoke_hold": [],
+  "overlap_src_hash_dev_hold": [],
+  "overlap_rgb_hash_dev_hold": [],
+  "overlap_src_hash_smoke_hold": [],
+  "overlap_rgb_hash_smoke_hold": [],
+  "counts": {
+    "dev_ucsf": 45,
+    "hold_ucsf": 109,
+    "smoke_ucsf": 7,
+    "n_ucsf_overlap_dev_hold": 6,
+    "n_ucsf_overlap_smoke_hold": 0,
+    "n_page_overlap_dev_hold": 0,
+    "n_src_hash_overlap_dev_hold": 0,
+    "n_rgb_hash_overlap_dev_hold": 0
+  }
+}

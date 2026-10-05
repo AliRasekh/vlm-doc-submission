@@ -1,0 +1,187 @@
+{
+  "task": "docvqa_eval",
+  "manifest_name": "docvqa_dev_v1",
+  "manifest_content_sha256": "8dce2b86837c5ce52002acc802c8a45188d00bf1c45362bdf6112969a5e54744",
+  "manifest_raw_file_sha256": "240bee9197d1739567c9c9f9a76470bfbf9fdf4932d493e0c0c7b5fbe02296b1",
+  "manifest_hash_note": "canonical_content_sha256 excludes the self-hash field and uses sort_keys JSON; raw_file_sha256 is the on-disk file digest and may differ.",
+  "manifest_role": "dev",
+  "model_id": "OpenGVLab/InternVL3-1B",
+  "model_revision": "4415a3b810e636d11dfa86b0e9ba40bb00535aa8",
+  "total_unique_parameters": 938193024,
+  "dtype": "bfloat16",
+  "bf16_supported": true,
+  "adapter": "internvl3",
+  "processor_settings": {
+    "adapter": "internvl3",
+    "image_size": 448,
+    "max_num": 12,
+    "use_thumbnail": true,
+    "num_image_token_per_tile": 256,
+    "template": "internvl2_5",
+    "dynamic_image_size": true,
+    "recipe": "official_dynamic_preprocess_448_max_num12_thumbnail",
+    "architecture_notes": {
+      "architectures": [
+        "InternVLChatModel"
+      ],
+      "vision": "InternVisionModel (config.vision_config)",
+      "language": "['Qwen2ForCausalLM']",
+      "downsample_ratio": 0.5,
+      "max_dynamic_patch": 12,
+      "use_thumbnail_config": true,
+      "dynamic_image_size": true,
+      "use_flash_attn_requested": false,
+      "license_hint": "apache-2.0 (Hub tag)",
+      "hub_url": "https://huggingface.co/OpenGVLab/InternVL3-1B",
+      "training_data_disclosure": "Hub tags reference OpenGVLab/MMPR-v1.2 and base_model InternVL3-1B-Instruct; full training mixture details treated as unknown beyond public model-card disclosures."
+    },
+    "not_matched_visual_token_budget_vs_smolvlm": true
+  },
+  "seed": 0,
+  "instruction": "Answer the question using a single word or short phrase.",
+  "max_new_tokens": 64,
+  "do_sample": false,
+  "run_fingerprint": {
+    "model_id": "OpenGVLab/InternVL3-1B",
+    "model_revision": "4415a3b810e636d11dfa86b0e9ba40bb00535aa8",
+    "manifest_content_sha256": "8dce2b86837c5ce52002acc802c8a45188d00bf1c45362bdf6112969a5e54744",
+    "instruction": "Answer the question using a single word or short phrase.",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "prefer_bf16": true,
+    "seed": 0,
+    "config_path": "configs/models/internvl3_1b.yaml",
+    "config_sha256": "0eb33646a2a3822b70ea5e993ebbf985bfc54a96ce809c7469f2681f70eacad9",
+    "resolved_dtype": "bfloat16",
+    "processor_settings": {
+      "adapter": "internvl3",
+      "image_size": 448,
+      "max_num": 12,
+      "use_thumbnail": true,
+      "num_image_token_per_tile": 256,
+      "template": "internvl2_5",
+      "dynamic_image_size": true,
+      "recipe": "official_dynamic_preprocess_448_max_num12_thumbnail",
+      "architecture_notes": {
+        "architectures": [
+          "InternVLChatModel"
+        ],
+        "vision": "InternVisionModel (config.vision_config)",
+        "language": "['Qwen2ForCausalLM']",
+        "downsample_ratio": 0.5,
+        "max_dynamic_patch": 12,
+        "use_thumbnail_config": true,
+        "dynamic_image_size": true,
+        "use_flash_attn_requested": false,
+        "license_hint": "apache-2.0 (Hub tag)",
+        "hub_url": "https://huggingface.co/OpenGVLab/InternVL3-1B",
+        "training_data_disclosure": "Hub tags reference OpenGVLab/MMPR-v1.2 and base_model InternVL3-1B-Instruct; full training mixture details treated as unknown beyond public model-card disclosures."
+      },
+      "not_matched_visual_token_budget_vs_smolvlm": true
+    },
+    "software": {
+      "torch": "2.5.1+cu118",
+      "torch_cuda": "11.8",
+      "transformers": "4.48.3",
+      "python": "3.11.16"
+    },
+    "inference_source_hashes": {
+      "src/vlm_doc/adapters/internvl.py": "ca6549f38fc9e2bde9f1837e1dcd45716562d47766229780bebd60aa9f9d7127",
+      "src/vlm_doc/adapters/internvl_conv.py": "109909d9c811e2d0226b56defd89bcfca4aa0e1eb6c20f9afc35c9c57065ae96",
+      "src/vlm_doc/model.py": "2ba3e25e06534e00f81b64f2b65cf76f143c10afa08c643c714e6dfad6fc8270",
+      "scripts/run_eval.py": "a36f89f42744c4eb5d5ef160aa4165d0a05e618d1fae6b129ba4eb212b7c2a58",
+      "configs/models/internvl3_1b.yaml": "0eb33646a2a3822b70ea5e993ebbf985bfc54a96ce809c7469f2681f70eacad9",
+      "src/vlm_doc/train/lora.py": "9cf0d75f1056c6ba4cc5d135cb77f08ba2c2d41210ede21a1ef1673396e674f9",
+      "src/vlm_doc/train/collator.py": "e601663a3b2bf7e5d5215fb9c4e596e37e039e10eb31a68e36c0610bb9fb1459"
+    },
+    "adapter_dir": "checkpoints/internvl3_1b_lora_v2/update_0200",
+    "adapter_config_sha256": "e144fee08cb98694e863939609af19d765f72f6e9731425d925b6a936dcf42fb",
+    "adapter_weights_sha256": {
+      "adapter_model.safetensors": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a"
+    },
+    "train_update": 200,
+    "perturbation": null,
+    "fingerprint_schema": "inference_v2",
+    "run_fingerprint_sha256": "58a61767db005dfeab6b210f173b9b3058b945a01681a1d77c386fab1bba0612"
+  },
+  "run_metadata": {
+    "git_commit": "48422c57cafee129323eba99ff3333344c5bd1ca",
+    "git_branch": "main",
+    "git_dirty": true,
+    "hostname": "gpunode04",
+    "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+    "python_version": "3.11.16",
+    "cwd": "/homes/neumann/ali.rasekh/teth/vlm_doc",
+    "slurm_job_id": "83333",
+    "slurm_partition": "ampere",
+    "slurm_account": "ampere",
+    "slurm_qos": "normal",
+    "cuda_visible_devices": "0"
+  },
+  "hardware": {
+    "gpu_names_seen": [
+      "NVIDIA A100-PCIE-40GB"
+    ],
+    "current_gpu_name": "NVIDIA A100-PCIE-40GB",
+    "gpu_total_memory_bytes": 42436526080,
+    "mixed_hardware": false,
+    "timing_label": "single_gpu",
+    "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+  },
+  "host_memory_note": "Slurm MaxRSS is host (CPU) resident memory for the job, not GPU memory.",
+  "gpu_memory_peaks": {
+    "peak_allocated_bytes": 3660015616,
+    "peak_reserved_bytes": 7119831040,
+    "peak_allocated_gib": 3.4086551666259766,
+    "peak_reserved_gib": 6.630859375,
+    "gib_conversion": "bytes / 1024**3",
+    "scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} from the same deduplicated selected records; not nvidia-smi."
+  },
+  "latency_seconds": {
+    "n": 208,
+    "median": 0.5196573189750779,
+    "p95": 0.7433132948441195,
+    "mean": 0.5414335721781334,
+    "warmup_excluded": true,
+    "cuda_synchronized": true,
+    "source": "deduplicated_selected_records",
+    "hardware_timing_label": "single_gpu"
+  },
+  "generation_diagnostics": {
+    "n_with_length": 208,
+    "median_generated_token_length": 6.0,
+    "n_generation_cap_reached": 0,
+    "max_new_tokens": 64
+  },
+  "software": {
+    "torch": "2.5.1+cu118",
+    "torch_cuda": "11.8",
+    "transformers": "4.48.3",
+    "python": "3.11.16"
+  },
+  "prediction_whitespace_note": "prediction_raw is saved before strip(); prediction is stripped. Older Phase-2A records only stored stripped decoded outputs.",
+  "note": "Development/smoke scores are not full-benchmark results and must not be presented as unbiased final DocVQA performance.",
+  "scoring_provenance": {
+    "primary_metric": "anls_normalized_strict_v2",
+    "answer_sidecar_sha256": "894b54f8c9da99499fa261660a084598d8fcadde67358c060354da3370d91a8f",
+    "scorer_source_sha256": "63fb8aaee686c6dd4cce4f7e4d40dfb2a6ed71a660b6598e00176f672691155f",
+    "scoring_schema": "scoring_v2"
+  },
+  "scores": {
+    "n_requested": 208,
+    "n_records": 208,
+    "n_completed_ok": 208,
+    "n_failed": 0,
+    "n_missing": 0,
+    "failure_rate_requested": 0.0,
+    "primary_metric": "anls_normalized_strict_v2",
+    "mean_anls_requested": 0.8290014767553905,
+    "mean_exact_match_requested": 0.7740384615384616,
+    "mean_anls_normalized_inclusive_v1_requested": 0.8338091690630828,
+    "mean_anls_vlmevalkit_requested": 0.8338091690630828,
+    "mean_anls_completed_ok_only": 0.8290014767553905,
+    "mean_exact_match_completed_ok_only": 0.7740384615384616,
+    "anls_definition": "anls_normalized_strict_v2: lowercase+strip+collapse_ws; NL=edit/max(len_norm); score=1-NL if NL<0.5 else 0; max over nonempty refs; failures/missing count as 0 in requested mean",
+    "scorer_source_sha256": "63fb8aaee686c6dd4cce4f7e4d40dfb2a6ed71a660b6598e00176f672691155f"
+  }
+}

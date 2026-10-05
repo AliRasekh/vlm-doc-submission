@@ -1,0 +1,13 @@
+{
+  "task": "phase04_evaluation_revision",
+  "evaluation_git_sha": "a9b0695ca05a593bdf680529bd673d28b0106e19",
+  "frozen_protocol_path": "docs/evaluation/final_protocol.md",
+  "preflight_path": "results/phase04_preflight.json",
+  "adapter_v2_u200_sha256": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a",
+  "deployment_candidate": "OpenGVLab/InternVL3-1B@4415a3b810e636d11dfa86b0e9ba40bb00535aa8 step0",
+  "adaptation_comparison": "checkpoints/internvl3_1b_lora_v2/update_0200",
+  "holdout_manifest": "data/manifests/docvqa_holdout_v2.json",
+  "holdout_n": 504,
+  "recorded_utc": "2026-10-03T07:34:40Z",
+  "note": "This SHA is the evaluation revision committed before holdout inference began."
+}

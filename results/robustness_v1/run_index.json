@@ -1,0 +1,81 @@
+{
+  "task": "robustness_v1_run_index",
+  "manifest": "data/manifests/docvqa_dev_robustness_v1.json",
+  "manifest_content_sha256": "603c654d2783d76baf7f144f127a5392e4a7128275e00bfd19147cd240681107",
+  "tile_assert_failures": [],
+  "runs": [
+    {
+      "model_tag": "base",
+      "perturbation_id": "clean",
+      "jsonl": "results/robustness_v1/internvl3_1b_base__clean.jsonl",
+      "summary": "results/robustness_v1/internvl3_1b_base__clean_summary.json",
+      "anls": 0.7670781893004114,
+      "em": 0.7037037037037037,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "base",
+      "perturbation_id": "half_detail",
+      "jsonl": "results/robustness_v1/internvl3_1b_base__half_detail.jsonl",
+      "summary": "results/robustness_v1/internvl3_1b_base__half_detail_summary.json",
+      "anls": 0.7691358024691358,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "base",
+      "perturbation_id": "jpeg_q40",
+      "jsonl": "results/robustness_v1/internvl3_1b_base__jpeg_q40.jsonl",
+      "summary": "results/robustness_v1/internvl3_1b_base__jpeg_q40_summary.json",
+      "anls": 0.7292181069958845,
+      "em": 0.6666666666666666,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "lora100",
+      "perturbation_id": "clean",
+      "jsonl": "results/robustness_v1/internvl3_1b_lora_u100__clean.jsonl",
+      "summary": "results/robustness_v1/internvl3_1b_lora_u100__clean_summary.json",
+      "anls": 0.7534979423868312,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "lora100",
+      "perturbation_id": "half_detail",
+      "jsonl": "results/robustness_v1/internvl3_1b_lora_u100__half_detail.jsonl",
+      "summary": "results/robustness_v1/internvl3_1b_lora_u100__half_detail_summary.json",
+      "anls": 0.7699905033238366,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "lora100",
+      "perturbation_id": "jpeg_q40",
+      "jsonl": "results/robustness_v1/internvl3_1b_lora_u100__jpeg_q40.jsonl",
+      "summary": "results/robustness_v1/internvl3_1b_lora_u100__jpeg_q40_summary.json",
+      "anls": 0.7144032921810698,
+      "em": 0.6666666666666666,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    }
+  ],
+  "timestamp_unix": 1790933631.386082
+}

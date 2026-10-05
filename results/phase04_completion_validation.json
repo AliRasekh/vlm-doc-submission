@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "failures": [],
+  "gpu_names": [
+    "NVIDIA A100-PCIE-40GB"
+  ],
+  "eval_source_hashes": [
+    [
+      "scripts/run_eval.py",
+      "a36f89f42744c4eb5d5ef160aa4165d0a05e618d1fae6b129ba4eb212b7c2a58"
+    ]
+  ],
+  "paired": {
+    "improved": 13,
+    "regressed": 11,
+    "tied": 480,
+    "mean_delta": 0.006639031218947001
+  },
+  "adapter_disk_sha256": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a",
+  "evaluation_git_sha": "a9b0695ca05a593bdf680529bd673d28b0106e19"
+}

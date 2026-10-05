@@ -1,0 +1,36 @@
+{
+  "task": "holdout_ucsf_cluster_bootstrap_anls_diff",
+  "primary_metric": "anls_normalized_strict_v2",
+  "n_questions": 504,
+  "n_groups": 109,
+  "replicates": 2000,
+  "seed": 42,
+  "point_mean_anls_base": 0.792698898142519,
+  "point_mean_anls_adapted": 0.7993379293614661,
+  "point_diff_adapted_minus_base": 0.006639031218947045,
+  "bootstrap_diff_mean": 0.0067393164921622966,
+  "bootstrap_diff_p2_5": -0.005303987917364911,
+  "bootstrap_diff_p97_5": 0.01904505957860881,
+  "interval": "percentile_95",
+  "method": "Resample complete UCSF groups with replacement; retain all questions within each sampled group including multiplicity; question-weighted means; paired difference adapted-base.",
+  "interpretation": "Interval describes uncertainty within this sampled evaluation design, not all sources of uncertainty.",
+  "multiplicity_self_test": {
+    "ok": true,
+    "drawn": [
+      "G1",
+      "G1"
+    ],
+    "questions_with_multiplicity": [
+      1,
+      2,
+      1,
+      2
+    ],
+    "diff_with_multiplicity": -1.0,
+    "questions_unique_only_incorrect": [
+      1,
+      2
+    ],
+    "note": "Duplicated G1 must yield four question contributions, not two."
+  }
+}

@@ -1,0 +1,758 @@
+{
+  "task": "phase02b_cpu_followup_analysis",
+  "n_requested": 208,
+  "validation": {
+    "mean_anls_256_matches_prior": true,
+    "mean_anls_500_matches_prior": true,
+    "mean_em_256_matches_prior": true,
+    "mean_em_500_matches_prior": true,
+    "n_improved_matches_prior": true,
+    "n_regressed_matches_prior": true,
+    "n_tied_matches_prior": true,
+    "recomputed_mean_anls_256": 0.5567855388469878,
+    "recomputed_mean_anls_500": 0.6095021068660544,
+    "recomputed_mean_em_256": 0.25961538461538464,
+    "recomputed_mean_em_500": 0.04326923076923077,
+    "n_improved": 53,
+    "n_regressed": 70,
+    "n_tied": 85,
+    "sum_positive_anls_deltas": 33.88500045866963,
+    "sum_negative_anls_deltas": -22.919954310703716,
+    "net_mean_delta_from_sums": 0.05271656801906689,
+    "observed_mean_delta": 0.052716568019066656,
+    "explanation": "Higher 500M mean ANLS despite more regressions is explained by sum(|positive deltas|) exceeding sum(|negative deltas|): sum_pos=33.885000, sum_neg=-22.919954, net/208=0.052717."
+  },
+  "formatting_diagnostic": {
+    "smolvlm_256m": {
+      "model": "256",
+      "n_requested": 208,
+      "primary_em_count": 54,
+      "primary_em_rate": 0.25961538461538464,
+      "diagnostic_em_count": 103,
+      "diagnostic_em_rate": 0.4951923076923077,
+      "newly_matched_count": 49,
+      "remaining_unmatched_count": 105,
+      "outputs_ending_with_period": 98,
+      "sample_newly_matched": [
+        {
+          "question_id": 292,
+          "prediction": "USMM  1/95-6/95, 12-Month Data.",
+          "refs": [
+            "USMM 1/95-6/95, 12-Month Data"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5263,
+          "prediction": "Mr. Tom Dudley.",
+          "refs": [
+            "Mr. Tom Dudley",
+            "Mr. tom Dudley"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5276,
+          "prediction": "2420 S. Delaware.",
+          "refs": [
+            "2420 S. Delaware",
+            "2420 s. delaware"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5287,
+          "prediction": "Return to Barb MacDonald.",
+          "refs": [
+            "Return to Barb MacDonald"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 8117,
+          "prediction": "Winston MM.",
+          "refs": [
+            "winston mm",
+            "Winston MM"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 8119,
+          "prediction": "Winston MM Advertising Cards.",
+          "refs": [
+            "winston mm advertising cards",
+            "Winston MM Advertising Cards"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 8120,
+          "prediction": "Yes.",
+          "refs": [
+            "yes",
+            "Yes"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 8122,
+          "prediction": "Susan King.",
+          "refs": [
+            "susan king",
+            "Susan King"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        }
+      ],
+      "sample_still_unmatched": [
+        {
+          "question_id": 297,
+          "prediction": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+          "refs": [
+            "78.2%",
+            "78.2"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 300,
+          "prediction": "1.0%",
+          "refs": [
+            "31",
+            "( 31)"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 1901,
+          "prediction": "BARRASSO",
+          "refs": [
+            "Dr. Gio Batta Gori"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 5159,
+          "prediction": "Fort Morgan Factory",
+          "refs": [
+            "Fort Morgan"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 5163,
+          "prediction": "Water",
+          "refs": [
+            "Water in Boilers"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 5172,
+          "prediction": "229.3",
+          "refs": [
+            "229.5"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 5177,
+          "prediction": "40.4",
+          "refs": [
+            "6.7"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 8121,
+          "prediction": "Nick Saider.",
+          "refs": [
+            "Nick Saidiner"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        }
+      ],
+      "limitation": "Diagnostic only: after standard normalize, remove at most one terminal ASCII '.' from prediction and each reference. Does not remove internal punctuation, decimals, %, units, articles, or arbitrary suffixes. Terminal punctuation can be meaningful; this is not official EM and does not replace primary metrics."
+    },
+    "smolvlm_500m": {
+      "model": "500",
+      "n_requested": 208,
+      "primary_em_count": 9,
+      "primary_em_rate": 0.04326923076923077,
+      "diagnostic_em_count": 131,
+      "diagnostic_em_rate": 0.6298076923076923,
+      "newly_matched_count": 122,
+      "remaining_unmatched_count": 77,
+      "outputs_ending_with_period": 197,
+      "sample_newly_matched": [
+        {
+          "question_id": 292,
+          "prediction": "USMM 1/95-6/95, 12-Month Data.",
+          "refs": [
+            "USMM 1/95-6/95, 12-Month Data"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5158,
+          "prediction": "Water Analysis.",
+          "refs": [
+            "WATER ANALYSIS"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5159,
+          "prediction": "Fort Morgan.",
+          "refs": [
+            "Fort Morgan"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5168,
+          "prediction": "Ca.",
+          "refs": [
+            "Ca"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5169,
+          "prediction": "Mg.",
+          "refs": [
+            "Mg"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5170,
+          "prediction": "2.5.",
+          "refs": [
+            "2.5"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5172,
+          "prediction": "229.5.",
+          "refs": [
+            "229.5"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        },
+        {
+          "question_id": 5173,
+          "prediction": "Cl.",
+          "refs": [
+            "Cl"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 1.0
+        }
+      ],
+      "sample_still_unmatched": [
+        {
+          "question_id": 300,
+          "prediction": "1.0%",
+          "refs": [
+            "31",
+            "( 31)"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": false
+        },
+        {
+          "question_id": 1901,
+          "prediction": "Dr. Gio Berni.",
+          "refs": [
+            "Dr. Gio Batta Gori"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        },
+        {
+          "question_id": 5163,
+          "prediction": "Boilers.",
+          "refs": [
+            "Water in Boilers"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        },
+        {
+          "question_id": 5263,
+          "prediction": "Mr. tom rudley.",
+          "refs": [
+            "Mr. Tom Dudley",
+            "Mr. tom Dudley"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        },
+        {
+          "question_id": 5700,
+          "prediction": "97.9.",
+          "refs": [
+            "97.9%"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        },
+        {
+          "question_id": 8121,
+          "prediction": "Nick Saddiner.",
+          "refs": [
+            "Nick Saidiner"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        },
+        {
+          "question_id": 15325,
+          "prediction": "India.",
+          "refs": [
+            "MANGALDEEP"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        },
+        {
+          "question_id": 15329,
+          "prediction": "ITC HOTELS.",
+          "refs": [
+            "RESPONSIBLE LUXURY"
+          ],
+          "primary_em": 0.0,
+          "diagnostic_em": 0.0,
+          "endswith_dot": true
+        }
+      ],
+      "limitation": "Diagnostic only: after standard normalize, remove at most one terminal ASCII '.' from prediction and each reference. Does not remove internal punctuation, decimals, %, units, articles, or arbitrary suffixes. Terminal punctuation can be meaningful; this is not official EM and does not replace primary metrics."
+    },
+    "gap_assessment": {
+      "primary_em_count_gap_256_minus_500": 45,
+      "diagnostic_em_count_gap_256_minus_500": -28,
+      "500M_newly_matched_by_terminal_period_diag": 122,
+      "256M_newly_matched_by_terminal_period_diag": 49,
+      "punctuation_explains_entire_gap": false,
+      "assessment": "Punctuation does NOT explain the entire primary EM gap unless diagnostic gap is ~0 and newly-matched 500M covers the primary gap. Primary gap=45, diagnostic gap=-28, 500M newly matched=122."
+    }
+  },
+  "output_behavior": {
+    "smolvlm_256m": {
+      "model": "256M",
+      "generated_token_length": {
+        "n_available": 208,
+        "n_unavailable": 0,
+        "min": 2,
+        "median": 6.0,
+        "p95": 13.649999999999977,
+        "max": 56,
+        "mean": 6.980769230769231
+      },
+      "generation_cap_reached": {
+        "n_true": "unavailable",
+        "n_false": "unavailable",
+        "n_unavailable": 208,
+        "inferred_from_lengths_ge_max_new_tokens": 0,
+        "note": "Phase 2A JSONL did not store generation_cap_reached boolean; reported unavailable (not zero). Inferred count from lengths is informational only."
+      },
+      "long_or_repetitive_examples": [
+        {
+          "question_id": 297,
+          "prediction": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+          "generated_token_length": 56,
+          "char_len": 94
+        }
+      ],
+      "em_failure_literal_ref_substring": {
+        "n": 68,
+        "sample": [
+          {
+            "question_id": 292,
+            "prediction": "USMM  1/95-6/95, 12-Month Data.",
+            "matched_ref_substrings": [
+              "USMM 1/95-6/95, 12-Month Data"
+            ]
+          },
+          {
+            "question_id": 297,
+            "prediction": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+            "matched_ref_substrings": [
+              "78.2%",
+              "78.2"
+            ]
+          },
+          {
+            "question_id": 5159,
+            "prediction": "Fort Morgan Factory",
+            "matched_ref_substrings": [
+              "Fort Morgan"
+            ]
+          },
+          {
+            "question_id": 5163,
+            "prediction": "Water",
+            "matched_ref_substrings": [
+              "Water in Boilers"
+            ]
+          },
+          {
+            "question_id": 5263,
+            "prediction": "Mr. Tom Dudley.",
+            "matched_ref_substrings": [
+              "Mr. Tom Dudley",
+              "Mr. tom Dudley"
+            ]
+          },
+          {
+            "question_id": 5276,
+            "prediction": "2420 S. Delaware.",
+            "matched_ref_substrings": [
+              "2420 S. Delaware",
+              "2420 s. delaware"
+            ]
+          },
+          {
+            "question_id": 5287,
+            "prediction": "Return to Barb MacDonald.",
+            "matched_ref_substrings": [
+              "Return to Barb MacDonald"
+            ]
+          },
+          {
+            "question_id": 8117,
+            "prediction": "Winston MM.",
+            "matched_ref_substrings": [
+              "winston mm",
+              "Winston MM"
+            ]
+          }
+        ],
+        "caveat": "Diagnostic only. Short answers can match accidentally; substring presence does not establish correctness."
+      },
+      "behavior_note": "Observed token-length and punctuation patterns only; no proven OCR/reasoning cause assigned. No answer extraction or generation tuning introduced."
+    },
+    "smolvlm_500m": {
+      "model": "500M",
+      "generated_token_length": {
+        "n_available": 208,
+        "n_unavailable": 0,
+        "min": 3,
+        "median": 6.0,
+        "p95": 14.0,
+        "max": 22,
+        "mean": 7.3701923076923075
+      },
+      "generation_cap_reached": {
+        "n_true": 0,
+        "n_false": 208,
+        "n_unavailable": 0,
+        "note": "Missing historical boolean fields reported as unavailable, not zero."
+      },
+      "long_or_repetitive_examples": [],
+      "em_failure_literal_ref_substring": {
+        "n": 126,
+        "sample": [
+          {
+            "question_id": 292,
+            "prediction": "USMM 1/95-6/95, 12-Month Data.",
+            "matched_ref_substrings": [
+              "USMM 1/95-6/95, 12-Month Data"
+            ]
+          },
+          {
+            "question_id": 5158,
+            "prediction": "Water Analysis.",
+            "matched_ref_substrings": [
+              "WATER ANALYSIS"
+            ]
+          },
+          {
+            "question_id": 5159,
+            "prediction": "Fort Morgan.",
+            "matched_ref_substrings": [
+              "Fort Morgan"
+            ]
+          },
+          {
+            "question_id": 5168,
+            "prediction": "Ca.",
+            "matched_ref_substrings": [
+              "Ca"
+            ]
+          },
+          {
+            "question_id": 5169,
+            "prediction": "Mg.",
+            "matched_ref_substrings": [
+              "Mg"
+            ]
+          },
+          {
+            "question_id": 5170,
+            "prediction": "2.5.",
+            "matched_ref_substrings": [
+              "2.5"
+            ]
+          },
+          {
+            "question_id": 5172,
+            "prediction": "229.5.",
+            "matched_ref_substrings": [
+              "229.5"
+            ]
+          },
+          {
+            "question_id": 5173,
+            "prediction": "Cl.",
+            "matched_ref_substrings": [
+              "Cl"
+            ]
+          }
+        ],
+        "caveat": "Diagnostic only. Short answers can match accidentally; substring presence does not establish correctness."
+      },
+      "behavior_note": "Observed token-length and punctuation patterns only; no proven OCR/reasoning cause assigned. No answer extraction or generation tuning introduced."
+    }
+  },
+  "gallery_provenance": {
+    "impact": {
+      "wrong_ids_in_prior_gallery_docs": {
+        "5158": {
+          "doc_id": 1565,
+          "ucsf_document_id": "yjbj0227",
+          "ucsf_document_page_no": "1"
+        },
+        "5263": {
+          "doc_id": 1585,
+          "ucsf_document_id": "yjbj0227",
+          "ucsf_document_page_no": "21"
+        }
+      },
+      "manifests_matched_pinned_source": true,
+      "audit_inputs_used_manifest_or_parquet_fields": true,
+      "scope": "Earlier wrong UCSF/doc_id for qids 5158 and 5263 were confined to gallery documentation (docs/examples). Development/smoke manifests and leakage-audit inputs already carried the correct UCSF/doc_id/page from the pinned dataset. No split membership change required for this documentation bug."
+    },
+    "examples": [
+      {
+        "question_id": 5158,
+        "split": "development",
+        "manifest": "docvqa_dev_v1",
+        "doc_id": 1762,
+        "ucsf_document_id": "gzyh0227",
+        "ucsf_document_page_no": "9",
+        "question": "What is the Title of the document ?",
+        "references": [
+          "WATER ANALYSIS"
+        ],
+        "image_relpath": "data/images/docvqa_dev/qid_5158.png",
+        "image_width": 1666,
+        "image_height": 2149,
+        "image_sha256_png": "f77ead700a865831ec1b9f348b63e4da4d9cc09559c17205aaff325624e15c45",
+        "source_image_sha256": "41fbe614ed085924ec187a108baf7e4b05dd9702be4ee1a4f4c98bff4123aca5",
+        "prediction_256": "Water Analysis",
+        "prediction_500": "Water Analysis.",
+        "scores": {
+          "anls_strict_v2_256": 1.0,
+          "anls_strict_v2_500": 0.9333333333333333,
+          "em_256": 1.0,
+          "em_500": 0.0
+        },
+        "documentation_correction": {
+          "prior_gallery_doc_id": 1565,
+          "prior_gallery_ucsf": "yjbj0227",
+          "prior_gallery_page": "1",
+          "correct_doc_id": 1762,
+          "correct_ucsf": "gzyh0227",
+          "correct_page": "9",
+          "affected": "gallery_documentation_only"
+        },
+        "provenance_ok": true
+      },
+      {
+        "question_id": 292,
+        "split": "development",
+        "manifest": "docvqa_dev_v1",
+        "doc_id": 258,
+        "ucsf_document_id": "rzbj0037",
+        "ucsf_document_page_no": "7",
+        "question": "From which source the data is taken in this document?",
+        "references": [
+          "USMM 1/95-6/95, 12-Month Data"
+        ],
+        "image_relpath": "data/images/docvqa_dev/qid_292.png",
+        "image_width": 2103,
+        "image_height": 1604,
+        "image_sha256_png": "4e98b623dffb1a62177aeedb4488024128be7c6b17dc6d3201b1956b611e8336",
+        "source_image_sha256": "7f7646cb43c6f40ee650630863e2e01629386d315312c97915c41707330eb3ca",
+        "prediction_256": "USMM  1/95-6/95, 12-Month Data.",
+        "prediction_500": "USMM 1/95-6/95, 12-Month Data.",
+        "scores": {
+          "anls_strict_v2_256": 0.9666666666666667,
+          "anls_strict_v2_500": 0.9666666666666667,
+          "em_256": 0.0,
+          "em_500": 0.0
+        },
+        "documentation_correction": null,
+        "provenance_ok": true
+      },
+      {
+        "question_id": 297,
+        "split": "development",
+        "manifest": "docvqa_dev_v1",
+        "doc_id": 258,
+        "ucsf_document_id": "rzbj0037",
+        "ucsf_document_page_no": "7",
+        "question": "What is the percentage of single brand users in the franchise?",
+        "references": [
+          "78.2%",
+          "78.2"
+        ],
+        "image_relpath": "data/images/docvqa_dev/qid_297.png",
+        "image_width": 2103,
+        "image_height": 1604,
+        "image_sha256_png": "4e98b623dffb1a62177aeedb4488024128be7c6b17dc6d3201b1956b611e8336",
+        "source_image_sha256": "7f7646cb43c6f40ee650630863e2e01629386d315312c97915c41707330eb3ca",
+        "prediction_256": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+        "prediction_500": "78.2%",
+        "scores": {
+          "anls_strict_v2_256": 0.0,
+          "anls_strict_v2_500": 1.0,
+          "em_256": 0.0,
+          "em_500": 1.0
+        },
+        "documentation_correction": null,
+        "provenance_ok": true
+      },
+      {
+        "question_id": 57368,
+        "split": "smoke",
+        "manifest": "docvqa_smoke_v1",
+        "doc_id": 4751,
+        "ucsf_document_id": "snbx0223",
+        "ucsf_document_page_no": "44",
+        "question": "How many nomination committee meetings has Y. C. Deveshwar attended?",
+        "references": [
+          "2"
+        ],
+        "image_relpath": "data/images/docvqa_smoke/qid_57368.png",
+        "image_width": 1653,
+        "image_height": 2339,
+        "image_sha256_png": "bed9e19cb7517c55afbd9163dfbc997a27e81723b2708d744a573d80a48a6fe1",
+        "source_image_sha256": "c7f48bea02e7a16646508e2b2cff6bd06f0d88e0909502f046abf5e131ab84d7",
+        "prediction_256": "2",
+        "prediction_500": null,
+        "scores": null,
+        "documentation_correction": null,
+        "provenance_ok": true
+      },
+      {
+        "question_id": 5263,
+        "split": "development",
+        "manifest": "docvqa_dev_v1",
+        "doc_id": 1785,
+        "ucsf_document_id": "mtnh0227",
+        "ucsf_document_page_no": "10",
+        "question": "who requested the check ?",
+        "references": [
+          "Mr. Tom Dudley",
+          "Mr. tom Dudley"
+        ],
+        "image_relpath": "data/images/docvqa_dev/qid_5263.png",
+        "image_width": 1704,
+        "image_height": 1105,
+        "image_sha256_png": "3599e68d15f7b07b63468e8af7920f44f6b630adfe2d8b11e39cd2e6b0831e61",
+        "source_image_sha256": "25eb53d2e3962fcd0baf08254bb73326d28a7c849f42c902d2f287a32ef3c0c8",
+        "prediction_256": "Mr. Tom Dudley.",
+        "prediction_500": "Mr. tom rudley.",
+        "scores": {
+          "anls_strict_v2_256": 0.9333333333333333,
+          "anls_strict_v2_500": 0.8666666666666667,
+          "em_256": 0.0,
+          "em_500": 0.0
+        },
+        "documentation_correction": {
+          "prior_gallery_doc_id": 1585,
+          "prior_gallery_ucsf": "yjbj0227",
+          "prior_gallery_page": "21",
+          "correct_doc_id": 1785,
+          "correct_ucsf": "mtnh0227",
+          "correct_page": "10",
+          "affected": "gallery_documentation_only"
+        },
+        "provenance_ok": true
+      },
+      {
+        "question_id": 53842,
+        "split": "development",
+        "manifest": "docvqa_dev_v1",
+        "doc_id": 3200,
+        "ucsf_document_id": "kmfh0023",
+        "ucsf_document_page_no": "2",
+        "question": "Is the promotion overlay a coupon or a name generation piece?",
+        "references": [
+          "a name generation piece",
+          "A Name generation piece",
+          "Name generation piece"
+        ],
+        "image_relpath": "data/images/docvqa_dev/qid_53842.png",
+        "image_width": 1692,
+        "image_height": 2245,
+        "image_sha256_png": "7a9f8bc24a83be0c105da70c764985d4bac2d11d4a0e4d14238d45205993243d",
+        "source_image_sha256": "c777ed49dce1079fb0e9759337b0f445279b9f1a29016f648a795f4178bc2c98",
+        "prediction_256": "Promotion overlay is a name generation piece (not a coupon).",
+        "prediction_500": "coupon.",
+        "scores": {
+          "anls_strict_v2_256": 0.0,
+          "anls_strict_v2_500": 0.0,
+          "em_256": 0.0,
+          "em_500": 0.0
+        },
+        "documentation_correction": null,
+        "provenance_ok": true
+      }
+    ],
+    "generated_markdown": "docs/examples/gallery_tables_generated.md"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "task": "phase03c_v1_vs_v2_dev_comparison",
+  "note": "Bug-correction comparison; not a controlled proof that duplicated termination alone explains every difference.",
+  "step0_anls": 0.8324316540342522,
+  "v1": {
+    "u100": {
+      "anls": 0.8237616073768017,
+      "em": 0.7692307692307693,
+      "label": "step100"
+    },
+    "u200": {
+      "anls": 0.8194832172371311,
+      "em": 0.7644230769230769,
+      "label": "step200"
+    },
+    "selected": 0,
+    "best_trained": 100
+  },
+  "v2": {
+    "u100": {
+      "anls": 0.8262885646674785,
+      "em": 0.7692307692307693,
+      "label": "step100"
+    },
+    "u200": {
+      "anls": 0.8290014767553907,
+      "em": 0.7740384615384616,
+      "label": "step200"
+    },
+    "selected": 0,
+    "best_trained": 200,
+    "fine_tuning_improved_selection": false
+  }
+}

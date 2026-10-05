@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220">
+  <rect width="900" height="220" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#111">Data to training to selection to evaluation</text>
+  <!-- boxes -->
+  <rect x="20" y="60" width="150" height="90" rx="6" fill="#e8f1fb" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="95" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#111">Frozen splits</text>
+  <text x="95" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">dev / train / holdout</text>
+  <text x="95" y="132" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">UCSF grouping</text>
+
+  <rect x="200" y="60" width="150" height="90" rx="6" fill="#eef7ee" stroke="#2f6f3e" stroke-width="1.5"/>
+  <text x="275" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#111">LoRA v2 train</text>
+  <text x="275" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">2000 prep / 1600 seen</text>
+  <text x="275" y="132" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">200 updates</text>
+
+  <rect x="380" y="60" width="160" height="90" rx="6" fill="#fff7e8" stroke="#a66a00" stroke-width="1.5"/>
+  <text x="460" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#111">Dev selection</text>
+  <text x="460" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">deploy: step 0</text>
+  <text x="460" y="132" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">compare: v2 u200</text>
+
+  <rect x="570" y="60" width="150" height="90" rx="6" fill="#f6e8f8" stroke="#6b3a7a" stroke-width="1.5"/>
+  <text x="645" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#111">Robustness</text>
+  <text x="645" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">dev subset n=54</text>
+  <text x="645" y="132" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">clean / half / jpeg</text>
+
+  <rect x="750" y="60" width="130" height="90" rx="6" fill="#fdecea" stroke="#8b2e2e" stroke-width="1.5"/>
+  <text x="815" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#111">Holdout</text>
+  <text x="815" y="115" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">n=504 once</text>
+  <text x="815" y="132" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">4 systems</text>
+
+  <line x1="170" y1="105" x2="200" y2="105" stroke="#444" stroke-width="2"/>
+  <line x1="350" y1="105" x2="380" y2="105" stroke="#444" stroke-width="2"/>
+  <line x1="540" y1="105" x2="570" y2="105" stroke="#444" stroke-width="2"/>
+  <line x1="720" y1="105" x2="750" y2="105" stroke="#444" stroke-width="2"/>
+</svg>

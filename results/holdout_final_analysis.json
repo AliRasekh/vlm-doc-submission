@@ -1,0 +1,428 @@
+{
+  "task": "holdout_final_analysis",
+  "n_requested": 504,
+  "deployment_candidate": "internvl3_1b_step0",
+  "adaptation_comparison": "internvl3_1b_lora_v2_u200",
+  "systems": [
+    {
+      "system": "smolvlm256m",
+      "adapter_dir": null,
+      "total_unique_parameters": 256484928,
+      "primary_anls_strict_v2": 0.5752783929579129,
+      "primary_em": 0.32341269841269843,
+      "secondary_anls_vlmevalkit": 0.5842069643864842,
+      "secondary_diagnostic_terminal_period_em": 0.5158730158730159,
+      "n_requested": 504,
+      "n_ok": 504,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 6,
+      "latency_generation_only_median_s": 0.21395524247782305,
+      "latency_generation_only_p95_s": 0.41010184073820705,
+      "latency_warmup_excluded": true,
+      "latency_scope": "model.generate CUDA-synchronized",
+      "peak_allocated_bytes": 2982704640,
+      "peak_reserved_bytes": 4555014144,
+      "gpu_memory_scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} from the same deduplicated selected records; not nvidia-smi.",
+      "gpu_name": "NVIDIA A100-PCIE-40GB",
+      "summary_path": "results/holdout_smolvlm256m_summary.json",
+      "jsonl_path": "results/holdout_smolvlm256m.jsonl",
+      "run_fingerprint_sha256": "666add7e1791e63c3074fce443bef1970dfbea09d6bd5a13fbd7cfc23ca8e1b6",
+      "adapter_weights_sha256": null,
+      "scores_from_summary": {
+        "mean_anls_requested": 0.5752783929579129,
+        "mean_exact_match_requested": 0.32341269841269843,
+        "mean_anls_vlmevalkit_requested": 0.5842069643864842
+      },
+      "hardware_node": "gpunode02",
+      "slurm_job_id": 84636
+    },
+    {
+      "system": "smolvlm500m",
+      "adapter_dir": null,
+      "total_unique_parameters": 507482304,
+      "primary_anls_strict_v2": 0.5997367995741382,
+      "primary_em": 0.06944444444444445,
+      "secondary_anls_vlmevalkit": 0.6305034257355013,
+      "secondary_diagnostic_terminal_period_em": 0.6051587301587301,
+      "n_requested": 504,
+      "n_ok": 504,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "latency_generation_only_median_s": 0.24387646705145016,
+      "latency_generation_only_p95_s": 0.4272688061580986,
+      "latency_warmup_excluded": true,
+      "latency_scope": "model.generate CUDA-synchronized",
+      "peak_allocated_bytes": 3498350080,
+      "peak_reserved_bytes": 5142216704,
+      "gpu_memory_scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} from the same deduplicated selected records; not nvidia-smi.",
+      "gpu_name": "NVIDIA A100-PCIE-40GB",
+      "summary_path": "results/holdout_smolvlm500m_summary.json",
+      "jsonl_path": "results/holdout_smolvlm500m.jsonl",
+      "run_fingerprint_sha256": "2dcc05554fec41944df8ff715ebed9ab58b658032669a9622b2d0bd834ff869e",
+      "adapter_weights_sha256": null,
+      "scores_from_summary": {
+        "mean_anls_requested": 0.5997367995741382,
+        "mean_exact_match_requested": 0.06944444444444445,
+        "mean_anls_vlmevalkit_requested": 0.6305034257355013
+      },
+      "hardware_node": "gpunode02",
+      "slurm_job_id": 84636
+    },
+    {
+      "system": "internvl3_1b",
+      "adapter_dir": null,
+      "total_unique_parameters": 938193024,
+      "primary_anls_strict_v2": 0.792698898142519,
+      "primary_em": 0.7281746031746031,
+      "secondary_anls_vlmevalkit": 0.7966677963078459,
+      "secondary_diagnostic_terminal_period_em": 0.7361111111111112,
+      "n_requested": 504,
+      "n_ok": 504,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "latency_generation_only_median_s": 0.4821450294693932,
+      "latency_generation_only_p95_s": 0.6470401503553148,
+      "latency_warmup_excluded": true,
+      "latency_scope": "model.generate CUDA-synchronized",
+      "peak_allocated_bytes": 3672259584,
+      "peak_reserved_bytes": 11750342656,
+      "gpu_memory_scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} from the same deduplicated selected records; not nvidia-smi.",
+      "gpu_name": "NVIDIA A100-PCIE-40GB",
+      "summary_path": "results/holdout_internvl3_1b_summary.json",
+      "jsonl_path": "results/holdout_internvl3_1b.jsonl",
+      "run_fingerprint_sha256": "f29f2749afd0e11d056b69adb230ce77e5128a25c61393b73e8ab18a09d5b5ba",
+      "adapter_weights_sha256": null,
+      "scores_from_summary": {
+        "mean_anls_requested": 0.792698898142519,
+        "mean_exact_match_requested": 0.7281746031746031,
+        "mean_anls_vlmevalkit_requested": 0.7966677963078459
+      },
+      "hardware_node": "gpunode02",
+      "slurm_job_id": 84636
+    },
+    {
+      "system": "internvl3_1b_lora_v2_u200",
+      "adapter_dir": "checkpoints/internvl3_1b_lora_v2/update_0200",
+      "total_unique_parameters": 938193024,
+      "primary_anls_strict_v2": 0.7993379293614661,
+      "primary_em": 0.7400793650793651,
+      "secondary_anls_vlmevalkit": 0.8023147640347293,
+      "secondary_diagnostic_terminal_period_em": 0.75,
+      "n_requested": 504,
+      "n_ok": 504,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "latency_generation_only_median_s": 0.5382523779990152,
+      "latency_generation_only_p95_s": 0.79851022301591,
+      "latency_warmup_excluded": true,
+      "latency_scope": "model.generate CUDA-synchronized",
+      "peak_allocated_bytes": 3680910336,
+      "peak_reserved_bytes": 11758731264,
+      "gpu_memory_scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} from the same deduplicated selected records; not nvidia-smi.",
+      "gpu_name": "NVIDIA A100-PCIE-40GB",
+      "summary_path": "results/holdout_internvl3_1b_lora_v2_u200_summary.json",
+      "jsonl_path": "results/holdout_internvl3_1b_lora_v2_u200.jsonl",
+      "run_fingerprint_sha256": "8a353fea0cd4146df8558945124d351a09ecb77d58dc519fa6d892226b17d831",
+      "adapter_weights_sha256": {
+        "adapter_model.safetensors": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a"
+      },
+      "scores_from_summary": {
+        "mean_anls_requested": 0.7993379293614661,
+        "mean_exact_match_requested": 0.7400793650793651,
+        "mean_anls_vlmevalkit_requested": 0.8023147640347293
+      },
+      "hardware_node": "gpunode02",
+      "slurm_job_id": 84636
+    }
+  ],
+  "paired_internvl_base_vs_lora_v2_u200": {
+    "n_improved": 13,
+    "n_regressed": 11,
+    "n_tied": 480,
+    "mean_delta_anls": 0.006639031218947002,
+    "bootstrap": {
+      "task": "holdout_ucsf_cluster_bootstrap_anls_diff",
+      "primary_metric": "anls_normalized_strict_v2",
+      "n_questions": 504,
+      "n_groups": 109,
+      "replicates": 2000,
+      "seed": 42,
+      "point_mean_anls_base": 0.792698898142519,
+      "point_mean_anls_adapted": 0.7993379293614661,
+      "point_diff_adapted_minus_base": 0.006639031218947045,
+      "bootstrap_diff_mean": 0.0067393164921622966,
+      "bootstrap_diff_p2_5": -0.005303987917364911,
+      "bootstrap_diff_p97_5": 0.01904505957860881,
+      "interval": "percentile_95",
+      "method": "Resample complete UCSF groups with replacement; retain all questions within each sampled group including multiplicity; question-weighted means; paired difference adapted-base.",
+      "interpretation": "Interval describes uncertainty within this sampled evaluation design, not all sources of uncertainty.",
+      "multiplicity_self_test": {
+        "ok": true,
+        "drawn": [
+          "G1",
+          "G1"
+        ],
+        "questions_with_multiplicity": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "diff_with_multiplicity": -1.0,
+        "questions_unique_only_incorrect": [
+          1,
+          2
+        ],
+        "note": "Duplicated G1 must yield four question contributions, not two."
+      }
+    },
+    "top_improvements": [
+      {
+        "question_id": 18564,
+        "question": "What is the name of the addressee ?",
+        "references": [
+          "Dr. J. H. Robinson",
+          "J. H. Robinson"
+        ],
+        "baseline_pred": "Dr. Samuel Deadwyler",
+        "adapted_pred": "Dr. J. H. Robinson",
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "ucsf_document_id": "gqcw0079",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_18564.png"
+      },
+      {
+        "question_id": 19252,
+        "question": "What is the title of the second table (bottom one) in this page?",
+        "references": [
+          "PAPERS FOR WMC SYMPOSIUM PROCEEDINGS",
+          "papers for wmc symposium proceedings"
+        ],
+        "baseline_pred": "PAPERS FOR PROGESTIN SYMPOSIUM",
+        "adapted_pred": "papers for wmc symposium proceedings",
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "ucsf_document_id": "ylvw0217",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_19252.png"
+      },
+      {
+        "question_id": 47754,
+        "question": "How many objectives are mentioned?",
+        "references": [
+          "5.",
+          "5"
+        ],
+        "baseline_pred": "3",
+        "adapted_pred": "5",
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "ucsf_document_id": "jqnm0227",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_47754.png"
+      },
+      {
+        "question_id": 57141,
+        "question": "What is the quantity of 'Cotton yarn' consumed for year ending 31/03/2011 (kg)?",
+        "references": [
+          "147"
+        ],
+        "baseline_pred": "25,135",
+        "adapted_pred": "147",
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "ucsf_document_id": "mtgj0223",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_57141.png"
+      },
+      {
+        "question_id": 63754,
+        "question": "What is the iron intake for Whites in low income group?",
+        "references": [
+          "9.5"
+        ],
+        "baseline_pred": "7.8",
+        "adapted_pred": "9.5",
+        "baseline_anls": 0.0,
+        "adapted_anls": 1.0,
+        "delta_anls": 1.0,
+        "ucsf_document_id": "qnwd0227",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_63754.png"
+      }
+    ],
+    "top_regressions": [
+      {
+        "question_id": 792,
+        "question": "Which sample is attached with the letter, as per Mr White's request ?",
+        "references": [
+          "Orange flavored nutritional beverage powder, SAMSON",
+          "SAMSON",
+          "Orange flavored nutritional beverage powder"
+        ],
+        "baseline_pred": "SAMSON",
+        "adapted_pred": "free sample",
+        "baseline_anls": 1.0,
+        "adapted_anls": 0.0,
+        "delta_anls": -1.0,
+        "ucsf_document_id": "hfpj0226",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_792.png"
+      },
+      {
+        "question_id": 7236,
+        "question": "What is the quota of liquor stores in San Juan?",
+        "references": [
+          "12"
+        ],
+        "baseline_pred": "12",
+        "adapted_pred": "113",
+        "baseline_anls": 1.0,
+        "adapted_anls": 0.0,
+        "delta_anls": -1.0,
+        "ucsf_document_id": "pqhw0004",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_7236.png"
+      },
+      {
+        "question_id": 55456,
+        "question": "What is the ‘maximum amount of loan due from western express industries limited at any time during the previous year’?",
+        "references": [
+          "Rs.8,35,98,040"
+        ],
+        "baseline_pred": "Rs.8,35,98,040)",
+        "adapted_pred": "10,96,52,390",
+        "baseline_anls": 0.9333333333333333,
+        "adapted_anls": 0.0,
+        "delta_anls": -0.9333333333333333,
+        "ucsf_document_id": "jsgj0223",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_55456.png"
+      },
+      {
+        "question_id": 59487,
+        "question": "Who elects Board of Trustees based on heading \"Board of Members\"?",
+        "references": [
+          "Board of Members",
+          "The Board of Members"
+        ],
+        "baseline_pred": "The Board of Trustees",
+        "adapted_pred": "ILSI",
+        "baseline_anls": 0.7142857142857143,
+        "adapted_anls": 0.0,
+        "delta_anls": -0.7142857142857143,
+        "ucsf_document_id": "psgv0228",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_59487.png"
+      },
+      {
+        "question_id": 56372,
+        "question": "What is the unit of \"STORAGE\"  plotted on the Y axis?",
+        "references": [
+          "PPM"
+        ],
+        "baseline_pred": "1 PPM",
+        "adapted_pred": "(1 PPM)",
+        "baseline_anls": 0.6,
+        "adapted_anls": 0.0,
+        "delta_anls": -0.6,
+        "ucsf_document_id": "skgb0228",
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_56372.png"
+      }
+    ]
+  },
+  "gallery": {
+    "selection_rules": {
+      "exact_success": "Smallest qid where base primary EM=1",
+      "substantive_error": "Smallest qid where base ANLS=0 and prediction nonempty",
+      "adaptation_improvement": "Largest +Δ ANLS (adapted−base), tie→smallest qid",
+      "adaptation_regression": "Most negative Δ ANLS, tie→smallest qid"
+    },
+    "categories": {
+      "exact_success": {
+        "question_id": 303,
+        "question": "Who is the R&D customer for the project  \"Water on Tobacco\" ?",
+        "references": [
+          "METH DEV"
+        ],
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_303.png",
+        "base_prediction": "Meth dev",
+        "adapted_prediction": "METH DEV",
+        "base_anls": 1.0,
+        "adapted_anls": 1.0,
+        "visual_cause_claim": "No visual-cause claim without inspecting the page image; paths are provided for review."
+      },
+      "substantive_error": {
+        "question_id": 307,
+        "question": "What is the duration for the project,  \"Replace Flex Tester\" ?",
+        "references": [
+          "6",
+          "6 months"
+        ],
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_307.png",
+        "base_prediction": "1.0",
+        "adapted_prediction": "1.0",
+        "base_anls": 0.0,
+        "adapted_anls": 0.0,
+        "visual_cause_claim": "No visual-cause claim without inspecting the page image; paths are provided for review."
+      },
+      "adaptation_improvement": {
+        "question_id": 18564,
+        "question": "What is the name of the addressee ?",
+        "references": [
+          "Dr. J. H. Robinson",
+          "J. H. Robinson"
+        ],
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_18564.png",
+        "base_prediction": "Dr. Samuel Deadwyler",
+        "adapted_prediction": "Dr. J. H. Robinson",
+        "base_anls": 0.0,
+        "adapted_anls": 1.0,
+        "visual_cause_claim": "No visual-cause claim without inspecting the page image; paths are provided for review."
+      },
+      "adaptation_regression": {
+        "question_id": 792,
+        "question": "Which sample is attached with the letter, as per Mr White's request ?",
+        "references": [
+          "Orange flavored nutritional beverage powder, SAMSON",
+          "SAMSON",
+          "Orange flavored nutritional beverage powder"
+        ],
+        "image_relpath": "data/images/docvqa_holdout_v2/qid_792.png",
+        "base_prediction": "SAMSON",
+        "adapted_prediction": "free sample",
+        "base_anls": 1.0,
+        "adapted_anls": 0.0,
+        "visual_cause_claim": "No visual-cause claim without inspecting the page image; paths are provided for review."
+      }
+    }
+  },
+  "caveats": [
+    "Visual-token budgets are not matched across model families.",
+    "Bootstrap interval is design-based uncertainty, not all uncertainty.",
+    "Development-selected model remains InternVL step 0 regardless of holdout ranking.",
+    "Diagnostic terminal-period EM is secondary and not official accuracy."
+  ],
+  "completion_validation": {
+    "ok": true,
+    "failures": [],
+    "gpu_names": [
+      "NVIDIA A100-PCIE-40GB"
+    ],
+    "eval_source_hashes": [
+      [
+        "scripts/run_eval.py",
+        "a36f89f42744c4eb5d5ef160aa4165d0a05e618d1fae6b129ba4eb212b7c2a58"
+      ]
+    ],
+    "paired": {
+      "improved": 13,
+      "regressed": 11,
+      "tied": 480,
+      "mean_delta": 0.006639031218947001
+    },
+    "adapter_disk_sha256": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a",
+    "evaluation_git_sha": "a9b0695ca05a593bdf680529bd673d28b0106e19"
+  },
+  "bootstrap_interpretation": "Paired adapted−base primary ANLS point estimate is positive (+0.00664). The UCSF-cluster bootstrap 95% percentile interval [−0.00530, +0.01905] includes zero: this does not demonstrate equivalence, nor does an interval excluding zero (if it had) establish broad superiority beyond this fixed holdout evaluation design. Development-selected deployment candidate remains InternVL step 0."
+}

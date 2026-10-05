@@ -1,0 +1,81 @@
+{
+  "task": "docvqa_eval",
+  "manifest_name": "docvqa_dev_v1",
+  "manifest_sha256": "7302844ae058d7fa3566c418d3770b90fbd3433fb555806f9231de1fc576aab8",
+  "manifest_role": "dev",
+  "model_id": "HuggingFaceTB/SmolVLM-256M-Instruct",
+  "model_revision": "7e3e67edbbed1bf9888184d9df282b700a323964",
+  "total_unique_parameters": 256484928,
+  "dtype": "bfloat16",
+  "bf16_supported": true,
+  "seed": 0,
+  "instruction": "Answer the question using a single word or short phrase.",
+  "max_new_tokens": 64,
+  "do_sample": false,
+  "run_fingerprint": {
+    "model_id": "HuggingFaceTB/SmolVLM-256M-Instruct",
+    "model_revision": "7e3e67edbbed1bf9888184d9df282b700a323964",
+    "manifest_sha256": "7302844ae058d7fa3566c418d3770b90fbd3433fb555806f9231de1fc576aab8",
+    "instruction": "Answer the question using a single word or short phrase.",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "prefer_bf16": true,
+    "seed": 0,
+    "config_path": "configs/models/smolvlm_256m.yaml",
+    "run_fingerprint_sha256": "794316bd1654a43cc8f70f7718bcdba81b6c44176e3b7b5c5beb502c47476ce0"
+  },
+  "run_metadata": {
+    "git_commit": "9da8a8f2eddd47667ab796659f65b87abdf107f3",
+    "git_branch": "main",
+    "git_dirty": false,
+    "hostname": "gpunode03",
+    "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+    "python_version": "3.11.16",
+    "cwd": "/homes/neumann/ali.rasekh/teth/vlm_doc",
+    "slurm_job_id": "81847",
+    "slurm_partition": "ampere",
+    "slurm_account": "ampere",
+    "slurm_qos": "normal",
+    "cuda_visible_devices": "0"
+  },
+  "hardware": {
+    "gpu_name": "NVIDIA A100-PCIE-40GB",
+    "gpu_total_memory_bytes": 42436526080,
+    "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+  },
+  "host_memory_note": "Slurm MaxRSS is host (CPU) resident memory for the job, not GPU memory.",
+  "gpu_memory_peaks": {
+    "peak_allocated_bytes": 2984801792,
+    "peak_reserved_bytes": 3550478336,
+    "scope": "Max over per-example torch.cuda.max_memory_{allocated,reserved} values measured around generate(); not full nvidia-smi usage."
+  },
+  "latency_seconds": {
+    "n": 208,
+    "median": 0.20920001697959378,
+    "p95": 0.3341223971074214,
+    "mean": 0.22365652109958598,
+    "warmup_excluded": true,
+    "cuda_synchronized": true
+  },
+  "software": {
+    "torch": "2.5.1+cu118",
+    "torch_cuda": "11.8",
+    "transformers": "4.48.3"
+  },
+  "note": "Development/smoke scores are not full-benchmark results and must not be presented as unbiased final DocVQA performance.",
+  "scores": {
+    "n_requested": 208,
+    "n_records": 208,
+    "n_completed_ok": 208,
+    "n_failed": 0,
+    "n_missing": 0,
+    "failure_rate_requested": 0.0,
+    "mean_anls_requested": 0.5664009234623724,
+    "mean_exact_match_requested": 0.25961538461538464,
+    "mean_anls_vlmevalkit_requested": 0.5665170397695556,
+    "mean_anls_completed_ok_only": 0.5664009234623724,
+    "mean_exact_match_completed_ok_only": 0.25961538461538464,
+    "primary_metric": "mean_anls_requested",
+    "anls_definition": "lowercase+strip+collapse_ws; NL=edit/max(len); score=1-NL if >= 0.5 else 0; max over refs; failures and missing count as 0 in requested mean"
+  }
+}

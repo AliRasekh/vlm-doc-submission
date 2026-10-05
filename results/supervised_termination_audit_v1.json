@@ -1,0 +1,248 @@
+{
+  "task": "supervised_termination_audit_v1",
+  "n_examples_scanned": 2000,
+  "n_template_ends_with_eos_newline": 2000,
+  "n_v1_would_append_second_eos": 2000,
+  "n_changed_by_v2_termination_fix": 2000,
+  "fraction_v1_would_append_second_eos": 1.0,
+  "eos_id": 151645,
+  "newline_token_id_probe": 198,
+  "method": "Text-only tokenization with fixed synthetic IMG_CONTEXT expansion; no document image materialization. Detects v1 rule if full_ids[-1] != eos_id then append eos.",
+  "examples_sample": [
+    {
+      "question_id": 10196,
+      "answer": "Agenda",
+      "raw_tail_tokens": [
+        "assistant",
+        "Ċ",
+        "Ag",
+        "enda",
+        "<|im_end|>",
+        "Ċ"
+      ],
+      "raw_tail_ids": [
+        77091,
+        198,
+        9042,
+        9696,
+        151645,
+        198
+      ],
+      "would_v1_append_second_eos": true,
+      "fixed_tail_tokens": [
+        "<|im_start|>",
+        "assistant",
+        "Ċ",
+        "Ag",
+        "enda",
+        "<|im_end|>"
+      ],
+      "fixed_tail_ids": [
+        151644,
+        77091,
+        198,
+        9042,
+        9696,
+        151645
+      ],
+      "n_raw": 296,
+      "n_fixed": 295
+    },
+    {
+      "question_id": 10197,
+      "answer": "Monday - June 28",
+      "raw_tail_tokens": [
+        "ĠJune",
+        "Ġ",
+        "2",
+        "8",
+        "<|im_end|>",
+        "Ċ"
+      ],
+      "raw_tail_ids": [
+        5534,
+        220,
+        17,
+        23,
+        151645,
+        198
+      ],
+      "would_v1_append_second_eos": true,
+      "fixed_tail_tokens": [
+        "Ġ-",
+        "ĠJune",
+        "Ġ",
+        "2",
+        "8",
+        "<|im_end|>"
+      ],
+      "fixed_tail_ids": [
+        481,
+        5534,
+        220,
+        17,
+        23,
+        151645
+      ],
+      "n_raw": 304,
+      "n_fixed": 303
+    },
+    {
+      "question_id": 10198,
+      "answer": "336-721-2230",
+      "raw_tail_tokens": [
+        "2",
+        "2",
+        "3",
+        "0",
+        "<|im_end|>",
+        "Ċ"
+      ],
+      "raw_tail_ids": [
+        17,
+        17,
+        18,
+        15,
+        151645,
+        198
+      ],
+      "would_v1_append_second_eos": true,
+      "fixed_tail_tokens": [
+        "-",
+        "2",
+        "2",
+        "3",
+        "0",
+        "<|im_end|>"
+      ],
+      "fixed_tail_ids": [
+        12,
+        17,
+        17,
+        18,
+        15,
+        151645
+      ],
+      "n_raw": 304,
+      "n_fixed": 303
+    },
+    {
+      "question_id": 12611,
+      "answer": "981261",
+      "raw_tail_tokens": [
+        "1",
+        "2",
+        "6",
+        "1",
+        "<|im_end|>",
+        "Ċ"
+      ],
+      "raw_tail_ids": [
+        16,
+        17,
+        21,
+        16,
+        151645,
+        198
+      ],
+      "would_v1_append_second_eos": true,
+      "fixed_tail_tokens": [
+        "8",
+        "1",
+        "2",
+        "6",
+        "1",
+        "<|im_end|>"
+      ],
+      "fixed_tail_ids": [
+        23,
+        16,
+        17,
+        21,
+        16,
+        151645
+      ],
+      "n_raw": 299,
+      "n_fixed": 298
+    },
+    {
+      "question_id": 46350,
+      "answer": "a post-hoc analysis of VMI data has been performed and will be included as part of the submission.",
+      "raw_tail_tokens": [
+        "Ġof",
+        "Ġthe",
+        "Ġsubmission",
+        ".",
+        "<|im_end|>",
+        "Ċ"
+      ],
+      "raw_tail_ids": [
+        315,
+        279,
+        20503,
+        13,
+        151645,
+        198
+      ],
+      "would_v1_append_second_eos": true,
+      "fixed_tail_tokens": [
+        "Ġpart",
+        "Ġof",
+        "Ġthe",
+        "Ġsubmission",
+        ".",
+        "<|im_end|>"
+      ],
+      "fixed_tail_ids": [
+        949,
+        315,
+        279,
+        20503,
+        13,
+        151645
+      ],
+      "n_raw": 323,
+      "n_fixed": 322
+    },
+    {
+      "question_id": 21537,
+      "answer": "369,709",
+      "raw_tail_tokens": [
+        ",",
+        "7",
+        "0",
+        "9",
+        "<|im_end|>",
+        "Ċ"
+      ],
+      "raw_tail_ids": [
+        11,
+        22,
+        15,
+        24,
+        151645,
+        198
+      ],
+      "would_v1_append_second_eos": true,
+      "fixed_tail_tokens": [
+        "9",
+        ",",
+        "7",
+        "0",
+        "9",
+        "<|im_end|>"
+      ],
+      "fixed_tail_ids": [
+        24,
+        11,
+        22,
+        15,
+        24,
+        151645
+      ],
+      "n_raw": 303,
+      "n_fixed": 302
+    }
+  ],
+  "ok": true
+}

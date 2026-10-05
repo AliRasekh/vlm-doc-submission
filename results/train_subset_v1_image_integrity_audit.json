@@ -1,0 +1,49 @@
+{
+  "task": "train_subset_v1_image_integrity_audit",
+  "timestamp_utc": "2026-10-02T07:54:46Z",
+  "manifest_path": "data/manifests/docvqa_train_subset_v1.json",
+  "hash_terminology": {
+    "manifest_raw_file_sha256": "SHA256 of on-disk manifest file bytes",
+    "examples_content_sha256": "SHA256 of json.dumps(examples, sort_keys=True, separators=(',',':'))",
+    "note": "examples_content_sha256 is NOT the same as a full-manifest canonical hash that would exclude self-hash fields of the whole object."
+  },
+  "manifest_raw_file_sha256": "79fe9acaa0fc6ed35759a06789d99c338a579929f3de7fd17782322b502c60d0",
+  "examples_content_sha256": "e013cda163f83ba1cf66c9c9ed6a247bffc0ec433c5025af080170e03d60f0a8",
+  "examples_content_sha256_before_audit": "e013cda163f83ba1cf66c9c9ed6a247bffc0ec433c5025af080170e03d60f0a8",
+  "manifest_rewritten": false,
+  "n_examples": 2000,
+  "n_unique_image_paths": 2000,
+  "n_unique_rgb_checked_before_repair": 2000,
+  "n_repairs": 0,
+  "repairs": [],
+  "n_failures": 0,
+  "failures": [],
+  "eval_split_inventory": {
+    "smoke": {
+      "n_examples": 8,
+      "n_images_verified": 8,
+      "manifest_raw_file_sha256": "79afe6bf02ce2ba2cddb08dfb94068963733119e7ced380b1b3db90ffa2d997f"
+    },
+    "dev": {
+      "n_examples": 208,
+      "n_images_verified": 208,
+      "manifest_raw_file_sha256": "240bee9197d1739567c9c9f9a76470bfbf9fdf4932d493e0c0c7b5fbe02296b1"
+    },
+    "holdout_v2": {
+      "n_examples": 504,
+      "n_images_verified": 504,
+      "manifest_raw_file_sha256": "59b845f3cb058e70b96b269966c5eb4dc383409cf7ec0a6fb07ad882430d7dfb"
+    }
+  },
+  "leakage_overlap": {
+    "ucsf": [],
+    "qids": [],
+    "pages": [],
+    "source_image_sha256": [],
+    "rgb_hash": [],
+    "png_hash": []
+  },
+  "n_overlap_signals": 0,
+  "leakage_detected": false,
+  "ok": true
+}

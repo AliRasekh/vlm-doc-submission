@@ -1,0 +1,45 @@
+{
+  "task": "robustness_v1_run_index",
+  "manifest": "data/manifests/docvqa_dev_robustness_v1.json",
+  "manifest_content_sha256": "603c654d2783d76baf7f144f127a5392e4a7128275e00bfd19147cd240681107",
+  "tile_assert_failures": [],
+  "runs": [
+    {
+      "model_tag": "lora200",
+      "perturbation_id": "clean",
+      "jsonl": "results/robustness_v2/internvl3_1b_lora_v2_u200__clean.jsonl",
+      "summary": "results/robustness_v2/internvl3_1b_lora_v2_u200__clean_summary.json",
+      "anls": 0.7707818930041151,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "lora200",
+      "perturbation_id": "half_detail",
+      "jsonl": "results/robustness_v2/internvl3_1b_lora_v2_u200__half_detail.jsonl",
+      "summary": "results/robustness_v2/internvl3_1b_lora_v2_u200__half_detail_summary.json",
+      "anls": 0.7699905033238366,
+      "em": 0.7222222222222222,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    },
+    {
+      "model_tag": "lora200",
+      "perturbation_id": "jpeg_q40",
+      "jsonl": "results/robustness_v2/internvl3_1b_lora_v2_u200__jpeg_q40.jsonl",
+      "summary": "results/robustness_v2/internvl3_1b_lora_v2_u200__jpeg_q40_summary.json",
+      "anls": 0.7315402704291593,
+      "em": 0.6851851851851852,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0
+    }
+  ],
+  "timestamp_unix": 1790951888.970437
+}

@@ -1,0 +1,237 @@
+{
+  "primary_metric": "anls_normalized_strict_v2",
+  "diagnostic_metric": "terminal_period_em_after_normalize",
+  "note": "Development ranking is provisional and does not constitute final holdout performance. Diagnostic EM is secondary.",
+  "models": {
+    "smolvlm_256m": {
+      "model_id": "HuggingFaceTB/SmolVLM-256M-Instruct",
+      "model_revision": "7e3e67edbbed1bf9888184d9df282b700a323964",
+      "total_unique_parameters": 256484928,
+      "n_requested": 208,
+      "n_ok": 208,
+      "anls_strict_v2": 0.5567855388469878,
+      "exact_match": 0.25961538461538464,
+      "diagnostic_terminal_period_em": 0.4951923076923077,
+      "latency_median": 0.20920001697959378,
+      "latency_p95": 0.3341223971074214,
+      "timing_scope": null,
+      "hardware": {
+        "gpu_name": "NVIDIA A100-PCIE-40GB",
+        "gpu_total_memory_bytes": 42436526080,
+        "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+      },
+      "peak_allocated_gib": 2.779813289642334,
+      "peak_reserved_gib": 3.306640625,
+      "gen_token_median": 6.0,
+      "n_generation_cap_reached": 0,
+      "n_generation_cap_unavailable": 208,
+      "tile_count_median": null,
+      "visual_token_count_median": null,
+      "processor_settings": null,
+      "adapter": null,
+      "job_id": "81847"
+    },
+    "smolvlm_500m": {
+      "model_id": "HuggingFaceTB/SmolVLM-500M-Instruct",
+      "model_revision": "a7da5b986cb59b408707209984f360a5f4ad7e47",
+      "total_unique_parameters": 507482304,
+      "n_requested": 208,
+      "n_ok": 208,
+      "anls_strict_v2": 0.6095021068660544,
+      "exact_match": 0.04326923076923077,
+      "diagnostic_terminal_period_em": 0.6298076923076923,
+      "latency_median": 0.2434427565021906,
+      "latency_p95": 0.4371816325023245,
+      "timing_scope": "single_gpu",
+      "hardware": {
+        "gpu_names_seen": [
+          "NVIDIA A100-SXM4-40GB"
+        ],
+        "current_gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_total_memory_bytes": 42436526080,
+        "mixed_hardware": false,
+        "timing_label": "single_gpu",
+        "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+      },
+      "peak_allocated_gib": 3.260490894317627,
+      "peak_reserved_gib": 3.85546875,
+      "gen_token_median": 6.0,
+      "n_generation_cap_reached": 0,
+      "n_generation_cap_unavailable": 0,
+      "tile_count_median": null,
+      "visual_token_count_median": null,
+      "processor_settings": {
+        "do_image_splitting": true,
+        "do_resize": true,
+        "size": {
+          "longest_edge": 2048
+        },
+        "max_image_size": {
+          "longest_edge": 512
+        },
+        "resample": 1,
+        "image_mean": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "image_std": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "do_normalize": true,
+        "do_convert_rgb": true,
+        "image_processor_class": "Idefics3ImageProcessor",
+        "processor_class": "Idefics3Processor",
+        "has_chat_template": true
+      },
+      "adapter": null,
+      "job_id": "82001"
+    },
+    "internvl3_1b": {
+      "model_id": "OpenGVLab/InternVL3-1B",
+      "model_revision": "4415a3b810e636d11dfa86b0e9ba40bb00535aa8",
+      "total_unique_parameters": 938193024,
+      "n_requested": 208,
+      "n_ok": 208,
+      "anls_strict_v2": 0.8324316540342521,
+      "exact_match": 0.7692307692307693,
+      "diagnostic_terminal_period_em": 0.7692307692307693,
+      "latency_median": 0.4680435120026232,
+      "latency_p95": 0.6283365076509648,
+      "timing_scope": "single_gpu",
+      "hardware": {
+        "gpu_names_seen": [
+          "NVIDIA A100-SXM4-40GB"
+        ],
+        "current_gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_total_memory_bytes": 42436526080,
+        "mixed_hardware": false,
+        "timing_label": "single_gpu",
+        "note_gpu_total": "Device capacity from CUDA properties; not MaxRSS."
+      },
+      "peak_allocated_gib": 3.4005985260009766,
+      "peak_reserved_gib": 6.623046875,
+      "gen_token_median": 6.0,
+      "n_generation_cap_reached": 0,
+      "n_generation_cap_unavailable": 0,
+      "tile_count_median": 13.0,
+      "visual_token_count_median": 3328.0,
+      "processor_settings": {
+        "adapter": "internvl3",
+        "image_size": 448,
+        "max_num": 12,
+        "use_thumbnail": true,
+        "num_image_token_per_tile": 256,
+        "template": "internvl2_5",
+        "dynamic_image_size": true,
+        "recipe": "official_dynamic_preprocess_448_max_num12_thumbnail",
+        "architecture_notes": {
+          "architectures": [
+            "InternVLChatModel"
+          ],
+          "vision": "InternVisionModel (config.vision_config)",
+          "language": "['Qwen2ForCausalLM']",
+          "downsample_ratio": 0.5,
+          "max_dynamic_patch": 12,
+          "use_thumbnail_config": true,
+          "dynamic_image_size": true,
+          "use_flash_attn_requested": false,
+          "license_hint": "apache-2.0 (Hub tag)",
+          "hub_url": "https://huggingface.co/OpenGVLab/InternVL3-1B",
+          "training_data_disclosure": "Hub tags reference OpenGVLab/MMPR-v1.2 and base_model InternVL3-1B-Instruct; full training mixture details treated as unknown beyond public model-card disclosures."
+        },
+        "not_matched_visual_token_budget_vs_smolvlm": true
+      },
+      "adapter": "internvl3",
+      "job_id": "82020"
+    }
+  },
+  "gallery_paired_development": [
+    {
+      "question_id": 5158,
+      "question": "What is the Title of the document ?",
+      "refs": [
+        "WATER ANALYSIS"
+      ],
+      "pred_smolvlm_256m": "Water Analysis",
+      "anls_smolvlm_256m": 1.0,
+      "em_smolvlm_256m": 1.0,
+      "pred_smolvlm_500m": "Water Analysis.",
+      "anls_smolvlm_500m": 0.9333333333333333,
+      "em_smolvlm_500m": 0.0,
+      "pred_internvl3_1b": "Water Analysis",
+      "anls_internvl3_1b": 1.0,
+      "em_internvl3_1b": 1.0
+    },
+    {
+      "question_id": 292,
+      "question": "From which source the data is taken in this document?",
+      "refs": [
+        "USMM 1/95-6/95, 12-Month Data"
+      ],
+      "pred_smolvlm_256m": "USMM  1/95-6/95, 12-Month Data.",
+      "anls_smolvlm_256m": 0.9666666666666667,
+      "em_smolvlm_256m": 0.0,
+      "pred_smolvlm_500m": "USMM 1/95-6/95, 12-Month Data.",
+      "anls_smolvlm_500m": 0.9666666666666667,
+      "em_smolvlm_500m": 0.0,
+      "pred_internvl3_1b": "USMM 1/95-6/95, 12-Month Data",
+      "anls_internvl3_1b": 1.0,
+      "em_internvl3_1b": 1.0
+    },
+    {
+      "question_id": 297,
+      "question": "What is the percentage of single brand users in the franchise?",
+      "refs": [
+        "78.2%",
+        "78.2"
+      ],
+      "pred_smolvlm_256m": "78.2%     (111)     (11%)     (25)     (0.8%)     (25)     (1.0%)     (31)     (0.8%)     (31)",
+      "anls_smolvlm_256m": 0.0,
+      "em_smolvlm_256m": 0.0,
+      "pred_smolvlm_500m": "78.2%",
+      "anls_smolvlm_500m": 1.0,
+      "em_smolvlm_500m": 1.0,
+      "pred_internvl3_1b": "78.2%",
+      "anls_internvl3_1b": 1.0,
+      "em_internvl3_1b": 1.0
+    },
+    {
+      "question_id": 5263,
+      "question": "who requested the check ?",
+      "refs": [
+        "Mr. Tom Dudley",
+        "Mr. tom Dudley"
+      ],
+      "pred_smolvlm_256m": "Mr. Tom Dudley.",
+      "anls_smolvlm_256m": 0.9333333333333333,
+      "em_smolvlm_256m": 0.0,
+      "pred_smolvlm_500m": "Mr. tom rudley.",
+      "anls_smolvlm_500m": 0.8666666666666667,
+      "em_smolvlm_500m": 0.0,
+      "pred_internvl3_1b": "Mr. Tom Dudley",
+      "anls_internvl3_1b": 1.0,
+      "em_internvl3_1b": 1.0
+    },
+    {
+      "question_id": 53842,
+      "question": "Is the promotion overlay a coupon or a name generation piece?",
+      "refs": [
+        "a name generation piece",
+        "A Name generation piece",
+        "Name generation piece"
+      ],
+      "pred_smolvlm_256m": "Promotion overlay is a name generation piece (not a coupon).",
+      "anls_smolvlm_256m": 0.0,
+      "em_smolvlm_256m": 0.0,
+      "pred_smolvlm_500m": "coupon.",
+      "anls_smolvlm_500m": 0.0,
+      "em_smolvlm_500m": 0.0,
+      "pred_internvl3_1b": "name generation piece",
+      "anls_internvl3_1b": 1.0,
+      "em_internvl3_1b": 1.0
+    }
+  ]
+}

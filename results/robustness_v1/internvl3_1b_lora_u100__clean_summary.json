@@ -1,0 +1,115 @@
+{
+  "task": "docvqa_robustness_v1",
+  "model_tag": "lora100",
+  "perturbation_id": "clean",
+  "manifest_name": "docvqa_dev_robustness_v1",
+  "manifest_content_sha256": "603c654d2783d76baf7f144f127a5392e4a7128275e00bfd19147cd240681107",
+  "manifest_raw_file_sha256": "9383e3d52dcd4016ade319fd4ae8f1392c830f657005eed7273f607b83b1e0e3",
+  "n_requested": 54,
+  "n_ok": 54,
+  "n_failed": 0,
+  "n_missing": 0,
+  "n_generation_cap_hits": 0,
+  "primary_metric": "anls_normalized_strict_v2",
+  "anls_normalized_strict_v2": 0.7534979423868312,
+  "exact_match": 0.7222222222222222,
+  "aggregate": {
+    "n_requested": 54,
+    "n_records": 54,
+    "n_completed_ok": 54,
+    "n_failed": 0,
+    "n_missing": 0,
+    "failure_rate_requested": 0.0,
+    "primary_metric": "anls_normalized_strict_v2",
+    "mean_anls_requested": 0.7534979423868312,
+    "mean_exact_match_requested": 0.7222222222222222,
+    "mean_anls_normalized_inclusive_v1_requested": 0.7534979423868312,
+    "mean_anls_vlmevalkit_requested": 0.7534979423868312,
+    "mean_anls_completed_ok_only": 0.7534979423868312,
+    "mean_exact_match_completed_ok_only": 0.7222222222222222,
+    "anls_definition": "anls_normalized_strict_v2: lowercase+strip+collapse_ws; NL=edit/max(len_norm); score=1-NL if NL<0.5 else 0; max over nonempty refs; failures/missing count as 0 in requested mean",
+    "scorer_source_sha256": "63fb8aaee686c6dd4cce4f7e4d40dfb2a6ed71a660b6598e00176f672691155f"
+  },
+  "run_fingerprint": {
+    "model_id": "OpenGVLab/InternVL3-1B",
+    "model_revision": "4415a3b810e636d11dfa86b0e9ba40bb00535aa8",
+    "manifest_content_sha256": "603c654d2783d76baf7f144f127a5392e4a7128275e00bfd19147cd240681107",
+    "instruction": "Answer the question using a single word or short phrase.",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "prefer_bf16": true,
+    "seed": 0,
+    "config_path": "configs/models/internvl3_1b.yaml",
+    "config_sha256": "0eb33646a2a3822b70ea5e993ebbf985bfc54a96ce809c7469f2681f70eacad9",
+    "resolved_dtype": "bfloat16",
+    "processor_settings": {
+      "adapter": "internvl3",
+      "image_size": 448,
+      "max_num": 12,
+      "use_thumbnail": true,
+      "num_image_token_per_tile": 256,
+      "template": "internvl2_5",
+      "dynamic_image_size": true,
+      "recipe": "official_dynamic_preprocess_448_max_num12_thumbnail",
+      "architecture_notes": {
+        "architectures": [
+          "InternVLChatModel"
+        ],
+        "vision": "InternVisionModel (config.vision_config)",
+        "language": "['Qwen2ForCausalLM']",
+        "downsample_ratio": 0.5,
+        "max_dynamic_patch": 12,
+        "use_thumbnail_config": true,
+        "dynamic_image_size": true,
+        "use_flash_attn_requested": false,
+        "license_hint": "apache-2.0 (Hub tag)",
+        "hub_url": "https://huggingface.co/OpenGVLab/InternVL3-1B",
+        "training_data_disclosure": "Hub tags reference OpenGVLab/MMPR-v1.2 and base_model InternVL3-1B-Instruct; full training mixture details treated as unknown beyond public model-card disclosures."
+      },
+      "not_matched_visual_token_budget_vs_smolvlm": true
+    },
+    "software": {
+      "torch": "2.5.1+cu118",
+      "torch_cuda": "11.8",
+      "transformers": "4.48.3",
+      "python": "3.11.16",
+      "pillow": "11.1.0"
+    },
+    "inference_source_hashes": {
+      "src/vlm_doc/adapters/internvl.py": "ca6549f38fc9e2bde9f1837e1dcd45716562d47766229780bebd60aa9f9d7127",
+      "src/vlm_doc/adapters/internvl_conv.py": "109909d9c811e2d0226b56defd89bcfca4aa0e1eb6c20f9afc35c9c57065ae96",
+      "src/vlm_doc/image_perturbations.py": "7585c71d68e24247228e7cd10a21a9232eaa57152d99fec5e182f9497478988b",
+      "scripts/run_robustness_dev_v1.py": "36f6f30908c2439bf1f2a9025a408b2f5169ffa6338c35f423a7c8d8e840a0d9",
+      "configs/models/internvl3_1b.yaml": "0eb33646a2a3822b70ea5e993ebbf985bfc54a96ce809c7469f2681f70eacad9",
+      "src/vlm_doc/train/lora.py": "9cf0d75f1056c6ba4cc5d135cb77f08ba2c2d41210ede21a1ef1673396e674f9"
+    },
+    "adapter_dir": "checkpoints/internvl3_1b_lora_v1/update_0100",
+    "adapter_config_sha256": "c4b708cb2279d7d634c204a89cfa1f53304963caf33066e14aca251672f95ff3",
+    "adapter_weights_sha256": {
+      "adapter_model.safetensors": "16564ec14d2d2a071f927534a84960ed43f0f0d194ec2d5fdc0bf7d48f67c219"
+    },
+    "train_update": 100,
+    "perturbation": {
+      "perturbation_id": "clean",
+      "settings_schema": "phase03b_v1",
+      "half_detail_resample": null,
+      "jpeg_quality": null,
+      "jpeg_subsampling": null
+    },
+    "fingerprint_schema": "inference_v2",
+    "run_fingerprint_sha256": "5329d8c5689226bab8a316256164ed29eb20ff180ee5bb8ee11a54f897255dfd"
+  },
+  "adapter_dir": "checkpoints/internvl3_1b_lora_v1/update_0100",
+  "train_update": 100,
+  "hardware": {
+    "gpu_name": "NVIDIA A100-PCIE-40GB",
+    "gpu_total_memory_bytes": 42436526080
+  },
+  "software": {
+    "torch": "2.5.1+cu118",
+    "torch_cuda": "11.8",
+    "transformers": "4.48.3",
+    "python": "3.11.16",
+    "pillow": "11.1.0"
+  }
+}

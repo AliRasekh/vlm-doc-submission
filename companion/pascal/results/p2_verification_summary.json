@@ -1,0 +1,51 @@
+{
+  "task": "pascal_p2_verification_summary",
+  "slurm_job_id": "117228",
+  "state": "COMPLETED",
+  "elapsed": "00:00:56",
+  "node": "pascal-node10.l3s.intra",
+  "gpu": "Tesla V100-SXM3-32GB",
+  "compute_capability": [
+    7,
+    0
+  ],
+  "is_bf16_supported_default": true,
+  "is_bf16_supported_including_emulation_false": false,
+  "dtype": "bfloat16",
+  "param_dtype_sample": "bfloat16",
+  "attention": {
+    "vision": {
+      "attn_implementation": "eager",
+      "class": "InternVisionModel"
+    },
+    "language": {
+      "attn_implementation": "eager",
+      "first_layer_self_attn_class": "Qwen2Attention"
+    },
+    "notes": [],
+    "model_config_attn_implementation": "eager",
+    "flash_attn_requested": false,
+    "label": "eager_unless_module_reports_otherwise"
+  },
+  "engine_cap12": {
+    "prediction": "USMM 1/95-6/95, 12-Month Data",
+    "tiles": 13,
+    "request_s": 3.53280909312889
+  },
+  "engine_cap4": {
+    "prediction": "USMM 1/95-6/95, 12-Month Data",
+    "tiles": 5,
+    "request_s": 1.2507554350886494
+  },
+  "cli_prediction": "USMM 1/95-6/95, 12-Month Data",
+  "cli_matches_engine_text": true,
+  "serialization_ok": true,
+  "ui_http_ok": true,
+  "browser_visual_qa": {
+    "performed": false,
+    "reason": "UI verified via loopback HTTP inside the allocation only; no browser automation/screenshot in this job."
+  },
+  "ok": true,
+  "note": "CLI stdout during job included a FlashAttention notice before JSON; prediction text matches engine.",
+  "recorded_utc": "2026-10-03T10:00:56Z"
+}

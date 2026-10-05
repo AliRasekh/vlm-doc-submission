@@ -1,0 +1,18 @@
+{
+  "category": "adaptation_improvement",
+  "available": true,
+  "question_id": 18564,
+  "question": "What is the name of the addressee ?",
+  "references": [
+    "Dr. J. H. Robinson",
+    "J. H. Robinson"
+  ],
+  "base_prediction": "Dr. Samuel Deadwyler",
+  "adapted_prediction": "Dr. J. H. Robinson",
+  "base_anls": 0.0,
+  "adapted_anls": 1.0,
+  "source_image_relpath": "data/images/docvqa_holdout_v2/qid_18564.png",
+  "bundle_image": "docs/report/gallery_examples/adaptation_improvement_qid_18564.jpg",
+  "selection_rule": "Largest +Δ ANLS (adapted−base), tie→smallest qid",
+  "visual_cause_claim": "none; image included for report writing only"
+}

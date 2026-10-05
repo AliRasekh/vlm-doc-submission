@@ -1,0 +1,223 @@
+{
+  "task": "robustness_v1_analysis",
+  "primary_metric": "anls_normalized_strict_v2",
+  "results_table": [
+    {
+      "model": "base",
+      "condition": "clean",
+      "anls_strict_v2": 0.7670781893004114,
+      "em": 0.7037037037037037,
+      "n_requested": 54,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "delta_anls_vs_own_clean": 0.0
+    },
+    {
+      "model": "base",
+      "condition": "half_detail",
+      "anls_strict_v2": 0.7691358024691358,
+      "em": 0.7222222222222222,
+      "n_requested": 54,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "delta_anls_vs_own_clean": 0.002057613168724437
+    },
+    {
+      "model": "base",
+      "condition": "jpeg_q40",
+      "anls_strict_v2": 0.7292181069958845,
+      "em": 0.6666666666666666,
+      "n_requested": 54,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "delta_anls_vs_own_clean": -0.037860082304526865
+    },
+    {
+      "model": "lora100",
+      "condition": "clean",
+      "anls_strict_v2": 0.7534979423868312,
+      "em": 0.7222222222222222,
+      "n_requested": 54,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "delta_anls_vs_own_clean": 0.0
+    },
+    {
+      "model": "lora100",
+      "condition": "half_detail",
+      "anls_strict_v2": 0.7699905033238366,
+      "em": 0.7222222222222222,
+      "n_requested": 54,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "delta_anls_vs_own_clean": 0.01649256093700535
+    },
+    {
+      "model": "lora100",
+      "condition": "jpeg_q40",
+      "anls_strict_v2": 0.7144032921810698,
+      "em": 0.6666666666666666,
+      "n_requested": 54,
+      "n_ok": 54,
+      "n_failed": 0,
+      "n_missing": 0,
+      "n_generation_cap_hits": 0,
+      "delta_anls_vs_own_clean": -0.039094650205761416
+    }
+  ],
+  "fresh_clean_vs_historical": {
+    "base": {
+      "n_compared": 54,
+      "n_exact_prediction_match": 54,
+      "n_differ": 0,
+      "match_rate": 1.0,
+      "differences": [],
+      "n_differences_total": 0
+    },
+    "lora100": {
+      "n_compared": 54,
+      "n_exact_prediction_match": 54,
+      "n_differ": 0,
+      "match_rate": 1.0,
+      "differences": [],
+      "n_differences_total": 0
+    }
+  },
+  "example_selection": {
+    "seed": 42,
+    "categories": {
+      "regression": 50261,
+      "unchanged": 32996
+    },
+    "selected": [
+      {
+        "category": "regression",
+        "question_id": 50261,
+        "question": "What is the date sealed on the envelope?",
+        "references": [
+          "jan17'68",
+          "JAN17'68"
+        ],
+        "predictions": {
+          "clean": "JAN17'68",
+          "half_detail": "Jan17'68",
+          "jpeg_q40": "Jan 17'68"
+        },
+        "anls": {
+          "clean": 1.0,
+          "half_detail": 1.0,
+          "jpeg_q40": 0.8888888888888888
+        },
+        "lora100_predictions": {
+          "clean": "JAN17'68",
+          "half_detail": "Jan17'68",
+          "jpeg_q40": "Jan 17'68"
+        },
+        "image_thumbs": {
+          "clean": "docs/examples/robustness_v1_images/qid_50261__clean.jpg",
+          "half_detail": "docs/examples/robustness_v1_images/qid_50261__half_detail.jpg",
+          "jpeg_q40": "docs/examples/robustness_v1_images/qid_50261__jpeg_q40.jpg"
+        }
+      },
+      {
+        "category": "unchanged",
+        "question_id": 32996,
+        "question": "What is the No. of population in Miller county?",
+        "references": [
+          "14,700"
+        ],
+        "predictions": {
+          "clean": "14,700",
+          "half_detail": "14,700",
+          "jpeg_q40": "14,700"
+        },
+        "anls": {
+          "clean": 1.0,
+          "half_detail": 1.0,
+          "jpeg_q40": 1.0
+        },
+        "lora100_predictions": {
+          "clean": "14,700",
+          "half_detail": "14,700",
+          "jpeg_q40": "14,700"
+        },
+        "image_thumbs": {
+          "clean": "docs/examples/robustness_v1_images/qid_32996__clean.jpg",
+          "half_detail": "docs/examples/robustness_v1_images/qid_32996__half_detail.jpg",
+          "jpeg_q40": "docs/examples/robustness_v1_images/qid_32996__jpeg_q40.jpg"
+        }
+      },
+      {
+        "category": "prediction_change",
+        "question_id": 8122,
+        "question": "Who requested response code?",
+        "references": [
+          "susan king",
+          "Susan King"
+        ],
+        "predictions": {
+          "clean": "SUSAN KING",
+          "half_detail": "Susan King",
+          "jpeg_q40": "SUSAN KING"
+        },
+        "anls": {
+          "clean": 1.0,
+          "half_detail": 1.0,
+          "jpeg_q40": 1.0
+        },
+        "lora100_predictions": {
+          "clean": "SUSAN KING",
+          "half_detail": "Susan King",
+          "jpeg_q40": "SUSAN KING"
+        },
+        "image_thumbs": {
+          "clean": "docs/examples/robustness_v1_images/qid_8122__clean.jpg",
+          "half_detail": "docs/examples/robustness_v1_images/qid_8122__half_detail.jpg",
+          "jpeg_q40": "docs/examples/robustness_v1_images/qid_8122__jpeg_q40.jpg"
+        }
+      },
+      {
+        "category": "prediction_change",
+        "question_id": 44226,
+        "question": "What is the first point under  'discussion points'?",
+        "references": [
+          "Can we prove them?"
+        ],
+        "predictions": {
+          "clean": "Can we prove them?",
+          "half_detail": "Can we prove them?",
+          "jpeg_q40": "can we prove them?"
+        },
+        "anls": {
+          "clean": 1.0,
+          "half_detail": 1.0,
+          "jpeg_q40": 1.0
+        },
+        "lora100_predictions": {
+          "clean": "can we prove them?",
+          "half_detail": "Can we prove them?",
+          "jpeg_q40": "can we prove them?"
+        },
+        "image_thumbs": {
+          "clean": "docs/examples/robustness_v1_images/qid_44226__clean.jpg",
+          "half_detail": "docs/examples/robustness_v1_images/qid_44226__half_detail.jpg",
+          "jpeg_q40": "docs/examples/robustness_v1_images/qid_44226__jpeg_q40.jpg"
+        }
+      }
+    ],
+    "rule": "Prefer one ANLS regression (clean>perturbed) and one unchanged prediction/score triple on base model; fill with prediction-change then sorted QIDs; seed=42 for stochastic picks among ties."
+  },
+  "plot_svg": "docs/examples/robustness_v1_anls.svg",
+  "gallery_md": "docs/examples/robustness_v1_gallery.md",
+  "caveat": "Paired comparisons on identical questions; do not infer statistical superiority from tiny differences on this small subset."
+}

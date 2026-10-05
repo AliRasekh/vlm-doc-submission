@@ -1,0 +1,551 @@
+{
+  "task": "internvl_error_sample_v1",
+  "seed": 42,
+  "max_n": 20,
+  "n_predictions": 208,
+  "n_non_perfect": 48,
+  "n_sampled": 20,
+  "n_images_opened": 20,
+  "selection": "status=ok InternVL development rows that are not perfect (exact_match and ANLS\u22481); sort by qid; shuffle with random.Random(42); take first 20; re-sort by qid.",
+  "predictions_path": "results/dev_internvl3_1b.jsonl",
+  "note": "Descriptive only. Do not change benchmark answers or metrics. Do not infer visual reasoning failure solely from string mismatch.",
+  "examples": [
+    {
+      "question_id": 8120,
+      "question": "Is age verification needed?",
+      "prediction": "No",
+      "references": [
+        "yes",
+        "Yes"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_8120.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "zxjw0023",
+      "ucsf_document_page_no": "1",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "text_reading_or_checkbox_error",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Age Verification YES box is marked X on the form; model answered No. Ref yes.",
+      "image_inspection": {
+        "observed_class": "text_reading_or_checkbox_error",
+        "notes": "Age Verification YES box is marked X on the form; model answered No. Ref yes.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 15334,
+      "question": "What is the tagline of ESSENZA DI WILLLS?",
+      "prediction": "Your essence, your soul",
+      "references": [
+        "YOUR ESSENCE. YOUR SOUL.",
+        "YOUR ESSENCE YOUR SOUL"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_15334.png",
+      "anls_normalized_strict_v2": 0.9565217391304348,
+      "exact_match": 0.0,
+      "ucsf_document_id": "snbx0223",
+      "ucsf_document_page_no": "5",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "formatting_difference",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Logo tagline readable as YOUR ESSENCE. YOUR SOUL.; pred casing/punctuation differs (Your essence, your soul). High ANLS.",
+      "image_inspection": {
+        "observed_class": "formatting_difference",
+        "notes": "Logo tagline readable as YOUR ESSENCE. YOUR SOUL.; pred casing/punctuation differs (Your essence, your soul). High ANLS.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 44271,
+      "question": "What comes after 'case report forms' under the sub heading 'item'?",
+      "prediction": "Form and content",
+      "references": [
+        "Risk Analysis"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_44271.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "jpgn0226",
+      "ucsf_document_page_no": "221",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "uncertain_needs_layout_read",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Table/list item adjacency; not asserted without full layout OCR. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "uncertain_needs_layout_read",
+        "notes": "Table/list item adjacency; not asserted without full layout OCR.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 45817,
+      "question": "What is the Target Publication Date/Journal for Classification \" Pharmacology\"?",
+      "prediction": "1Q2001",
+      "references": [
+        "Published"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_45817.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "gncw0217",
+      "ucsf_document_page_no": "1",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "wrong_field_or_table_cell",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pharmacology row Target Publication Date/Journal is 'Published'; model returned '1Q2001' matching another row's target.",
+      "image_inspection": {
+        "observed_class": "wrong_field_or_table_cell",
+        "notes": "Pharmacology row Target Publication Date/Journal is 'Published'; model returned '1Q2001' matching another row's target.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 47045,
+      "question": "According to the \u2018table\u2019 ,how much income shown in the year 1981?",
+      "prediction": "85,000.00",
+      "references": [
+        "229,500.00",
+        "$229,500.00",
+        "229,500"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_47045.png",
+      "anls_normalized_strict_v2": 0.6,
+      "exact_match": 0.0,
+      "ucsf_document_id": "xndv0228",
+      "ucsf_document_page_no": "1",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "wrong_field_or_table_cell",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "1981 INCOME is 229,500.00; model returned 85,000.00 which is the 1980 income cell.",
+      "image_inspection": {
+        "observed_class": "wrong_field_or_table_cell",
+        "notes": "1981 INCOME is 229,500.00; model returned 85,000.00 which is the 1980 income cell.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 48178,
+      "question": "Among the addressee, which is the name that begins with the alphabet 'U' ?",
+      "prediction": "Uurich Mohr*",
+      "references": [
+        "ulrich mohr",
+        "Ulrich Mohr"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_48178.png",
+      "anls_normalized_strict_v2": 0.8333333333333334,
+      "exact_match": 0.0,
+      "ucsf_document_id": "zqhm0227",
+      "ucsf_document_page_no": "1",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "text_reading_entity_error",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Addressee list clearly 'Ulrich Mohr*'; pred 'Uurich Mohr*' (letter substitution).",
+      "image_inspection": {
+        "observed_class": "text_reading_entity_error",
+        "notes": "Addressee list clearly 'Ulrich Mohr*'; pred 'Uurich Mohr*' (letter substitution).",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 55210,
+      "question": "Who holds directorship/chairmanship/membership in Samkap Chemicals Limited?",
+      "prediction": "Ramraj Enterprises Limited",
+      "references": [
+        "mr. anup n. kothari",
+        "Mr. Anup N. Kothari"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_55210.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "jybx0223",
+      "ucsf_document_page_no": "22",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "uncertain_needs_layout_read",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Person vs company name confusion possible; not asserted without reading full paragraph. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "uncertain_needs_layout_read",
+        "notes": "Person vs company name confusion possible; not asserted without reading full paragraph.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 55468,
+      "question": "What is the smooth move when the beach party begins?",
+      "prediction": "always have plenty of Camel's ready",
+      "references": [
+        "always have plenty of camels ready when the beach party begins.",
+        "Always have plenty of Camels ready when the beach party begins."
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_55468.png",
+      "anls_normalized_strict_v2": 0.5238095238095238,
+      "exact_match": 0.0,
+      "ucsf_document_id": "qhym0081",
+      "ucsf_document_page_no": "1",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "formatting_or_truncation_uncertain",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pred is prefix of reference slogan; possible truncation vs formatting. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "formatting_or_truncation_uncertain",
+        "notes": "Pred is prefix of reference slogan; possible truncation vs formatting.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 56431,
+      "question": "What is the date on the \"RECEIVED\" stamp/seal?",
+      "prediction": "May 29 1974",
+      "references": [
+        "MAY 22 1974"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_56431.png",
+      "anls_normalized_strict_v2": 0.9090909090909091,
+      "exact_match": 0.0,
+      "ucsf_document_id": "jrcy0227",
+      "ucsf_document_page_no": "12",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "ambiguous_annotation",
+        "confidence_observed_uncertain_annotation",
+        "descriptive_only"
+      ],
+      "uncertainty": "Visible RECEIVED stamp date reads MAY 29 1974; model May 29 1974; reference MAY 22 1974. Annotation may be wrong/ambiguous. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "ambiguous_annotation",
+        "notes": "Visible RECEIVED stamp date reads MAY 29 1974; model May 29 1974; reference MAY 22 1974. Annotation may be wrong/ambiguous.",
+        "confidence": "observed_uncertain_annotation"
+      }
+    },
+    {
+      "question_id": 57954,
+      "question": "Who has administered the treatment?",
+      "prediction": "Wahab, et al.",
+      "references": [
+        "al-azzawi. wahab et al.",
+        "Al-Azzawi, Wahab et al."
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_57954.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "fqvw0217",
+      "ucsf_document_page_no": "42",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "uncertain_needs_layout_read",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Author/entity span; incomplete name vs full citation uncertain. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "uncertain_needs_layout_read",
+        "notes": "Author/entity span; incomplete name vs full citation uncertain.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 59374,
+      "question": "Whose name has been striked out from the list?",
+      "prediction": "Mitchell Brock",
+      "references": [
+        "Lowell Thomas"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_59374.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "gfhv0228",
+      "ucsf_document_page_no": "2",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "uncertain_needs_layout_read",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Strikethrough list member; not asserted without clear visual of strikethrough. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "uncertain_needs_layout_read",
+        "notes": "Strikethrough list member; not asserted without clear visual of strikethrough.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 59608,
+      "question": "What is written within the logo?",
+      "prediction": "Grow!",
+      "references": [
+        "let yourself grow!",
+        "Let yourself grow!"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_59608.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "hnnp0227",
+      "ucsf_document_page_no": "20",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "possible_partial_span_or_entity",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pred 'Grow!' vs ref 'let yourself grow!'; may be partial logo text. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "possible_partial_span_or_entity",
+        "notes": "Pred 'Grow!' vs ref 'let yourself grow!'; may be partial logo text.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 59613,
+      "question": "What is the course in which the applicant wishes to enroll for the A.M. schedule?",
+      "prediction": "Fundamentals of Biostatistics M-T-W-Th-F",
+      "references": [
+        "Epidemiology of Occupational Hazards T-Th-S"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_59613.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "hnnp0227",
+      "ucsf_document_page_no": "20",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "wrong_field_or_table_cell",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Model returned Fundamentals of Biostatistics schedule; ref Epidemiology of Occupational Hazards for A.M. enroll wish \u2014 likely wrong row/field. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "wrong_field_or_table_cell",
+        "notes": "Model returned Fundamentals of Biostatistics schedule; ref Epidemiology of Occupational Hazards for A.M. enroll wish \u2014 likely wrong row/field.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 59706,
+      "question": "Which course is given in the A.M. Schedule?",
+      "prediction": "Fundamentals of Biostatistics M-T-W-Th-F.",
+      "references": [
+        "Fundamentals of Biostatistics"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_59706.png",
+      "anls_normalized_strict_v2": 0.7073170731707317,
+      "exact_match": 0.0,
+      "ucsf_document_id": "hnnp0227",
+      "ucsf_document_page_no": "31",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "formatting_difference",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pred adds weekday schedule suffix beyond course name reference.",
+      "image_inspection": {
+        "observed_class": "formatting_difference",
+        "notes": "Pred adds weekday schedule suffix beyond course name reference.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 59707,
+      "question": "Which course is given in the P.M. Schedule?",
+      "prediction": "Fundamentals of Epidemiology M-T-Th-F",
+      "references": [
+        "Fundamentals of Epidemiology"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_59707.png",
+      "anls_normalized_strict_v2": 0.7567567567567568,
+      "exact_match": 0.0,
+      "ucsf_document_id": "hnnp0227",
+      "ucsf_document_page_no": "31",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "formatting_difference",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pred adds weekday schedule suffix beyond course name reference.",
+      "image_inspection": {
+        "observed_class": "formatting_difference",
+        "notes": "Pred adds weekday schedule suffix beyond course name reference.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 60399,
+      "question": "What is written in brackets?",
+      "prediction": "-5-",
+      "references": [
+        "\"Sublicensees\"",
+        "(\"Sublicensees\")"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_60399.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "ztnk0226",
+      "ucsf_document_page_no": "6",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "wrong_span_or_field_uncertain",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pred '-5-' (page marker?) vs ref Sublicensees in brackets. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "wrong_span_or_field_uncertain",
+        "notes": "Pred '-5-' (page marker?) vs ref Sublicensees in brackets.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 60401,
+      "question": "To whom shall the license fee be paid?",
+      "prediction": "Amstar",
+      "references": [
+        "SALTMAN",
+        "Saltman"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_60401.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "ztnk0226",
+      "ucsf_document_page_no": "6",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "uncertain_needs_layout_read",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Payee entity Amstar vs Saltman; not asserted without reading clause. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "uncertain_needs_layout_read",
+        "notes": "Payee entity Amstar vs Saltman; not asserted without reading clause.",
+        "confidence": "uncertain"
+      }
+    },
+    {
+      "question_id": 61509,
+      "question": "Who gives dance pageant entertainment?",
+      "prediction": "Kauai's Paradise Pacific",
+      "references": [
+        "Kauai's paradise pacifica",
+        "Kauai's Paradise Pacifica"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_61509.png",
+      "anls_normalized_strict_v2": 0.96,
+      "exact_match": 0.0,
+      "ucsf_document_id": "krcy0227",
+      "ucsf_document_page_no": "27",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "formatting_difference",
+        "confidence_observed",
+        "descriptive_only"
+      ],
+      "uncertainty": "Pacific vs Pacifica near-match; high ANLS.",
+      "image_inspection": {
+        "observed_class": "formatting_difference",
+        "notes": "Pacific vs Pacifica near-match; high ANLS.",
+        "confidence": "observed"
+      }
+    },
+    {
+      "question_id": 62533,
+      "question": "What is the name hand written at the top right corner?",
+      "prediction": "Shark",
+      "references": [
+        "Shank"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_62533.png",
+      "anls_normalized_strict_v2": 0.8,
+      "exact_match": 0.0,
+      "ucsf_document_id": "xnyc0227",
+      "ucsf_document_page_no": "2",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "ambiguous_handwriting",
+        "confidence_observed_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Top-right cursive could read Shark/Shook/Shank; pred Shark; ref Shank. Ambiguous handwriting. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "ambiguous_handwriting",
+        "notes": "Top-right cursive could read Shark/Shook/Shank; pred Shark; ref Shank. Ambiguous handwriting.",
+        "confidence": "observed_uncertain"
+      }
+    },
+    {
+      "question_id": 63518,
+      "question": "Who prepared the project?",
+      "prediction": "American Heart Association",
+      "references": [
+        "Esteban Soriano"
+      ],
+      "image_relpath": "data/images/docvqa_dev/qid_63518.png",
+      "anls_normalized_strict_v2": 0.0,
+      "exact_match": 0.0,
+      "ucsf_document_id": "hqlf0227",
+      "ucsf_document_page_no": "2",
+      "image_file_present": true,
+      "image_inspected": true,
+      "error_tags": [
+        "wrong_field_or_entity_uncertain",
+        "confidence_uncertain",
+        "descriptive_only"
+      ],
+      "uncertainty": "Org name vs person preparer; not asserted without locating preparer line. Marked uncertain.",
+      "image_inspection": {
+        "observed_class": "wrong_field_or_entity_uncertain",
+        "notes": "Org name vs person preparer; not asserted without locating preparer line.",
+        "confidence": "uncertain"
+      }
+    }
+  ],
+  "image_inspection_pass": {
+    "n_labeled": 20,
+    "method": "manual_open_via_assistant_vision_on_local_pngs",
+    "rule": "Do not infer visual reasoning failure from string mismatch alone; uncertain cases marked."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task": "phase04_preflight",
+  "ok": true,
+  "failures": [],
+  "tests_collator_termination": "11/11 OK",
+  "gate_termination_single_eos_ok": true,
+  "gate_all_checks_ok": true,
+  "v2_supervised_single_eot": true,
+  "qid46350_v2_single_eot_no_newline": true,
+  "main_train_fresh_process_after_gate": true,
+  "adapter_v2_u200_sha256": "3c2c34cd751138df0a2a42bfebf90a9a9c7f64b89f2ebc8efe7f5517c344180a",
+  "adapter_hash_matches_recorded": true,
+  "launcher_resolves_v2_u200_only": true,
+  "holdout_n_questions": 504,
+  "holdout_unique_qids": 504,
+  "holdout_manifest_content_sha256": "e20d9ad6ca9523c36a444faa1d5985f311938d197693c5701d80523b8c50c468",
+  "holdout_manifest_raw_file_sha256": "59b845f3cb058e70b96b269966c5eb4dc383409cf7ec0a6fb07ad882430d7dfb",
+  "holdout_images_verified": 504,
+  "v2_train_loss": {
+    "n_updates": 200,
+    "initial_update_mean": 0.25317324697971344,
+    "final_update_mean": 0.3006591796875,
+    "mean_first_20_updates": 0.25614097751677034,
+    "mean_last_20_updates": 0.21429072171449662,
+    "semantics": "per-optimizer-update mean of grad_accum=8 microbatch losses",
+    "note": "Do not compare loss magnitudes across v1/v2 label objectives as directly equivalent."
+  },
+  "split_separation_current_manifests": {
+    "ucsf_dev_hold_overlap": 0,
+    "page_dev_hold_overlap": 0,
+    "png_hash_dev_hold_overlap": 0,
+    "ucsf_train_hold_overlap": 0,
+    "note": "phase02b split_leakage_audit_phase02b.json records historical overlaps that motivated holdout_v2; current holdout_v2/dev/train_subset show zero UCSF/page/hash overlaps."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "task": "cpu_rescore",
+  "manifest": "data/manifests/docvqa_dev_v1.json",
+  "manifest_name": "docvqa_dev_v1",
+  "manifest_hash_verification": {
+    "ok": false,
+    "canonical_content_sha256": "229ffa60cbc1060d83193694fe53c3c8828707a5eb4b4d440cea743d22a42dce",
+    "stored_manifest_sha256": "7302844ae058d7fa3566c418d3770b90fbd3433fb555806f9231de1fc576aab8",
+    "raw_file_sha256": "c5d661170c5b4113f570bce0651031a70767ceb448905e75e46477a317a7a35a",
+    "note": "canonical_content_sha256 excludes the self-hash field and uses sort_keys JSON; raw_file_sha256 is the on-disk file digest and may differ."
+  },
+  "predictions_jsonl": "results/dev_smolvlm256m.jsonl",
+  "answers_sidecar_sha256": "894b54f8c9da99499fa261660a084598d8fcadde67358c060354da3370d91a8f",
+  "answer_validation": {
+    "ok": true,
+    "n_required": 208,
+    "n_sidecar_unique": 208,
+    "duplicate_question_ids": [],
+    "missing_question_ids": [],
+    "extra_question_ids": [],
+    "invalid_empty_reference_question_ids": []
+  },
+  "primary_metric": "anls_normalized_inclusive_v1",
+  "scorer_source_sha256": "d2740406aeec6c9ab056c7bc0e95d0516051e10806b99932297eb06d231d88f4",
+  "n_examples_cutoff_diff_strict_vs_inclusive": 4,
+  "scores": {
+    "n_requested": 208,
+    "n_records": 208,
+    "n_completed_ok": 208,
+    "n_failed": 0,
+    "n_missing": 0,
+    "failure_rate_requested": 0.0,
+    "primary_metric": "anls_normalized_inclusive_v1",
+    "mean_anls_requested": 0.5664009234623724,
+    "mean_exact_match_requested": 0.25961538461538464,
+    "mean_anls_normalized_inclusive_v1_requested": 0.5664009234623724,
+    "mean_anls_vlmevalkit_requested": 0.5665170397695556,
+    "mean_anls_completed_ok_only": 0.5664009234623724,
+    "mean_exact_match_completed_ok_only": 0.25961538461538464,
+    "anls_definition": "anls_normalized_strict_v2: lowercase+strip+collapse_ws; NL=edit/max(len_norm); score=1-NL if NL<0.5 else 0; max over nonempty refs; failures/missing count as 0 in requested mean",
+    "scorer_source_sha256": "d2740406aeec6c9ab056c7bc0e95d0516051e10806b99932297eb06d231d88f4"
+  },
+  "note": "CPU rescore of historical predictions; inference provenance unchanged. Cached metrics from other scorer versions were not trusted."
+}
